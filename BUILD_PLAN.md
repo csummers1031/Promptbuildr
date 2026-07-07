@@ -31,17 +31,19 @@ Deploy target stays swappable: all Cloudflare-specific code is isolated to `open
 
 ### 1.3 AI model
 
-`ANTHROPIC_MODEL` env var, defaulting to **`claude-3-5-haiku-20241022`** — the cheapest currently-sold Haiku ($0.80/M input, $4/M output). If eval quality in Phase 1 is below the bar, the fallback is Haiku 4.5 (`claude-haiku-4-5`, $1/$5) — a one-env-var change, and the eval script will make the comparison cheap to run. Server-side only; the key never ships to the client.
+**Verified against platform.claude.com docs (2026-07-07):** `claude-3-5-haiku` was **retired on 2026-02-19** and Haiku 3 is deprecated (retires 2026-04-19). The only current Haiku is **Claude Haiku 4.5**. `ANTHROPIC_MODEL` env var therefore defaults to **`claude-haiku-4-5`** — $1.00/M input, $5.00/M output, 200K context, 64K max output. Server-side only; the key never ships to the client.
 
-**API cost model (used for every estimate below):** one generation ≈ 1,800 input tokens (meta-prompt + tool registry + user input) + 900 output tokens ≈ **$0.005/generation** on Haiku 3.5. A quality-score call ≈ $0.002.
+Haiku 4.5 also supports **structured outputs** (`output_config.format` with a JSON schema), which guarantees schema-valid JSON from the generation call. We use that as the primary path and keep the spec's defensive parse/retry as a safety net.
+
+**API cost model (verified pricing):** one generation ≈ 1,800 input tokens (meta-prompt + tool registry + user input) + 900 output tokens ≈ **$0.0063/generation** (~26% above the original Haiku 3.5 estimate). A quality-score call ≈ $0.002.
 
 | Autonomous feature | Volume | Est. monthly cost |
 |---|---|---|
-| Daily seed generation | 10/day | ~$1.50 |
+| Daily seed generation | 10/day | ~$1.90 |
 | Quality-gate scoring | ~70/week | ~$0.60 |
-| User generations (early traffic, ~50/day avg) | 1,500/mo | ~$7.50 |
-| Retries + moderation overhead (~10%) | — | ~$1.00 |
-| **Total at launch scale** | | **~$10/mo, dominated by real usage** |
+| User generations (early traffic, ~50/day avg) | 1,500/mo | ~$9.45 |
+| Retries + moderation overhead (~10%) | — | ~$1.20 |
+| **Total at launch scale** | | **~$13/mo, dominated by real usage** — well under the $50 default `MONTHLY_SPEND_CAP` |
 
 Everything else in the stack is $0: Cloudflare free tier, Neon free tier, GitHub Actions (public repo or well within free minutes), HubSpot free CRM + marketing email, GA4/GSC/Bing/IndexNow.
 

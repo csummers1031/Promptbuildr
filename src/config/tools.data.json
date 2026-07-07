@@ -1,0 +1,23 @@
+[
+  { "slug": "hubspot-crm", "name": "HubSpot CRM", "description": "Free CRM with contact management, deals, and email tracking", "category": "crm", "url": "https://hackingdemand.com/discount-marketplace/hubspot-crm" },
+  { "slug": "pipedrive", "name": "Pipedrive", "description": "Sales-focused CRM with visual pipeline management", "category": "crm", "url": "https://hackingdemand.com/discount-marketplace/pipedrive" },
+  { "slug": "attio", "name": "Attio", "description": "Flexible, data-driven CRM for modern go-to-market teams", "category": "crm", "url": "https://hackingdemand.com/discount-marketplace/attio" },
+  { "slug": "instantly", "name": "Instantly", "description": "Cold email sending at scale with warmup and deliverability tools", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/instantly" },
+  { "slug": "smartlead", "name": "Smartlead", "description": "Cold outreach platform with unlimited mailboxes and AI warmup", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/smartlead" },
+  { "slug": "apollo-io", "name": "Apollo.io", "description": "B2B contact database with built-in email sequencing", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/apollo-io" },
+  { "slug": "lemlist", "name": "Lemlist", "description": "Personalized cold outreach with images, video, and multichannel steps", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/lemlist" },
+  { "slug": "clay", "name": "Clay", "description": "Data enrichment and workflow automation for outbound prospecting", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/clay" },
+  { "slug": "vercel", "name": "Vercel", "description": "Frontend hosting and deployment platform for modern web frameworks", "category": "hosting", "url": "https://hackingdemand.com/discount-marketplace/vercel" },
+  { "slug": "railway", "name": "Railway", "description": "Deploy backends, databases, and cron jobs with minimal config", "category": "hosting", "url": "https://hackingdemand.com/discount-marketplace/railway" },
+  { "slug": "cloudflare", "name": "Cloudflare", "description": "CDN, DNS, edge workers, and website security", "category": "hosting", "url": "https://hackingdemand.com/discount-marketplace/cloudflare" },
+  { "slug": "claude", "name": "Claude", "description": "Anthropic's AI assistant and API for reasoning, writing, and agents", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/claude" },
+  { "slug": "zapier", "name": "Zapier", "description": "No-code automation connecting thousands of business apps", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/zapier" },
+  { "slug": "make", "name": "Make", "description": "Visual workflow automation platform for complex integrations", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/make" },
+  { "slug": "n8n", "name": "n8n", "description": "Source-available workflow automation with AI agent nodes", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/n8n" },
+  { "slug": "notion", "name": "Notion", "description": "All-in-one workspace for docs, wikis, and project management", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/notion" },
+  { "slug": "ga4", "name": "Google Analytics 4", "description": "Free web and app analytics from Google", "category": "analytics", "url": "https://hackingdemand.com/discount-marketplace/ga4" },
+  { "slug": "posthog", "name": "PostHog", "description": "Product analytics, session replay, and feature flags", "category": "analytics", "url": "https://hackingdemand.com/discount-marketplace/posthog" },
+  { "slug": "ahrefs", "name": "Ahrefs", "description": "SEO toolset for backlinks, keyword research, and site audits", "category": "analytics", "url": "https://hackingdemand.com/discount-marketplace/ahrefs" },
+  { "slug": "canva", "name": "Canva", "description": "Drag-and-drop design tool for social, presentations, and marketing", "category": "design", "url": "https://hackingdemand.com/discount-marketplace/canva" },
+  { "slug": "figma", "name": "Figma", "description": "Collaborative interface design and prototyping", "category": "design", "url": "https://hackingdemand.com/discount-marketplace/figma" }
+]
