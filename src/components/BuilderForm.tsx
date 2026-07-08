@@ -23,11 +23,18 @@ type State =
   | { phase: "gate"; message: string }
   | { phase: "result"; data: GenerateResponse };
 
-export default function BuilderForm() {
-  const [task, setTask] = useState("");
-  const [role, setRole] = useState<string>("");
-  const [aiTool, setAiTool] = useState<string>("Claude");
-  const [outputType, setOutputType] = useState<string>("");
+export interface BuilderInitial {
+  task?: string;
+  role?: string;
+  aiTool?: string;
+  outputType?: string;
+}
+
+export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
+  const [task, setTask] = useState(initial?.task ?? "");
+  const [role, setRole] = useState<string>(initial?.role ?? "");
+  const [aiTool, setAiTool] = useState<string>(initial?.aiTool ?? "Claude");
+  const [outputType, setOutputType] = useState<string>(initial?.outputType ?? "");
   const [state, setState] = useState<State>({ phase: "form" });
   const [error, setError] = useState<string | null>(null);
   const [placeholderIdx, setPlaceholderIdx] = useState(0);

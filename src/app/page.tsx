@@ -1,19 +1,47 @@
 import BuilderForm from "@/components/BuilderForm";
 import Footer from "@/components/Footer";
+import Link from "next/link";
+import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
+import { orgJsonLd, webSiteJsonLd } from "@/lib/seo";
 
-export default function Home() {
+interface HomeSearchParams {
+  remix?: string;
+  task?: string;
+  role?: string;
+  aiTool?: string;
+  outputType?: string;
+}
+
+function pick(v: string | undefined, allowed: readonly string[]): string | undefined {
+  return v && allowed.includes(v) ? v : undefined;
+}
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<HomeSearchParams>;
+}) {
+  const sp = await searchParams;
+  const initial =
+    sp.remix === "1"
+      ? {
+          task: typeof sp.task === "string" ? sp.task.slice(0, 1000) : undefined,
+          role: pick(sp.role, ROLES),
+          aiTool: pick(sp.aiTool, AI_TOOLS),
+          outputType: pick(sp.outputType, OUTPUT_TYPES),
+        }
+      : undefined;
+  const jsonLd = [orgJsonLd(), webSiteJsonLd()];
   return (
     <div className="min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <header className="mx-auto flex max-w-3xl items-center justify-between px-4 py-5">
         <span className="text-lg font-bold tracking-tight text-slate-900">
           Prompt<span className="text-indigo-600">buildr</span>
         </span>
-        <a
-          href="#builder"
-          className="text-sm font-medium text-slate-500 hover:text-slate-900"
-        >
-          Build a prompt
-        </a>
+        <Link href="/prompts" className="text-sm font-medium text-slate-500 hover:text-slate-900">
+          Browse feed
+        </Link>
       </header>
 
       <main className="mx-auto max-w-3xl px-4">
@@ -29,7 +57,7 @@ export default function Home() {
         </section>
 
         <section id="builder" className="scroll-mt-6">
-          <BuilderForm />
+          <BuilderForm initial={initial} />
         </section>
 
         <section className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
