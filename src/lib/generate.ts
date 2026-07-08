@@ -165,8 +165,12 @@ export async function generatePrompt(input: GenerationInput): Promise<Generation
     estimatedCostUsd: costUsd(getModel(), totalIn, totalOut),
   };
 
-  // 3. Server-side tool validation (never trust model slugs/URLs)
-  const recommendedTools = validateRecommendations(raw.recommended_tools);
+  // 3. Server-side tool validation (never trust model slugs/URLs).
+  //    Hard rule: personal/consumer tasks get a clean, tool-free experience,
+  //    enforced here regardless of what the model returned.
+  const recommendedTools = raw.is_business
+    ? validateRecommendations(raw.recommended_tools)
+    : [];
   const output = { ...raw, recommended_tools: recommendedTools };
 
   // 4. Moderation: model verdict + hard blocklist on public-facing text

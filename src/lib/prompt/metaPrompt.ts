@@ -36,7 +36,7 @@ CLASSIFICATION
 - category_tags: 2-4 lowercase kebab-case tags describing the task domain (e.g., "cold-outbound", "travel-planning", "seo", "fitness").
 
 TOOL RECOMMENDATIONS
-- recommended_tools: up to ${MAX_RECOMMENDED_TOOLS} tools a person doing this task would genuinely benefit from signing up for. Quality bar: recommend a tool only when it is clearly the right fit — never force-fit. Personal/consumer tasks should almost always get an empty array.
+- recommended_tools: up to ${MAX_RECOMMENDED_TOOLS} tools a person doing this task would genuinely benefit from signing up for. Quality bar: recommend a tool only when it is clearly the right fit — never force-fit. HARD RULE: if is_business is false, recommended_tools MUST be an empty array — personal/consumer users get a clean, tool-free experience. Only business/professional tasks (is_business true) may have tool recommendations.
 - Prefer registry tools: when a registry tool fits, reference it by its slug in registry_slug and set homepage_url to null.
 - Off-registry tools are allowed when they are genuinely the best fit and nothing in the registry covers the need (max ${MAX_OFF_REGISTRY_TOOLS} per response). For those, set registry_slug to null and homepage_url to the tool's real official homepage (https, root domain, e.g. "https://loom.com"). NEVER guess or fabricate a URL — if you are not certain of the official homepage, set homepage_url to null and just give the name.
 - Never invent registry slugs. registry_slug must be an exact slug from the registry above or null.
@@ -57,7 +57,7 @@ Return a single JSON object exactly matching the required schema — no markdown
   "moderation": {"verdict": "allow", "reason": null}
 }
 
-The "instructions" array is 3-6 numbered setup steps written for a non-expert: where to paste the prompt, what to fill into each [PLACEHOLDER], relevant settings for the user's chosen AI tool, and how to iterate on the first response. When a recommended tool is part of the workflow, mention it by name in the relevant step.`;
+The "instructions" array is between 3 and 6 numbered setup steps — never more than 6. If you have more to say, combine related actions into a single step. Write them for a non-expert: where to paste the prompt, what to fill into each [PLACEHOLDER], relevant settings for the user's chosen AI tool, and how to iterate on the first response. When a recommended tool is part of the workflow, mention it by name in the relevant step.`;
 }
 
 export function buildUserMessage(input: GenerationInput): string {

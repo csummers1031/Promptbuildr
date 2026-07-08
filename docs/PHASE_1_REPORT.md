@@ -45,14 +45,19 @@
 
 5. **Monthly spend groundwork (your note 5):** every generation returns server-side `usage` with token counts and a verified-pricing USD estimate (`generate.ts`), and `MONTHLY_SPEND_CAP` (default 50) is in `.env.example` — ready for the Phase 2 DB tracker + circuit breaker. Usage is never sent to the client.
 
-## The one thing not yet verified: live eval quality
+## Live eval quality gate: PASSED (20/20)
 
-The eval **harness** is complete and its assertion logic is unit-tested, but the **live run against the model requires `ANTHROPIC_API_KEY`**, which isn't available in this build environment. `pnpm eval` will, the moment a key is present:
-- run all 20 cases (12 business / 8 personal) through the real pipeline,
-- assert classification flags, empty-tools-on-personal, no invented slugs, tool-appropriate syntax (XML for Claude, dense descriptor for Midjourney), and structural quality,
-- print token/cost totals and write full outputs to `eval-results.json` for your side-by-side "clearly better than raw ChatGPT" review.
+Ran the full harness against `claude-haiku-4-5` with a live key.
 
-**This is the Phase 1 quality gate and it is not yet passed** — it needs a key. Options: (a) add `ANTHROPIC_API_KEY` to this environment and I run it now, or (b) you run `pnpm eval` locally. I recommend (a) so I can lock the model choice (and, if quality is short, run the same harness against Haiku 4.5 at higher effort or a larger model before Phase 2).
+- **First run: 18/20.** Two cases wrote 7 setup steps (spec cap is 6); one intermittently added tools to a personal task.
+- **Fixes:** (1) meta-prompt now hard-caps instructions at 6; (2) personal/consumer tasks (`is_business=false`) are forced to zero tool recommendations — enforced in the meta-prompt AND server-side in `generate.ts`, so the clean personal experience never depends on the model.
+- **Re-run: 20/20 passed**, one cosmetic warning (a ChatGPT-target prompt used XML tags — harmless; XML works fine in ChatGPT).
+
+**Classification was 100% correct across all 20** — every `is_business` / `is_agent_or_automation` flag right (including the "marketer planning a vacation = personal" independence case), zero invented registry slugs, correct tool-appropriate syntax (XML for Claude, dense descriptor string for Midjourney), and the personal/business tool split holding in both directions.
+
+**Verified cost:** avg **$0.0077/generation** (47k in / 21k out across 20 cases = $0.154). Slightly above the $0.0063 plan estimate because outputs ran a bit longer than assumed; revised launch-scale total ≈ **$15/mo**, still well under the $50 cap. Full per-case outputs are in `eval-results.json` (gitignored) for side-by-side quality review; spot-checks confirm the prompts clear the "clearly better than raw ChatGPT" bar (persona framing, labeled `[PLACEHOLDER]` context slots, explicit output formats, tool-appropriate syntax).
+
+**Model choice locked: `claude-haiku-4-5`.** No need to escalate to a larger model — quality and classification are strong at Haiku pricing.
 
 ## Ready for your go/no-go on Phase 2
 
