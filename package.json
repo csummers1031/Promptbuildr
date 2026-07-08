@@ -16,11 +16,18 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "eval": "tsx scripts/eval/run.ts",
-    "import-tools": "tsx scripts/import-tools.ts"
+    "import-tools": "tsx scripts/import-tools.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf:bundle-check": "tsx scripts/bundle-check.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
     "@neondatabase/serverless": "^1.1.0",
+    "@opennextjs/cloudflare": "^1.20.1",
     "drizzle-orm": "^0.45.2",
     "next": "^15.0.0",
     "react": "^19.0.0",
@@ -36,6 +43,7 @@
     "tailwindcss": "^4.1.0",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
-    "vitest": "^4.0.0"
+    "vitest": "^4.0.0",
+    "wrangler": "^4.108.0"
   }
 }

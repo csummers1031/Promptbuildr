@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "promptbuildr",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-03-25",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  // Workers KV for the Next.js incremental (ISR) cache.
+  // Create with: npx wrangler kv namespace create NEXT_INC_CACHE_KV
+  // then paste the returned id below.
+  "kv_namespaces": [
+    {
+      "binding": "NEXT_INC_CACHE_KV",
+      "id": "PLACEHOLDER_REPLACE_WITH_REAL_KV_ID"
+    }
+  ]
+  // Secrets (ANTHROPIC_API_KEY, DATABASE_URL, CRON_SECRET, INDEXNOW_KEY,
+  // HUBSPOT_ACCESS_TOKEN, SESSION_SECRET) are set with:
+  //   npx wrangler secret put <NAME>
+  // Public vars (NEXT_PUBLIC_*) go in a [vars] block or the build env.
+}
