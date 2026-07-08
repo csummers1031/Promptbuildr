@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
 import type { GenerateResponse } from "@/lib/clientTypes";
 import PromptResult from "./PromptResult";
+import EmailGate from "./EmailGate";
 
 const PLACEHOLDERS = [
   "Write cold outbound emails for a SaaS demo offer",
@@ -19,6 +20,7 @@ const PLACEHOLDERS = [
 type State =
   | { phase: "form" }
   | { phase: "loading" }
+  | { phase: "gate"; message: string }
   | { phase: "result"; data: GenerateResponse };
 
 export default function BuilderForm() {
@@ -36,14 +38,9 @@ export default function BuilderForm() {
     return () => clearInterval(id);
   }, [task]);
 
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    setError(null);
-    if (!task.trim()) return setError("Tell us what you're trying to do.");
-    if (!role) return setError("Pick who you are.");
-    if (!outputType) return setError("Pick a desired output type.");
-
+  async function generate() {
     setState({ phase: "loading" });
+    setError(null);
     try {
       const res = await fetch("/api/generate", {
         method: "POST",
@@ -56,6 +53,15 @@ export default function BuilderForm() {
         setState({ phase: "form" });
         return;
       }
+      if (data.status === "gate") {
+        if (data.requiresEmail) {
+          setState({ phase: "gate", message: data.message });
+        } else {
+          setError(data.message);
+          setState({ phase: "form" });
+        }
+        return;
+      }
       setState({ phase: "result", data });
     } catch {
       setError("Network error. Please try again.");
@@ -63,9 +69,28 @@ export default function BuilderForm() {
     }
   }
 
+  function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    if (!task.trim()) return setError("Tell us what you're trying to do.");
+    if (!role) return setError("Pick who you are.");
+    if (!outputType) return setError("Pick a desired output type.");
+    void generate();
+  }
+
   function reset() {
     setState({ phase: "form" });
     setError(null);
+  }
+
+  if (state.phase === "gate") {
+    return (
+      <EmailGate
+        message={state.message}
+        defaultRole={role}
+        onUnlocked={() => void generate()}
+      />
+    );
   }
 
   if (state.phase === "result") {
@@ -93,17 +118,13 @@ export default function BuilderForm() {
         </div>
       );
     }
-    // error should have been handled before entering the result phase
     return null;
   }
 
   const loading = state.phase === "loading";
 
   return (
-    <form
-      onSubmit={submit}
-      className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
-    >
+    <form onSubmit={submit} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="flex flex-col gap-4">
         <div>
           <label htmlFor="task" className="mb-1.5 block text-sm font-semibold text-slate-700">
@@ -148,9 +169,7 @@ export default function BuilderForm() {
             "Generate my prompt"
           )}
         </button>
-        <p className="text-center text-xs text-slate-400">
-          Free. No signup needed for your first prompt.
-        </p>
+        <p className="text-center text-xs text-slate-400">Free. No signup needed for your first prompt.</p>
       </div>
     </form>
   );
@@ -199,7 +218,5 @@ function Select({
 }
 
 function Spinner() {
-  return (
-    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" aria-hidden />
-  );
+  return <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" aria-hidden />;
 }
