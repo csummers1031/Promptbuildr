@@ -11,6 +11,10 @@
  *   --concurrency <n>    parallel requests (default 4)
  */
 import fs from "node:fs";
+import { loadEnvLocal } from "./loadEnv";
+
+loadEnvLocal();
+
 import { generatePrompt, type GenerationResult } from "@/lib/generate";
 import { EVAL_CASES, type EvalCase } from "./cases";
 import { evaluateCase, type CaseEvaluation } from "./assert";
