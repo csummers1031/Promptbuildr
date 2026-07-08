@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generatePrompt } from "@/lib/generate";
+import { presentGeneration } from "@/lib/present";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
 
 export const runtime = "nodejs";
@@ -44,21 +45,23 @@ export async function POST(req: NextRequest) {
 
   const result = await generatePrompt({ task, role, aiTool, outputType });
 
+  const ctx = { role, outputType, aiTool };
+
   switch (result.status) {
     case "ok":
       // usage stays server-side (spend tracking), never sent to the client
       return NextResponse.json({
         status: "ok",
-        output: result.output,
+        result: presentGeneration(result.output, ctx),
       });
     case "blocked":
       // Blocked content renders privately to the creator only (never published).
       return NextResponse.json(
         {
           status: "blocked",
-          output: result.output ?? null,
+          result: result.output ? presentGeneration(result.output, ctx) : null,
           message:
-            "This request couldn't be published because it appears to violate our content policy.",
+            "This request couldn't be published because it appears to violate our content policy. You can still copy it below for your own use.",
         },
         { status: 200 },
       );
