@@ -1,0 +1,83 @@
+name: Deploy to Cloudflare
+
+# Runs on GitHub's infra (which can reach Cloudflare + Neon), builds the
+# OpenNext bundle, migrates + seeds the DB, deploys the Worker with the
+# custom domain, then sets runtime secrets.
+# Manual trigger only for now — fired once secrets + KV id are in place.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      # Public, build-time values (baked into the client bundle).
+      NEXT_PUBLIC_SITE_URL: https://promptbuildr.ai
+      NEXT_PUBLIC_HD_SERVICES: https://hackingdemand.com/services
+      NEXT_PUBLIC_HD_MARKETPLACE: https://hackingdemand.com/discount-marketplace
+      NEXT_PUBLIC_HD_BLOG: https://hackingdemand.com/blog
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Apply database migrations
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: pnpm exec drizzle-kit migrate
+
+      - name: Seed launch prompts (idempotent)
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: pnpm exec tsx scripts/seed-feed.ts
+
+      - name: Build (OpenNext)
+        run: pnpm exec opennextjs-cloudflare build
+
+      - name: Deploy Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: pnpm exec opennextjs-cloudflare deploy
+
+      - name: Set runtime secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          HUBSPOT_ACCESS_TOKEN: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
+        run: |
+          node -e '
+            const s = process.env;
+            const out = {
+              ANTHROPIC_API_KEY: s.ANTHROPIC_API_KEY || "",
+              ANTHROPIC_MODEL: "claude-haiku-4-5",
+              DATABASE_URL: s.DATABASE_URL || "",
+              SESSION_SECRET: s.SESSION_SECRET || "",
+              CRON_SECRET: s.CRON_SECRET || "",
+              INDEXNOW_KEY: s.INDEXNOW_KEY || "",
+              MONTHLY_SPEND_CAP: "50",
+              ...(s.HUBSPOT_ACCESS_TOKEN ? { HUBSPOT_ACCESS_TOKEN: s.HUBSPOT_ACCESS_TOKEN } : {}),
+            };
+            require("fs").writeFileSync("/tmp/secrets.json", JSON.stringify(out));
+          '
+          pnpm exec wrangler secret bulk /tmp/secrets.json
+          rm -f /tmp/secrets.json
