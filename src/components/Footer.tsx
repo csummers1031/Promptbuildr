@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { HD } from "@/config/branding";
 
 export default function Footer() {
@@ -17,6 +18,12 @@ export default function Footer() {
           <a href={HD.marketplace} target="_blank" rel="noopener noreferrer" className="hover:text-slate-800">Discount Marketplace</a>
           <a href={HD.services} target="_blank" rel="noopener noreferrer" className="hover:text-slate-800">Services</a>
           <a href={HD.blog} target="_blank" rel="noopener noreferrer" className="hover:text-slate-800">Blog</a>
+        </nav>
+        <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-slate-500">
+          <Link href="/prompts" className="hover:text-slate-800">Feed</Link>
+          <Link href="/about" className="hover:text-slate-800">About</Link>
+          <Link href="/privacy" className="hover:text-slate-800">Privacy</Link>
+          <Link href="/terms" className="hover:text-slate-800">Terms</Link>
         </nav>
         <p className="text-xs text-slate-400">© {new Date().getFullYear()} Promptbuildr</p>
       </div>
