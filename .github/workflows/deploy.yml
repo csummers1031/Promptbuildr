@@ -1,10 +1,18 @@
 name: Deploy to Cloudflare
 
 # Runs on GitHub's infra (which can reach Cloudflare + Neon), builds the
-# OpenNext bundle, migrates + seeds the DB, deploys the Worker with the
-# custom domain, then sets runtime secrets.
-# Manual trigger only for now — fired once secrets + KV id are in place.
+# OpenNext bundle, migrates + seeds the DB, deploys the Worker, then sets
+# runtime secrets.
+#
+# Triggers:
+#  - push to the build branch: auto-deploys staging on every commit while we
+#    iterate (the workflow file used is the one ON this branch, so it works
+#    even though main only has a README).
+#  - workflow_dispatch: manual re-run button.
 on:
+  push:
+    branches:
+      - claude/promptbuildr-build-plan-pxgurw
   workflow_dispatch:
 
 concurrency:
