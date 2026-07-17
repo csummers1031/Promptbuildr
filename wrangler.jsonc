@@ -21,7 +21,7 @@
   "kv_namespaces": [
     {
       "binding": "NEXT_INC_CACHE_KV",
-      "id": "PLACEHOLDER_REPLACE_WITH_REAL_KV_ID"
+      "id": "b2c3f79ce93845c9aa7aa549fa27ce31"
     }
   ]
   // Secrets (ANTHROPIC_API_KEY, DATABASE_URL, CRON_SECRET, INDEXNOW_KEY,
