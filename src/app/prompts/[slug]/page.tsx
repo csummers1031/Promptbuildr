@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
 import CopyButton from "@/components/CopyButton";
+import ShareBar from "@/components/ShareBar";
 import { getPromptBySlug, getRelatedPrompts } from "@/db/feed";
 import { resolveToolLink } from "@/lib/tools/resolve";
 import { selectCta } from "@/lib/cta";
@@ -123,6 +124,14 @@ export default async function PromotedPromptPage({
           <pre className="max-h-[460px] overflow-auto whitespace-pre-wrap rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm leading-relaxed text-slate-800">
             {prompt.promptText}
           </pre>
+          <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3">
+            <ShareBar
+              url={url}
+              title={`${prompt.title} — a ready-to-use ${prompt.aiTool} prompt`}
+              text="Found this AI prompt on Promptbuildr:"
+              variant="full"
+            />
+          </div>
         </section>
 
         {/* Instructions (HowTo steps) */}

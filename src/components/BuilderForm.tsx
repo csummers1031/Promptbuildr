@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
-import type { GenerateResponse } from "@/lib/clientTypes";
+import type { GenerateResponse, PresentedGeneration } from "@/lib/clientTypes";
 import PromptResult from "./PromptResult";
 import EmailGate from "./EmailGate";
 
@@ -100,12 +100,28 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
     );
   }
 
+  // A shareable link back to the builder, pre-filled with these inputs. The
+  // recipient lands on the homepage with the task ready to (re)generate, and
+  // the link unfurls with a branded OG card showing the task.
+  function shareFor(result: PresentedGeneration) {
+    const remixHref =
+      `/?remix=1&task=${encodeURIComponent(task.trim())}` +
+      `&role=${encodeURIComponent(role)}` +
+      `&aiTool=${encodeURIComponent(aiTool)}` +
+      `&outputType=${encodeURIComponent(outputType)}`;
+    return {
+      url: remixHref,
+      title: `${result.title} — a ready-to-use ${aiTool} prompt`,
+      text: "I built this AI prompt on Promptbuildr:",
+    };
+  }
+
   if (state.phase === "result") {
     const d = state.data;
     if (d.status === "ok") {
       return (
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-          <PromptResult data={d.result} onRemix={reset} />
+          <PromptResult data={d.result} onRemix={reset} share={shareFor(d.result)} />
         </div>
       );
     }
@@ -113,7 +129,7 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
       return (
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
           {d.result ? (
-            <PromptResult data={d.result} blockedMessage={d.message} onRemix={reset} />
+            <PromptResult data={d.result} blockedMessage={d.message} onRemix={reset} share={shareFor(d.result)} />
           ) : (
             <div className="flex flex-col gap-4">
               <p className="text-sm text-amber-900">{d.message}</p>

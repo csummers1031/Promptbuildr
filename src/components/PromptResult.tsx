@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { PresentedGeneration } from "@/lib/clientTypes";
 import type { InstructionSegment } from "@/lib/tools/render";
+import ShareBar from "./ShareBar";
 
 function CopyButton({ text, className = "" }: { text: string; className?: string }) {
   const [copied, setCopied] = useState(false);
@@ -51,10 +52,12 @@ export default function PromptResult({
   data,
   blockedMessage,
   onRemix,
+  share,
 }: {
   data: PresentedGeneration;
   blockedMessage?: string;
   onRemix?: () => void;
+  share?: { url: string; title: string; text?: string };
 }) {
   const linkableTools = data.toolLinks.filter((t) => t.href);
 
@@ -90,6 +93,11 @@ export default function PromptResult({
         <pre className="max-h-[420px] overflow-auto whitespace-pre-wrap rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm leading-relaxed text-slate-800">
           {data.prompt}
         </pre>
+        {share && (
+          <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3">
+            <ShareBar url={share.url} title={share.title} text={share.text} variant="full" />
+          </div>
+        )}
       </section>
 
       {/* Instructions second, with inline tool links */}

@@ -1,8 +1,9 @@
+import type { Metadata } from "next";
 import BuilderForm from "@/components/BuilderForm";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
-import { orgJsonLd, webSiteJsonLd } from "@/lib/seo";
+import { orgJsonLd, webSiteJsonLd, SITE_URL } from "@/lib/seo";
 
 interface HomeSearchParams {
   remix?: string;
@@ -14,6 +15,27 @@ interface HomeSearchParams {
 
 function pick(v: string | undefined, allowed: readonly string[]): string | undefined {
   return v && allowed.includes(v) ? v : undefined;
+}
+
+/**
+ * When a shared remix link carries a task, render that task into the OG card so
+ * the link unfurls with the actual prompt idea instead of the generic default.
+ */
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<HomeSearchParams>;
+}): Promise<Metadata> {
+  const sp = await searchParams;
+  const task = sp.remix === "1" && typeof sp.task === "string" ? sp.task.slice(0, 100).trim() : "";
+  if (!task) return {};
+  const og = `${SITE_URL}/api/og?title=${encodeURIComponent(task)}&tag=${encodeURIComponent("AI prompt")}`;
+  const title = `AI prompt: ${task}`;
+  return {
+    title,
+    openGraph: { title, images: [{ url: og, width: 1200, height: 630 }] },
+    twitter: { card: "summary_large_image", title, images: [og] },
+  };
 }
 
 export default async function Home({

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { FeedPrompt } from "@/lib/feed/types";
+import ShareBar from "@/components/ShareBar";
 
 function truncate(s: string, n: number) {
   return s.length > n ? s.slice(0, n).trimEnd() + "…" : s;
@@ -20,6 +21,10 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
     `&role=${encodeURIComponent(prompt.role)}` +
     `&aiTool=${encodeURIComponent(prompt.aiTool)}` +
     `&outputType=${encodeURIComponent(prompt.outputType)}`;
+
+  // Promoted prompts have a canonical page (with a per-prompt OG image); share
+  // that. Others fall back to a pre-filled builder link.
+  const shareHref = prompt.slug ? `/prompts/${prompt.slug}` : remixHref;
 
   async function copy() {
     try {
@@ -134,6 +139,12 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
         <Link href={remixHref} className="font-medium text-slate-600 hover:text-slate-900">
           Remix
         </Link>
+        <ShareBar
+          url={shareHref}
+          title={`${prompt.title} — a ready-to-use ${prompt.aiTool} prompt`}
+          text="Found this AI prompt on Promptbuildr:"
+          variant="compact"
+        />
         <span className="text-slate-400">{prompt.viewCount} views</span>
         <button
           type="button"

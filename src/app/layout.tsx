@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
 
+const DEFAULT_OG = `${SITE_URL}/api/og?title=${encodeURIComponent("Turn any task into a great AI prompt")}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -14,6 +16,11 @@ export const metadata: Metadata = {
     siteName: "Promptbuildr",
     type: "website",
     url: SITE_URL,
+    images: [{ url: DEFAULT_OG, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [DEFAULT_OG],
   },
 };
 
