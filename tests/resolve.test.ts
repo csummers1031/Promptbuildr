@@ -5,6 +5,7 @@ import {
   resolveToolLink,
   offRegistryRefs,
 } from "@/lib/tools/resolve";
+import { TOOLS, normalizeToolName } from "@/config/tools";
 
 describe("validateHomepageUrl", () => {
   it("accepts a clean https root", () => {
@@ -37,9 +38,11 @@ describe("validateHomepageUrl", () => {
 
 describe("validateRecommendations", () => {
   it("resolves a valid registry slug", () => {
-    const refs = validateRecommendations([{ name: "HubSpot CRM", registry_slug: "hubspot-crm", homepage_url: null }]);
+    // Read a real entry from the live registry so this survives tool churn.
+    const sample = TOOLS[0];
+    const refs = validateRecommendations([{ name: sample.name, registry_slug: sample.slug, homepage_url: null }]);
     expect(refs).toHaveLength(1);
-    expect(refs[0].registrySlug).toBe("hubspot-crm");
+    expect(refs[0].registrySlug).toBe(sample.slug);
   });
   it("matches a registry tool by name when slug is null", () => {
     const refs = validateRecommendations([{ name: "Zapier", registry_slug: null, homepage_url: "https://zapier.com" }]);
@@ -60,7 +63,7 @@ describe("validateRecommendations", () => {
   });
   it("caps total tools at 3", () => {
     const refs = validateRecommendations([
-      { name: "HubSpot CRM", registry_slug: "hubspot-crm", homepage_url: null },
+      { name: "HubSpot", registry_slug: "hubspot", homepage_url: null },
       { name: "Zapier", registry_slug: "zapier", homepage_url: null },
       { name: "Notion", registry_slug: "notion", homepage_url: null },
       { name: "Canva", registry_slug: "canva", homepage_url: null },
@@ -106,11 +109,19 @@ describe("resolveToolLink — auto-upgrade behavior", () => {
     expect(link.href).toBeNull();
   });
   it("an off-registry name later added to the registry auto-upgrades at render time", () => {
-    // Simulate a stored off-registry ref whose normalized name now matches a registry tool.
-    const storedRef = { name: "Notion", normalized: "notion", registrySlug: null, homepageUrl: "https://notion.so" };
+    // Simulate a stored off-registry ref whose normalized name now matches a
+    // registry tool that routes through the HD marketplace. Pull that tool from
+    // the live registry so the assertion isn't tied to a specific entry.
+    const hdTool = TOOLS.find((t) => t.url.includes("discount-marketplace")) ?? TOOLS[0];
+    const storedRef = {
+      name: hdTool.name,
+      normalized: normalizeToolName(hdTool.name),
+      registrySlug: null,
+      homepageUrl: "https://example.com",
+    };
     const link = resolveToolLink(storedRef, "docs");
     expect(link.source).toBe("registry");
-    expect(link.href).toContain("discount-marketplace/notion");
+    expect(link.href).toContain(new URL(hdTool.url).pathname);
     expect(link.href).toContain("utm_");
   });
 });

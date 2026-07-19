@@ -1,23 +1,233 @@
 [
-  { "slug": "hubspot-crm", "name": "HubSpot CRM", "description": "Free CRM with contact management, deals, and email tracking", "category": "crm", "url": "https://hackingdemand.com/discount-marketplace/hubspot-crm" },
-  { "slug": "pipedrive", "name": "Pipedrive", "description": "Sales-focused CRM with visual pipeline management", "category": "crm", "url": "https://hackingdemand.com/discount-marketplace/pipedrive" },
-  { "slug": "attio", "name": "Attio", "description": "Flexible, data-driven CRM for modern go-to-market teams", "category": "crm", "url": "https://hackingdemand.com/discount-marketplace/attio" },
-  { "slug": "instantly", "name": "Instantly", "description": "Cold email sending at scale with warmup and deliverability tools", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/instantly" },
-  { "slug": "smartlead", "name": "Smartlead", "description": "Cold outreach platform with unlimited mailboxes and AI warmup", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/smartlead" },
-  { "slug": "apollo-io", "name": "Apollo.io", "description": "B2B contact database with built-in email sequencing", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/apollo-io" },
-  { "slug": "lemlist", "name": "Lemlist", "description": "Personalized cold outreach with images, video, and multichannel steps", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/lemlist" },
-  { "slug": "clay", "name": "Clay", "description": "Data enrichment and workflow automation for outbound prospecting", "category": "email-outreach", "url": "https://hackingdemand.com/discount-marketplace/clay" },
-  { "slug": "vercel", "name": "Vercel", "description": "Frontend hosting and deployment platform for modern web frameworks", "category": "hosting", "url": "https://hackingdemand.com/discount-marketplace/vercel" },
-  { "slug": "railway", "name": "Railway", "description": "Deploy backends, databases, and cron jobs with minimal config", "category": "hosting", "url": "https://hackingdemand.com/discount-marketplace/railway" },
-  { "slug": "cloudflare", "name": "Cloudflare", "description": "CDN, DNS, edge workers, and website security", "category": "hosting", "url": "https://hackingdemand.com/discount-marketplace/cloudflare" },
-  { "slug": "claude", "name": "Claude", "description": "Anthropic's AI assistant and API for reasoning, writing, and agents", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/claude" },
-  { "slug": "zapier", "name": "Zapier", "description": "No-code automation connecting thousands of business apps", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/zapier" },
-  { "slug": "make", "name": "Make", "description": "Visual workflow automation platform for complex integrations", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/make" },
-  { "slug": "n8n", "name": "n8n", "description": "Source-available workflow automation with AI agent nodes", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/n8n" },
-  { "slug": "notion", "name": "Notion", "description": "All-in-one workspace for docs, wikis, and project management", "category": "ai-tools", "url": "https://hackingdemand.com/discount-marketplace/notion" },
-  { "slug": "ga4", "name": "Google Analytics 4", "description": "Free web and app analytics from Google", "category": "analytics", "url": "https://hackingdemand.com/discount-marketplace/ga4" },
-  { "slug": "posthog", "name": "PostHog", "description": "Product analytics, session replay, and feature flags", "category": "analytics", "url": "https://hackingdemand.com/discount-marketplace/posthog" },
-  { "slug": "ahrefs", "name": "Ahrefs", "description": "SEO toolset for backlinks, keyword research, and site audits", "category": "analytics", "url": "https://hackingdemand.com/discount-marketplace/ahrefs" },
-  { "slug": "canva", "name": "Canva", "description": "Drag-and-drop design tool for social, presentations, and marketing", "category": "design", "url": "https://hackingdemand.com/discount-marketplace/canva" },
-  { "slug": "figma", "name": "Figma", "description": "Collaborative interface design and prototyping", "category": "design", "url": "https://hackingdemand.com/discount-marketplace/figma" }
+  {
+    "slug": "hubspot",
+    "name": "HubSpot",
+    "description": "All-in-one CRM with a free tier plus marketing/sales/service hubs",
+    "category": "crm",
+    "url": "https://hackingdemand.com/discount-marketplace/hubspot"
+  },
+  {
+    "slug": "pipedrive",
+    "name": "Pipedrive",
+    "description": "Sales-focused CRM with a visual pipeline for small teams",
+    "category": "crm",
+    "url": "https://www.pipedrive.com/"
+  },
+  {
+    "slug": "attio",
+    "name": "Attio",
+    "description": "Modern flexible CRM that auto-builds from your data",
+    "category": "crm",
+    "url": "https://attio.com/"
+  },
+  {
+    "slug": "instantly",
+    "name": "Instantly",
+    "description": "Cold email at scale with unlimited inboxes and warmup",
+    "category": "email-outreach",
+    "url": "https://hackingdemand.com/discount-marketplace/instantly"
+  },
+  {
+    "slug": "smartlead",
+    "name": "Smartlead",
+    "description": "Cold-email infrastructure with unlimited mailboxes and warmup",
+    "category": "email-outreach",
+    "url": "https://hackingdemand.com/discount-marketplace/smartlead"
+  },
+  {
+    "slug": "apollo-io",
+    "name": "Apollo.io",
+    "description": "275M+ contact database with built-in sequencing and dialer",
+    "category": "email-outreach",
+    "url": "https://hackingdemand.com/discount-marketplace/apollo"
+  },
+  {
+    "slug": "lemlist",
+    "name": "Lemlist",
+    "description": "Multichannel outreach across email LinkedIn and calls",
+    "category": "email-outreach",
+    "url": "https://hackingdemand.com/discount-marketplace/lemlist"
+  },
+  {
+    "slug": "clay",
+    "name": "Clay",
+    "description": "Waterfall enrichment and AI research for prospecting lists",
+    "category": "email-outreach",
+    "url": "https://www.clay.com/"
+  },
+  {
+    "slug": "vercel",
+    "name": "Vercel",
+    "description": "Frontend cloud for deploying web apps with zero config",
+    "category": "hosting",
+    "url": "https://vercel.com/"
+  },
+  {
+    "slug": "railway",
+    "name": "Railway",
+    "description": "All-in-one cloud to deploy apps databases and services",
+    "category": "hosting",
+    "url": "https://railway.com/"
+  },
+  {
+    "slug": "cloudflare",
+    "name": "Cloudflare",
+    "description": "CDN DNS and security layer for fast protected sites",
+    "category": "hosting",
+    "url": "https://www.cloudflare.com/"
+  },
+  {
+    "slug": "claude",
+    "name": "Claude",
+    "description": "Anthropic AI assistant for writing coding and analysis",
+    "category": "ai-tools",
+    "url": "https://claude.ai/"
+  },
+  {
+    "slug": "zapier",
+    "name": "Zapier",
+    "description": "No-code automation connecting 7000+ apps",
+    "category": "ai-tools",
+    "url": "https://zapier.com/"
+  },
+  {
+    "slug": "make",
+    "name": "Make",
+    "description": "Visual automation platform for multi-step workflows",
+    "category": "ai-tools",
+    "url": "https://www.make.com/"
+  },
+  {
+    "slug": "n8n",
+    "name": "n8n",
+    "description": "Source-available workflow automation with native AI nodes",
+    "category": "ai-tools",
+    "url": "https://hackingdemand.com/discount-marketplace/n8n"
+  },
+  {
+    "slug": "notion",
+    "name": "Notion",
+    "description": "AI workspace for docs wikis projects and agents",
+    "category": "ai-tools",
+    "url": "https://www.notion.com/"
+  },
+  {
+    "slug": "google-analytics-4",
+    "name": "Google Analytics 4",
+    "description": "Free web and app analytics from Google",
+    "category": "analytics",
+    "url": "https://marketingplatform.google.com/about/analytics/"
+  },
+  {
+    "slug": "posthog",
+    "name": "PostHog",
+    "description": "Open-source product analytics session replay and flags",
+    "category": "analytics",
+    "url": "https://posthog.com/"
+  },
+  {
+    "slug": "ahrefs",
+    "name": "Ahrefs",
+    "description": "SEO toolset for backlinks keywords and site audits",
+    "category": "analytics",
+    "url": "https://ahrefs.com/"
+  },
+  {
+    "slug": "canva",
+    "name": "Canva",
+    "description": "Drag-and-drop design for graphics decks and social",
+    "category": "design",
+    "url": "https://www.canva.com/"
+  },
+  {
+    "slug": "figma",
+    "name": "Figma",
+    "description": "Collaborative interface design and whiteboarding",
+    "category": "design",
+    "url": "https://www.figma.com/"
+  },
+  {
+    "slug": "uplead",
+    "name": "UpLead",
+    "description": "Verified B2B contact data with a 95% accuracy guarantee",
+    "category": "email-outreach",
+    "url": "https://hackingdemand.com/discount-marketplace/uplead"
+  },
+  {
+    "slug": "close",
+    "name": "Close",
+    "description": "Sales CRM with built-in calling SMS and email for SMBs",
+    "category": "crm",
+    "url": "https://hackingdemand.com/discount-marketplace/close"
+  },
+  {
+    "slug": "hunter-io",
+    "name": "Hunter.io",
+    "description": "Find and verify professional email addresses",
+    "category": "email-outreach",
+    "url": "https://hackingdemand.com/discount-marketplace/hunterio"
+  },
+  {
+    "slug": "rytr",
+    "name": "Rytr",
+    "description": "AI writing assistant for short-form copy and content",
+    "category": "ai-tools",
+    "url": "https://hackingdemand.com/discount-marketplace/rytr"
+  },
+  {
+    "slug": "synthesia",
+    "name": "Synthesia",
+    "description": "Create AI avatar videos from text scripts",
+    "category": "design",
+    "url": "https://hackingdemand.com/discount-marketplace/synthesiaio"
+  },
+  {
+    "slug": "hotjar",
+    "name": "Hotjar",
+    "description": "Heatmaps and session recordings to see user behavior",
+    "category": "analytics",
+    "url": "https://hackingdemand.com/discount-marketplace/hotjar"
+  },
+  {
+    "slug": "semrush",
+    "name": "Semrush",
+    "description": "All-in-one SEO keyword and competitor research suite",
+    "category": "analytics",
+    "url": "https://www.semrush.com/"
+  },
+  {
+    "slug": "beefree",
+    "name": "Beefree",
+    "description": "Drag-and-drop email and landing page designer",
+    "category": "design",
+    "url": "https://hackingdemand.com/discount-marketplace/beefreeio"
+  },
+  {
+    "slug": "stripo",
+    "name": "Stripo",
+    "description": "Email template builder with 1500+ ready designs",
+    "category": "design",
+    "url": "https://hackingdemand.com/discount-marketplace/stripo"
+  },
+  {
+    "slug": "cloudways",
+    "name": "Cloudways",
+    "description": "Managed cloud hosting for WordPress and web apps",
+    "category": "hosting",
+    "url": "https://www.cloudways.com/"
+  },
+  {
+    "slug": "folk",
+    "name": "folk",
+    "description": "Lightweight relationship CRM for contacts and pipelines",
+    "category": "crm",
+    "url": "https://hackingdemand.com/discount-marketplace/folk"
+  },
+  {
+    "slug": "fireflies",
+    "name": "Fireflies",
+    "description": "AI notetaker that records and summarizes meetings",
+    "category": "ai-tools",
+    "url": "https://hackingdemand.com/discount-marketplace/fireflies"
+  }
 ]

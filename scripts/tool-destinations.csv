@@ -1,0 +1,34 @@
+name,category,url,description,slug
+HubSpot,crm,https://hackingdemand.com/discount-marketplace/hubspot,All-in-one CRM with a free tier plus marketing/sales/service hubs,hubspot
+Pipedrive,crm,https://www.pipedrive.com/,Sales-focused CRM with a visual pipeline for small teams,pipedrive
+Attio,crm,https://attio.com/,Modern flexible CRM that auto-builds from your data,attio
+Instantly,email-outreach,https://hackingdemand.com/discount-marketplace/instantly,Cold email at scale with unlimited inboxes and warmup,instantly
+Smartlead,email-outreach,https://hackingdemand.com/discount-marketplace/smartlead,Cold-email infrastructure with unlimited mailboxes and warmup,smartlead
+Apollo.io,email-outreach,https://hackingdemand.com/discount-marketplace/apollo,275M+ contact database with built-in sequencing and dialer,apollo-io
+Lemlist,email-outreach,https://hackingdemand.com/discount-marketplace/lemlist,Multichannel outreach across email LinkedIn and calls,lemlist
+Clay,email-outreach,https://www.clay.com/,Waterfall enrichment and AI research for prospecting lists,clay
+Vercel,hosting,https://vercel.com/,Frontend cloud for deploying web apps with zero config,vercel
+Railway,hosting,https://railway.com/,All-in-one cloud to deploy apps databases and services,railway
+Cloudflare,hosting,https://www.cloudflare.com/,CDN DNS and security layer for fast protected sites,cloudflare
+Claude,ai-tools,https://claude.ai/,Anthropic AI assistant for writing coding and analysis,claude
+Zapier,ai-tools,https://zapier.com/,No-code automation connecting 7000+ apps,zapier
+Make,ai-tools,https://www.make.com/,Visual automation platform for multi-step workflows,make
+n8n,ai-tools,https://hackingdemand.com/discount-marketplace/n8n,Source-available workflow automation with native AI nodes,n8n
+Notion,ai-tools,https://www.notion.com/,AI workspace for docs wikis projects and agents,notion
+Google Analytics 4,analytics,https://marketingplatform.google.com/about/analytics/,Free web and app analytics from Google,google-analytics-4
+PostHog,analytics,https://posthog.com/,Open-source product analytics session replay and flags,posthog
+Ahrefs,analytics,https://ahrefs.com/,SEO toolset for backlinks keywords and site audits,ahrefs
+Canva,design,https://www.canva.com/,Drag-and-drop design for graphics decks and social,canva
+Figma,design,https://www.figma.com/,Collaborative interface design and whiteboarding,figma
+UpLead,email-outreach,https://hackingdemand.com/discount-marketplace/uplead,Verified B2B contact data with a 95% accuracy guarantee,uplead
+Close,crm,https://hackingdemand.com/discount-marketplace/close,Sales CRM with built-in calling SMS and email for SMBs,close
+Hunter.io,email-outreach,https://hackingdemand.com/discount-marketplace/hunterio,Find and verify professional email addresses,hunter-io
+Rytr,ai-tools,https://hackingdemand.com/discount-marketplace/rytr,AI writing assistant for short-form copy and content,rytr
+Synthesia,design,https://hackingdemand.com/discount-marketplace/synthesiaio,Create AI avatar videos from text scripts,synthesia
+Hotjar,analytics,https://hackingdemand.com/discount-marketplace/hotjar,Heatmaps and session recordings to see user behavior,hotjar
+Semrush,analytics,https://www.semrush.com/,All-in-one SEO keyword and competitor research suite,semrush
+Beefree,design,https://hackingdemand.com/discount-marketplace/beefreeio,Drag-and-drop email and landing page designer,beefree
+Stripo,design,https://hackingdemand.com/discount-marketplace/stripo,Email template builder with 1500+ ready designs,stripo
+Cloudways,hosting,https://www.cloudways.com/,Managed cloud hosting for WordPress and web apps,cloudways
+folk,crm,https://hackingdemand.com/discount-marketplace/folk,Lightweight relationship CRM for contacts and pipelines,folk
+Fireflies,ai-tools,https://hackingdemand.com/discount-marketplace/fireflies,AI notetaker that records and summarizes meetings,fireflies
