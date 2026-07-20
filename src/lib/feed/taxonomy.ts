@@ -56,7 +56,7 @@ export function taxonomyFaqs(kind: TaxonomyKind, label: string): { q: string; a:
     },
     {
       q: `Which AI tools do these prompts work with?`,
-      a: `They work with Claude, ChatGPT, Gemini, Copilot, and image tools. When you generate a prompt you pick your tool, and the prompt's syntax is tailored to it.`,
+      a: `They work with Claude, ChatGPT, Gemini, Grok, GitHub Copilot, Cursor, Perplexity, and image tools. When you generate a prompt you pick your tool, and the prompt's syntax is tailored to it.`,
     },
   ];
   const specific =

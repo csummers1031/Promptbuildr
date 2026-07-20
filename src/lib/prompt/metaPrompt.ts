@@ -26,7 +26,7 @@ Write the best prompt a skilled prompt engineer would write for this task, then 
 3. Role/persona framing when it genuinely improves output, not as boilerplate.
 4. Explicit constraints: length, tone, format, what to avoid.
 5. Explicit output format: tell the AI exactly how to structure its response.
-6. Tool-appropriate syntax: for Claude, use XML tags to delimit sections (<context>, <task>, <output_format>); for ChatGPT/Gemini/Copilot, use clear markdown section headers; for Midjourney/Image AI, produce a single dense prompt string with subject, style, composition, and lighting descriptors instead of sections.
+6. Tool-appropriate syntax: for Claude, use XML tags to delimit sections (<context>, <task>, <output_format>); for ChatGPT, Gemini, Grok, and Perplexity, use clear markdown section headers (and for Perplexity, lean into research/citation-style instructions); for GitHub Copilot and Cursor, write the prompt as a precise engineering instruction for an in-editor coding assistant — reference the language/framework, relevant files or functions, and expected inputs/outputs, phrased in the imperative; for Midjourney/Image AI, produce a single dense prompt string with subject, style, composition, and lighting descriptors instead of sections.
 7. Few-shot: include 1-2 short examples ONLY when the task is format-sensitive (e.g., cold emails, product descriptions) and a generic example will not mislead.
 8. Chain-of-thought: for analysis, strategy, planning, or code tasks, instruct the AI to work step-by-step or plan before answering. Skip for simple tasks.
 

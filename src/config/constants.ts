@@ -27,7 +27,10 @@ export const AI_TOOLS = [
   "Claude",
   "ChatGPT",
   "Gemini",
-  "Copilot",
+  "Grok",
+  "GitHub Copilot",
+  "Cursor",
+  "Perplexity",
   "Midjourney/Image AI",
   "Other/Any",
 ] as const;
