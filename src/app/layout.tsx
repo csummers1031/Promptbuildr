@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
 
@@ -29,7 +30,16 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="bg-white text-slate-900 antialiased">{children}</body>
+      <body className="bg-white text-slate-900 antialiased">
+        {children}
+        {/* HubSpot tracking + analytics (Hacking Demand portal 23513958). Loads
+            after the page is interactive so it never blocks first paint. */}
+        <Script
+          id="hs-script-loader"
+          strategy="afterInteractive"
+          src="https://js-na2.hs-scripts.com/23513958.js"
+        />
+      </body>
     </html>
   );
 }
