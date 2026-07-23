@@ -5,6 +5,7 @@ import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
 import type { GenerateResponse, PresentedGeneration } from "@/lib/clientTypes";
 import PromptResult from "./PromptResult";
 import EmailGate from "./EmailGate";
+import GeneratingView from "./GeneratingView";
 
 const PLACEHOLDERS = [
   "Write cold outbound emails for a SaaS demo offer",
@@ -144,7 +145,15 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
     return null;
   }
 
-  const loading = state.phase === "loading";
+  if (state.phase === "loading") {
+    return (
+      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <GeneratingView role={role} aiTool={aiTool} outputType={outputType} />
+      </div>
+    );
+  }
+
+  const loading = false;
 
   return (
     <form onSubmit={submit} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
