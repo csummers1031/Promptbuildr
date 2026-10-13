@@ -21,6 +21,15 @@
 
 ---
 
+## 🏗️ Foundation build (2026-10-13, deploys #20–#22, all green)
+Revert baseline = commit `0a221b5` (local tag `foundation-baseline`).
+- **Tier 1** (#20): host-canonicalization middleware (`src/middleware.ts`) — www→apex 301, `*.workers.dev` noindexed; home self-canonical.
+- **Tier 0+3** (#21): **promotion engine** — `src/db/promote.ts` + `src/lib/feed/{slug,quality}.ts` + `src/lib/cron/auth.ts` + `/api/cron/{promote,demote}`. Generated prompts **auto-promote inline** (quality gate + dedup → slug + `promoted_at` → IndexNow ping). `cron.yml` backstop/ demote.
+- **Tier 2** (#22): structured-data overhaul in `src/lib/seo.ts` — `CreativeWork` (marks up prompt text) + per-prompt `FAQPage` on prompt pages; `CollectionPage`+`ItemList` on feed/taxonomy; Organization logo/@id; dropped dead SearchAction; thin taxonomy (<2 prompts) `noindex`.
+- **Data**: promoted the 11 backlog prompts via DB → **indexable surface 10 → 21 pages** (sitemap now serves 21).
+- **⚠️ Cron caveat**: GitHub `schedule:` only fires from the **default branch (main)**; this app runs off the feature branch, so `cron.yml`'s scheduled sweeps don't auto-fire yet. **Inline promotion does not need cron and is fully live.** To enable the backstop + demote sweeps: land `cron.yml` on `main` (needs permission to push there) or move to a Cloudflare Cron Trigger.
+- **Logo**: Organization schema points at `/apple-icon.png` as a stopgap — swap to a real `public/logo.png` (512×512) when Charles's logo is ready.
+
 ## 📈 Launch-night signal (first ~hours)
 - ~18 pageviews (12 apex, 1 www, 5 staging), ~4.4 min avg time on page.
 - **$30 in Claude referral credits** earned (3× $10) — the Claude referral link is converting.
