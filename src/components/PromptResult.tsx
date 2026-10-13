@@ -35,7 +35,7 @@ function Instruction({ segments }: { segments: InstructionSegment[] }) {
             key={i}
             href={s.href}
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="sponsored noopener noreferrer"
             className="font-medium text-indigo-600 underline decoration-indigo-300 underline-offset-2 hover:text-indigo-800"
           >
             {s.value}
@@ -125,7 +125,7 @@ export default function PromptResult({
                 key={t.name}
                 href={t.href!}
                 target="_blank"
-                rel="noopener noreferrer nofollow"
+                rel="sponsored noopener noreferrer"
                 className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-indigo-300 hover:text-indigo-700"
               >
                 {t.name}

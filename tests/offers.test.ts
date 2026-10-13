@@ -5,10 +5,9 @@ describe("pickLoadingOffers", () => {
   it("returns relevant offers for a business output type", () => {
     const offers = pickLoadingOffers("Sales/SDR", "Email/Outreach");
     expect(offers.length).toBe(3);
-    // All resolve to real tool links with attribution.
+    // All resolve to real tool links (partner tracking links pass through as-is).
     for (const o of offers) {
       expect(o.href).toMatch(/^https:\/\//);
-      expect(o.href).toContain("utm_campaign=builder-loading");
       expect(o.name.length).toBeGreaterThan(0);
     }
   });

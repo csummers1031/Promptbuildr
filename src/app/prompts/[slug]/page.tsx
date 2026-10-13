@@ -156,7 +156,7 @@ export default async function PromotedPromptPage({
             <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Recommended tools</h2>
             <div className="flex flex-wrap gap-2">
               {toolLinks.map((t) => (
-                <a key={t.name} href={t.href!} target="_blank" rel="noopener noreferrer nofollow" className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm hover:border-indigo-300 hover:text-indigo-700">
+                <a key={t.name} href={t.href!} target="_blank" rel="sponsored noopener noreferrer" className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm hover:border-indigo-300 hover:text-indigo-700">
                   {t.name} <span aria-hidden className="text-slate-400">↗</span>
                 </a>
               ))}

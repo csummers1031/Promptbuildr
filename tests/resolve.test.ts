@@ -87,13 +87,20 @@ describe("validateRecommendations", () => {
 });
 
 describe("resolveToolLink — auto-upgrade behavior", () => {
-  it("registry ref gets a marketplace URL with UTMs", () => {
+  it("registry ref to a Hacking Demand marketplace tool gets UTMs", () => {
+    const [ref] = validateRecommendations([{ name: "HubSpot", registry_slug: "hubspot", homepage_url: null }]);
+    const link = resolveToolLink(ref, "cold-outbound");
+    expect(link.source).toBe("registry");
+    expect(link.href).toContain("hackingdemand.com/discount-marketplace/hubspot");
+    expect(link.href).toContain("utm_source=promptbuildr");
+    expect(link.href).toContain("utm_campaign=cold-outbound");
+  });
+  it("registry ref to a partner tracking link passes through without UTMs", () => {
     const [ref] = validateRecommendations([{ name: "Instantly", registry_slug: "instantly", homepage_url: null }]);
     const link = resolveToolLink(ref, "cold-outbound");
     expect(link.source).toBe("registry");
-    expect(link.href).toContain("hackingdemand.com/discount-marketplace/instantly");
-    expect(link.href).toContain("utm_source=promptbuildr");
-    expect(link.href).toContain("utm_campaign=cold-outbound");
+    expect(link.href).toBe("https://refer.instantly.ai/114455r8l20q");
+    expect(link.href).not.toContain("utm_");
   });
   it("off-registry ref links to homepage with no UTMs", () => {
     const [ref] = validateRecommendations([{ name: "Loom", registry_slug: null, homepage_url: "https://loom.com" }]);
