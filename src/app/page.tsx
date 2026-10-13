@@ -58,13 +58,15 @@ export default async function Home({
   return (
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <header className="mx-auto flex max-w-3xl items-center justify-between px-4 py-5">
-        <span className="text-lg font-bold tracking-tight text-slate-900">
-          Prompt<span className="text-indigo-600">buildr</span>
-        </span>
-        <Link href="/prompts" className="text-sm font-medium text-slate-500 hover:text-slate-900">
-          Browse feed
-        </Link>
+      <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/85 backdrop-blur">
+        <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
+          <Link href="/" className="text-lg font-bold tracking-tight text-slate-900">
+            Prompt<span className="text-indigo-600">buildr</span>
+          </Link>
+          <Link href="/prompts" className="text-sm font-medium text-slate-500 hover:text-slate-900">
+            Browse feed
+          </Link>
+        </div>
       </header>
 
       <main className="mx-auto max-w-3xl px-4">
@@ -79,7 +81,7 @@ export default async function Home({
           </p>
         </section>
 
-        <section id="builder" className="scroll-mt-6">
+        <section id="builder" className="scroll-mt-20">
           <BuilderForm initial={initial} />
         </section>
 
