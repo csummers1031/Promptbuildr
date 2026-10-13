@@ -8,7 +8,7 @@ import {
   taxonomyFaqs,
   taxonomySlug,
 } from "@/lib/feed/taxonomy";
-import { SITE_URL, faqJsonLd, breadcrumbJsonLd, orgJsonLd } from "@/lib/seo";
+import { SITE_URL, faqJsonLd, breadcrumbJsonLd, orgJsonLd, collectionPageJsonLd } from "@/lib/seo";
 
 const KIND_PREFIX: Record<TaxonomyKind, string> = {
   for: "/prompts/for",
@@ -34,6 +34,9 @@ export default function TaxonomyView({
   const faqs = taxonomyFaqs(kind, label);
   const url = `${SITE_URL}${KIND_PREFIX[kind]}/${slug}`;
 
+  const listItems = prompts
+    .filter((p) => p.slug)
+    .map((p) => ({ url: `${SITE_URL}/prompts/${p.slug}`, name: p.title }));
   const jsonLd = [
     orgJsonLd(),
     faqJsonLd(faqs),
@@ -42,6 +45,7 @@ export default function TaxonomyView({
       { name: "Prompts", url: `${SITE_URL}/prompts` },
       { name: label, url },
     ]),
+    collectionPageJsonLd({ name: h1, description: intro, url, items: listItems }),
   ];
 
   return (

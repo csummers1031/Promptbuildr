@@ -13,7 +13,9 @@ import { selectCta } from "@/lib/cta";
 import { taxonomySlug } from "@/lib/feed/taxonomy";
 import {
   SITE_URL,
-  howToJsonLd,
+  creativeWorkJsonLd,
+  faqJsonLd,
+  promptFaqs,
   breadcrumbJsonLd,
   orgJsonLd,
   directAnswer,
@@ -70,14 +72,30 @@ export default async function PromotedPromptPage({
   });
   const url = `${SITE_URL}/prompts/${slug}`;
 
+  const faqs = promptFaqs({
+    title: prompt.title,
+    aiTool: prompt.aiTool,
+    role: prompt.role,
+    outputType: prompt.outputType,
+  });
   const jsonLd = [
     orgJsonLd(),
-    howToJsonLd({ name: prompt.title, description: prompt.title, url, steps: prompt.instructions }),
+    creativeWorkJsonLd({
+      title: prompt.title,
+      promptText: prompt.promptText,
+      abstract: directAnswer(prompt.role, prompt.outputType, prompt.title),
+      url,
+      datePublished: prompt.promotedAt ?? prompt.createdAt,
+      dateModified: prompt.updatedAt ?? prompt.promotedAt ?? prompt.createdAt,
+      keywords: [prompt.role, prompt.aiTool, prompt.outputType, ...prompt.categoryTags],
+      aiTool: prompt.aiTool,
+    }),
     breadcrumbJsonLd([
       { name: "Home", url: SITE_URL },
       { name: "Prompts", url: `${SITE_URL}/prompts` },
       { name: prompt.title, url },
     ]),
+    faqJsonLd(faqs),
   ];
 
   return (
@@ -199,6 +217,19 @@ export default async function PromotedPromptPage({
             </div>
           </section>
         )}
+
+        {/* FAQ (answer-first, matches FAQPage schema — helps AI-answer citations) */}
+        <section className="mt-10">
+          <h2 className="mb-3 text-lg font-semibold text-slate-900">Frequently asked</h2>
+          <div className="flex flex-col gap-3">
+            {faqs.map((f) => (
+              <details key={f.q} className="rounded-xl border border-slate-200 bg-white p-4">
+                <summary className="cursor-pointer font-medium text-slate-800">{f.q}</summary>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
 
         <div className="mt-8 rounded-xl border border-slate-200 bg-white p-4 text-center">
           <p className="text-sm text-slate-600">Want a prompt tailored to your exact task?</p>

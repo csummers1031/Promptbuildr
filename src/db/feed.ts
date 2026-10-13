@@ -31,6 +31,7 @@ function rowToFeed(r: PromptRow): FeedPrompt {
     viewCount: r.viewCount,
     promotedAt: r.promotedAt ? r.promotedAt.toISOString() : null,
     createdAt: r.createdAt.toISOString(),
+    updatedAt: r.updatedAt.toISOString(),
   };
 }
 

@@ -5,7 +5,7 @@ import FeedCard from "@/components/feed/FeedCard";
 import { getFeed } from "@/db/feed";
 import { SORTS, SORT_LABELS, parseSort, type Sort } from "@/lib/feed/types";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
-import { SITE_URL, orgJsonLd, webSiteJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { SITE_URL, orgJsonLd, webSiteJsonLd, breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "AI Prompt Feed — the best prompts, ranked | Promptbuildr",
@@ -58,6 +58,10 @@ export default async function FeedPage({
   const hasMore = prompts.length > PAGE_SIZE;
   const shown = prompts.slice(0, PAGE_SIZE);
 
+  // ItemList enumerates each promoted prompt's own URL so crawlers discover them.
+  const listItems = shown
+    .filter((p) => p.slug)
+    .map((p) => ({ url: `${SITE_URL}/prompts/${p.slug}`, name: p.title }));
   const jsonLd = [
     orgJsonLd(),
     webSiteJsonLd(),
@@ -65,6 +69,13 @@ export default async function FeedPage({
       { name: "Home", url: SITE_URL },
       { name: "Prompts", url: `${SITE_URL}/prompts` },
     ]),
+    collectionPageJsonLd({
+      name: "AI Prompt Feed",
+      description:
+        "The best AI prompts for business and personal tasks — copy, remix, and run them in Claude, ChatGPT, Gemini, and more.",
+      url: `${SITE_URL}/prompts`,
+      items: listItems,
+    }),
   ];
 
   return (

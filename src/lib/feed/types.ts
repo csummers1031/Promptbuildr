@@ -18,6 +18,7 @@ export interface FeedPrompt {
   viewCount: number;
   promotedAt: string | null;
   createdAt: string; // ISO
+  updatedAt: string; // ISO
 }
 
 export const SORTS = ["today", "week", "month", "all", "newest"] as const;

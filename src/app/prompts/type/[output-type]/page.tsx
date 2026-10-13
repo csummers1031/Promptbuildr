@@ -18,10 +18,13 @@ export async function generateMetadata({ params }: { params: Promise<{ "output-t
   const label = typeFromSlug(type);
   if (!label) return { title: "Not found" };
   const { h1, intro } = taxonomyIntro("type", label);
+  // Don't index a near-empty category page; flips to indexable at ≥2 prompts.
+  const sample = await getFeed({ sort: "all", outputType: label, limit: 2, offset: 0 }, new Date());
   return {
     title: `${h1} | Promptbuildr`,
     description: intro.slice(0, 155),
     alternates: { canonical: `${SITE_URL}/prompts/type/${type}` },
+    robots: { index: sample.length >= 2, follow: true },
   };
 }
 

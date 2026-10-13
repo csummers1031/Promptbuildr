@@ -19,7 +19,7 @@ function ref(name: string, slug: string | null) {
 }
 
 /** hoursAgo is resolved into a real ISO string by sampleFeed(now). */
-interface SampleSeed extends Omit<FeedPrompt, "createdAt"> {
+interface SampleSeed extends Omit<FeedPrompt, "createdAt" | "updatedAt"> {
   hoursAgo: number;
 }
 
@@ -171,8 +171,8 @@ const SEEDS: SampleSeed[] = [
 ];
 
 export function sampleFeed(now: Date): FeedPrompt[] {
-  return SEEDS.map(({ hoursAgo, ...rest }) => ({
-    ...rest,
-    createdAt: new Date(now.getTime() - hoursAgo * 3600_000).toISOString(),
-  }));
+  return SEEDS.map(({ hoursAgo, ...rest }) => {
+    const createdAt = new Date(now.getTime() - hoursAgo * 3600_000).toISOString();
+    return { ...rest, createdAt, updatedAt: createdAt };
+  });
 }
