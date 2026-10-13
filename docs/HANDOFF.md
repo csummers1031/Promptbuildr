@@ -78,6 +78,8 @@
 ---
 
 ## 📋 Open backlog (post-launch)
+- **BUG: feed/prompt view counts never increment.** `view_count` is displayed (FeedCard, feed) but no code increments it (grep found no update/recordView logic). Decide what counts as a view (open prompt page? expand card?) and wire it. Reported by Charles (views don't tick up on mobile).
+- **Confirm email capture.** HubSpot shows 0 promptbuildr contacts, but real captures land in Neon `users` table (not readable without DB access). Get `DATABASE_URL` into env (or a tiny admin readout) to report captured emails + exact monthly spend.
 - **Autonomy engine** (cron jobs): auto-promote winning prompts → SEO pages, demote reported/low-quality, trending refresh, link-rot checker, weekly digest, GSC ping. (`CRON_SECRET` already set.)
 - **Turnstile** bot protection on Generate (spend cap already bounds worst case to ~$60/mo).
 - **Cookie-consent banner** (HubSpot cookies; EU/UK) — can enable in HubSpot.
