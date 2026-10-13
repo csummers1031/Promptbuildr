@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+/*
+ * Leave room for the sticky header whenever the browser scrolls to a target —
+ * anchor links (e.g. #builder) and Google's scroll-to-text fragments — so the
+ * destination (like the hero headline) is never hidden behind the header.
+ */
+html {
+  scroll-padding-top: 5rem;
+}
