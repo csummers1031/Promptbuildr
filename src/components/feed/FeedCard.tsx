@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { FeedPrompt } from "@/lib/feed/types";
 import ShareBar from "@/components/ShareBar";
+import InstructionText from "@/components/InstructionText";
+import { renderTools, linkifyInstructions, plainInstructions } from "@/lib/tools/render";
 
 function truncate(s: string, n: number) {
   return s.length > n ? s.slice(0, n).trimEnd() + "…" : s;
@@ -15,6 +17,14 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
   const [votes, setVotes] = useState(prompt.upvoteCount);
   const [voted, setVoted] = useState(false);
   const [reported, setReported] = useState(false);
+
+  // Business prompts get inline tool links (recommended + any registry tool
+  // mentioned); personal prompts stay link-free.
+  const instructionSteps = useMemo(() => {
+    if (!prompt.isBusiness) return plainInstructions(prompt.instructions);
+    const { links, campaign } = renderTools(prompt.recommendedTools, prompt.categoryTags);
+    return linkifyInstructions(prompt.instructions, links, campaign);
+  }, [prompt]);
 
   const remixHref =
     `/?remix=1&task=${encodeURIComponent(prompt.title)}` +
@@ -116,12 +126,12 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
           </pre>
           {prompt.instructions.length > 0 && (
             <ol className="flex flex-col gap-1.5">
-              {prompt.instructions.map((step, i) => (
+              {instructionSteps.map((segments, i) => (
                 <li key={i} className="flex gap-2 text-sm text-slate-700">
                   <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-semibold text-indigo-700">
                     {i + 1}
                   </span>
-                  {step}
+                  <InstructionText segments={segments} />
                 </li>
               ))}
             </ol>

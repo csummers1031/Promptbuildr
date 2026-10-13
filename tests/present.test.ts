@@ -11,7 +11,7 @@ function ref(partial: Partial<ToolRef> & { name: string }): ToolRef {
   };
 }
 
-function build(instructions: string[], recommended: ToolRef[] = []) {
+function build(instructions: string[], recommended: ToolRef[] = [], isBusiness = true) {
   return presentGeneration(
     {
       title: "Test",
@@ -19,7 +19,7 @@ function build(instructions: string[], recommended: ToolRef[] = []) {
       instructions,
       recommended_tools: recommended,
       category_tags: ["cold-outbound"],
-      is_business: true,
+      is_business: isBusiness,
       is_agent_or_automation: true,
       moderation: { verdict: "allow", reason: null },
     },
@@ -59,6 +59,11 @@ describe("presentGeneration — inline tool linking", () => {
     );
     const links = linkHrefs(out.instructions[0]);
     expect(links.find((l) => l.value === "Airtable")?.href).toBe("https://airtable.com");
+  });
+
+  it("keeps personal tasks link-free (ad-free experience)", () => {
+    const out = build(["Use Zapier and paste into Claude to plan your trip."], [], false);
+    expect(linkHrefs(out.instructions[0])).toHaveLength(0);
   });
 
   it("keeps the recommended-tools chips limited to the model's picks", () => {

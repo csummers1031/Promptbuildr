@@ -6,6 +6,8 @@ import CopyButton from "@/components/CopyButton";
 import ShareBar from "@/components/ShareBar";
 import { getPromptBySlug, getRelatedPrompts } from "@/db/feed";
 import { resolveToolLink } from "@/lib/tools/resolve";
+import { linkifyInstructions, plainInstructions } from "@/lib/tools/render";
+import InstructionText from "@/components/InstructionText";
 import { selectCta } from "@/lib/cta";
 import { taxonomySlug } from "@/lib/feed/taxonomy";
 import {
@@ -54,6 +56,9 @@ export default async function PromotedPromptPage({
   const toolLinks = prompt.isBusiness
     ? prompt.recommendedTools.map((r) => resolveToolLink(r, campaign)).filter((l) => l.href)
     : [];
+  const instructionSteps = prompt.isBusiness
+    ? linkifyInstructions(prompt.instructions, toolLinks, campaign)
+    : plainInstructions(prompt.instructions);
   const cta = selectCta({
     isBusiness: prompt.isBusiness,
     isAgentOrAutomation: prompt.isAgentOrAutomation,
@@ -139,12 +144,12 @@ export default async function PromotedPromptPage({
           <section className="mt-6">
             <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">How to use it</h2>
             <ol className="flex flex-col gap-2.5">
-              {prompt.instructions.map((step, i) => (
+              {instructionSteps.map((segments, i) => (
                 <li key={i} className="flex gap-3 text-sm leading-relaxed text-slate-700">
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold text-indigo-700">
                     {i + 1}
                   </span>
-                  {step}
+                  <InstructionText segments={segments} />
                 </li>
               ))}
             </ol>

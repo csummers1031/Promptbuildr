@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import type { PresentedGeneration } from "@/lib/clientTypes";
-import type { InstructionSegment } from "@/lib/tools/render";
 import ShareBar from "./ShareBar";
+import InstructionText from "./InstructionText";
 
 function CopyButton({ text, className = "" }: { text: string; className?: string }) {
   const [copied, setCopied] = useState(false);
@@ -23,28 +23,6 @@ function CopyButton({ text, className = "" }: { text: string; className?: string
     >
       {copied ? "Copied ✓" : "Copy"}
     </button>
-  );
-}
-
-function Instruction({ segments }: { segments: InstructionSegment[] }) {
-  return (
-    <span>
-      {segments.map((s, i) =>
-        s.type === "link" ? (
-          <a
-            key={i}
-            href={s.href}
-            target="_blank"
-            rel="sponsored noopener noreferrer"
-            className="font-medium text-indigo-600 underline decoration-indigo-300 underline-offset-2 hover:text-indigo-800"
-          >
-            {s.value}
-          </a>
-        ) : (
-          <span key={i}>{s.value}</span>
-        ),
-      )}
-    </span>
   );
 }
 
@@ -109,7 +87,7 @@ export default function PromptResult({
               <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold text-indigo-700">
                 {i + 1}
               </span>
-              <Instruction segments={segments} />
+              <InstructionText segments={segments} />
             </li>
           ))}
         </ol>

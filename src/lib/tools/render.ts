@@ -1,4 +1,12 @@
 import { resolveToolLink, type ResolvedToolLink, type ToolRef } from "@/lib/tools/resolve";
+import { TOOLS, buildMarketplaceUrl, normalizeToolName } from "@/config/tools";
+
+/**
+ * Registry tool names that are also common English words. Linked only when the
+ * model explicitly recommends them — never auto-linked from the registry — so
+ * "Make sure…" / "Close the deal" never misfire.
+ */
+const AMBIGUOUS_TOOL_NAMES = new Set(["Make", "Close", "Clay", "folk", "Gamma"]);
 
 export interface RenderedTools {
   links: ResolvedToolLink[];
@@ -65,4 +73,33 @@ export function linkifyInstruction(
   }
   if (cursor < text.length) segments.push({ type: "text", value: text.slice(cursor) });
   return segments.length ? segments : [{ type: "text", value: text }];
+}
+
+/**
+ * Linkify a list of instruction strings against the model's recommended tools
+ * PLUS any registry tool mentioned in the text. Registry auto-links match exact
+ * brand capitalization and exclude common-word names. Shared by the builder
+ * result, promoted prompt pages, and the feed so linking is consistent.
+ */
+export function linkifyInstructions(
+  instructions: string[],
+  recommendedLinks: ResolvedToolLink[],
+  campaign: string,
+): InstructionSegment[][] {
+  const recommendedNames = new Set(recommendedLinks.map((l) => normalizeToolName(l.name)));
+  const caseSensitiveNames = new Set<string>();
+  const registryLinks: ResolvedToolLink[] = [];
+  for (const t of TOOLS) {
+    if (AMBIGUOUS_TOOL_NAMES.has(t.name)) continue;
+    if (recommendedNames.has(normalizeToolName(t.name))) continue;
+    registryLinks.push({ name: t.name, href: buildMarketplaceUrl(t, campaign), source: "registry" });
+    caseSensitiveNames.add(t.name);
+  }
+  const pool = [...recommendedLinks, ...registryLinks];
+  return instructions.map((step) => linkifyInstruction(step, pool, { caseSensitiveNames }));
+}
+
+/** Instructions with no links — used for personal tasks (kept ad-free). */
+export function plainInstructions(instructions: string[]): InstructionSegment[][] {
+  return instructions.map((step) => [{ type: "text", value: step }]);
 }
