@@ -24,6 +24,9 @@ export async function pingIndexNow(urls: string[]): Promise<{ ok: boolean; reaso
     const res = await fetch("https://api.indexnow.org/indexnow", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      // Bound the call so a slow/hung IndexNow endpoint can never stall a
+      // caller on the hot path (e.g. inline promotion in the generate flow).
+      signal: AbortSignal.timeout(2500),
       body: JSON.stringify({
         host,
         key,

@@ -1,4 +1,4 @@
-import { and, desc, eq, gte, isNotNull, sql } from "drizzle-orm";
+import { and, desc, eq, gte, isNull, isNotNull, sql } from "drizzle-orm";
 import { getDb } from "./client";
 import { prompts } from "./schema";
 import type { ToolRef } from "@/lib/tools/resolve";
@@ -55,7 +55,9 @@ export async function getFeed(q: FeedQuery, now: Date): Promise<FeedPrompt[]> {
     return filterAndSort(sampleFeed(now), q, now);
   }
 
-  const conds = [eq(prompts.status, "published")];
+  // Exclude demoted prompts everywhere they're listed/linked, so the feed,
+  // ItemList JSON-LD, and share links never point at a page that now 404s.
+  const conds = [eq(prompts.status, "published"), isNull(prompts.demotedAt)];
   if (q.role) conds.push(eq(prompts.role, q.role));
   if (q.aiTool) conds.push(eq(prompts.aiTool, q.aiTool));
   if (q.outputType) conds.push(eq(prompts.outputType, q.outputType));
@@ -126,6 +128,7 @@ export async function getRelatedPrompts(
       and(
         eq(prompts.status, "published"),
         isNotNull(prompts.promotedAt),
+        isNull(prompts.demotedAt),
         sql`${prompts.categoryTags} && ${sql`ARRAY[${sql.join(
           base.categoryTags.map((t) => sql`${t}`),
           sql`, `,
@@ -148,7 +151,13 @@ export async function getPromotedSlugs(): Promise<{ slug: string; updatedAt: str
   const rows = await db
     .select({ slug: prompts.slug, updatedAt: prompts.updatedAt })
     .from(prompts)
-    .where(and(eq(prompts.status, "published"), isNotNull(prompts.promotedAt)));
+    .where(
+      and(
+        eq(prompts.status, "published"),
+        isNotNull(prompts.promotedAt),
+        isNull(prompts.demotedAt),
+      ),
+    );
   return rows
     .filter((r): r is { slug: string; updatedAt: Date } => Boolean(r.slug))
     .map((r) => ({ slug: r.slug, updatedAt: r.updatedAt.toISOString() }));
