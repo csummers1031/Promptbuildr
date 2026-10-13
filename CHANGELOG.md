@@ -9,7 +9,15 @@ settings Charles changes in a dashboard should be added here too (or Claude logs
 
 ---
 
-## 2026-10-13
+## 2026-10-13 — Foundation build (Tier 0–3)
+
+> **REVERT BASELINE: commit `0a221b5`** = site state immediately BEFORE the foundation build
+> (10 indexable pages, promotion pipeline unbuilt). Roll back here if the build regresses:
+> `git checkout -B claude/promptbuildr-build-plan-pxgurw 0a221b5` (local tag `foundation-baseline`
+> pins it; remote tag push is blocked by the scoped token, so the SHA is the source of truth).
+> Each tier below ships as its own commit/deploy so a partial revert is possible.
+
+- `code`/`seo` · **Tier 1 — host canonicalization.** New `src/middleware.ts`: `www.promptbuildr.ai`→apex 301 (preserves path+query); `*.workers.dev` staging served but `X-Robots-Tag: noindex,nofollow`. Added self-canonical to the home page. Why: www/apex/staging were serving identical content as 3 indexable hosts, splitting ranking signal. Build verified (middleware 34.2 kB), 122 tests green. Ref: deploy #20 (pending).
 
 - `code` · **Updated 13 affiliate tracking links** to new Promptbuildr-specific partner links (Apollo, Lemlist, Hotjar/Contentsquare, Beefree, Databox, Reclaim, Smartlead, Rytr, Synthesia, Hunter, UpLead, Stripo, Fireflies). Source of truth: MASTER sheet col D (`promptbuildr_destination`). Other 31 tools unchanged; 44 total. Rules verified: UTMs only on hackingdemand.com (gated in `buildMarketplaceUrl`), partner links pass through verbatim, `rel="sponsored noopener noreferrer"` on all anchors. 122 tests green. Why: route affiliate clicks through Promptbuildr-specific tracking so partner revenue is attributable to the site.
 - `3rd-party` · **Connected native Neon connector** (read/write SQL to project `cold-tooth-25808362`). Claude can now query live Promptbuildr data (visits/generations/users/outbound_clicks) directly for attribution readouts.

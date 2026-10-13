@@ -28,11 +28,14 @@ export async function generateMetadata({
   searchParams: Promise<HomeSearchParams>;
 }): Promise<Metadata> {
   const sp = await searchParams;
+  // Home always self-canonicalizes to the clean apex root (drops ?remix=… etc.).
+  const canonical = { alternates: { canonical: SITE_URL } };
   const task = sp.remix === "1" && typeof sp.task === "string" ? sp.task.slice(0, 100).trim() : "";
-  if (!task) return {};
+  if (!task) return canonical;
   const og = `${SITE_URL}/api/og?title=${encodeURIComponent(task)}&tag=${encodeURIComponent("AI prompt")}`;
   const title = `AI prompt: ${task}`;
   return {
+    ...canonical,
     title,
     openGraph: { title, images: [{ url: og, width: 1200, height: 630 }] },
     twitter: { card: "summary_large_image", title, images: [og] },
