@@ -163,7 +163,7 @@ export default async function PromotedPromptPage({
             <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Recommended tools</h2>
             <div className="flex flex-wrap gap-2">
               {toolLinks.map((t) => (
-                <a key={t.name} href={t.href!} target="_blank" rel="sponsored noopener noreferrer" className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm hover:border-indigo-300 hover:text-indigo-700">
+                <a key={t.name} href={t.href!} target="_blank" rel="sponsored noopener noreferrer" data-track="tool-chip" className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm hover:border-indigo-300 hover:text-indigo-700">
                   {t.name} <span aria-hidden className="text-slate-400">↗</span>
                 </a>
               ))}
@@ -175,7 +175,7 @@ export default async function PromotedPromptPage({
           <section className={`mt-6 rounded-xl border p-5 ${cta.kind === "agent-build" ? "border-indigo-200 bg-indigo-50" : "border-slate-200 bg-slate-50"}`}>
             <h2 className="text-base font-semibold text-slate-900">{cta.heading}</h2>
             <p className="mt-1 text-sm text-slate-600">{cta.body}</p>
-            <a href={cta.href} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700">
+            <a href={cta.href} target="_blank" rel="noopener noreferrer" data-track="cta" className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700">
               {cta.ctaLabel} <span aria-hidden>→</span>
             </a>
           </section>

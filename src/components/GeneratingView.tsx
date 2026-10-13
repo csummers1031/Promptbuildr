@@ -77,6 +77,7 @@ function OfferCard({ offer, shown }: { offer: LoadingOffer; shown: boolean }) {
       href={offer.href}
       target="_blank"
       rel="noopener noreferrer sponsored"
+      data-track="loading-offer"
       className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-left shadow-sm transition-all duration-500 ease-out hover:border-indigo-300 hover:shadow-md"
       style={{
         opacity: shown ? 1 : 0,

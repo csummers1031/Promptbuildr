@@ -15,6 +15,7 @@ export default function InstructionText({ segments }: { segments: InstructionSeg
             href={s.href}
             target="_blank"
             rel="sponsored noopener noreferrer"
+            data-track="instruction"
             className="font-medium text-indigo-600 underline decoration-indigo-300 underline-offset-2 hover:text-indigo-800"
           >
             {s.value}

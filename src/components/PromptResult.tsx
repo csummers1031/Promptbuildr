@@ -104,6 +104,7 @@ export default function PromptResult({
                 href={t.href!}
                 target="_blank"
                 rel="sponsored noopener noreferrer"
+                data-track="tool-chip"
                 className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-indigo-300 hover:text-indigo-700"
               >
                 {t.name}
@@ -129,6 +130,7 @@ export default function PromptResult({
             href={data.cta.href}
             target="_blank"
             rel="noopener noreferrer"
+            data-track="cta"
             className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700"
           >
             {data.cta.ctaLabel}

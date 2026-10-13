@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
+import Tracker from "@/components/Tracker";
 
 const DEFAULT_OG = `${SITE_URL}/api/og?title=${encodeURIComponent("Turn any task into a great AI prompt")}`;
 
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-white text-slate-900 antialiased">
         {children}
+        <Tracker />
         {/* HubSpot tracking + analytics (Hacking Demand portal 23513958). Loads
             after the page is interactive so it never blocks first paint. */}
         <Script

@@ -26,6 +26,15 @@ export const keywordStatus = pgEnum("keyword_status", ["pending", "used", "faile
 export const keywordSource = pgEnum("keyword_source", ["manual", "initial_seed", "gsc"]);
 export const moderationStage = pgEnum("moderation_stage", ["blocklist", "model"]);
 export const cronStatus = pgEnum("cron_status", ["ok", "failed"]);
+export const trafficChannel = pgEnum("traffic_channel", [
+  "organic",
+  "ai",
+  "social",
+  "referral",
+  "direct",
+  "internal",
+  "unknown",
+]);
 
 export const users = pgTable("users", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -183,6 +192,55 @@ export const cronRuns = pgTable(
     finishedAt: timestamp("finished_at", { withTimezone: true }),
   },
   (t) => [uniqueIndex("cron_runs_job_period_idx").on(t.jobName, t.periodKey)],
+);
+
+/**
+ * First-party visit attribution — one row per page load from a real browser
+ * (fired by the client beacon, so bots that don't run JS are naturally excluded).
+ * Answers: where did traffic come from — source, AI assistant, utm_term, etc.
+ */
+export const visits = pgTable(
+  "visits",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    path: text("path").notNull(),
+    referrer: text("referrer"),
+    referrerHost: text("referrer_host"),
+    channel: trafficChannel("channel").notNull().default("unknown"),
+    aiSource: text("ai_source"),
+    utmSource: text("utm_source"),
+    utmMedium: text("utm_medium"),
+    utmCampaign: text("utm_campaign"),
+    utmTerm: text("utm_term"),
+    utmContent: text("utm_content"),
+    country: text("country"),
+    visitorHash: text("visitor_hash"),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (t) => [
+    index("visits_created_idx").on(t.createdAt),
+    index("visits_channel_idx").on(t.channel),
+  ],
+);
+
+/**
+ * Outbound money-link clicks — affiliate/partner links and service CTAs. Logged
+ * by a global client click listener on any <a data-track>. Join to `visits` by
+ * visitor_hash to attribute a click back to the channel that drove it.
+ */
+export const outboundClicks = pgTable(
+  "outbound_clicks",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    href: text("href").notNull(),
+    destHost: text("dest_host"),
+    label: text("label"),
+    placement: text("placement"),
+    path: text("path"),
+    visitorHash: text("visitor_hash"),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (t) => [index("clicks_created_idx").on(t.createdAt)],
 );
 
 /** Monthly API spend accumulator — feeds the circuit breaker. */
