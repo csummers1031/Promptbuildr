@@ -11,10 +11,14 @@
   "observability": {
     "enabled": true
   },
-  // Custom domain — LIVE. Serves the production domain in addition to the
-  // *.workers.dev URL. Requires promptbuildr.ai to be a zone on this
-  // Cloudflare account (nameservers pointed to Cloudflare).
-  "routes": [{ "pattern": "promptbuildr.ai", "custom_domain": true }],
+  // Custom domains — LIVE. Serves the apex and www in addition to the
+  // *.workers.dev URL. Attaching www as a custom domain auto-creates its
+  // DNS record + cert (covered by the *.promptbuildr.ai wildcard). Requires
+  // promptbuildr.ai to be a zone on this Cloudflare account.
+  "routes": [
+    { "pattern": "promptbuildr.ai", "custom_domain": true },
+    { "pattern": "www.promptbuildr.ai", "custom_domain": true }
+  ],
   // Workers KV for the Next.js incremental (ISR) cache.
   // Create with: npx wrangler kv namespace create NEXT_INC_CACHE_KV
   // then paste the returned id below.
