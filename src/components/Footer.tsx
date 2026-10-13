@@ -24,7 +24,13 @@ export default function Footer() {
           <Link href="/about" className="hover:text-slate-800">About</Link>
           <Link href="/privacy" className="hover:text-slate-800">Privacy</Link>
           <Link href="/terms" className="hover:text-slate-800">Terms</Link>
+          <Link href="/disclosure" className="hover:text-slate-800">Disclosure</Link>
         </nav>
+        <p className="max-w-xl text-xs text-slate-400">
+          Some links to tools are affiliate links — if you sign up through them we may earn a
+          commission at no extra cost to you.{" "}
+          <Link href="/disclosure" className="underline hover:text-slate-600">Learn more</Link>.
+        </p>
         <p className="text-xs text-slate-400">© {new Date().getFullYear()} Promptbuildr</p>
       </div>
     </footer>

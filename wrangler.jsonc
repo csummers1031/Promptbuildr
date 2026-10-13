@@ -11,10 +11,10 @@
   "observability": {
     "enabled": true
   },
-  // Custom domain — HELD for staging. The first deploy goes to the private
-  // *.workers.dev URL only so you can test before promptbuildr.ai is public.
-  // Uncomment this line and redeploy to attach the real domain (instant).
-  // "routes": [{ "pattern": "promptbuildr.ai", "custom_domain": true }],
+  // Custom domain — LIVE. Serves the production domain in addition to the
+  // *.workers.dev URL. Requires promptbuildr.ai to be a zone on this
+  // Cloudflare account (nameservers pointed to Cloudflare).
+  "routes": [{ "pattern": "promptbuildr.ai", "custom_domain": true }],
   // Workers KV for the Next.js incremental (ISR) cache.
   // Create with: npx wrangler kv namespace create NEXT_INC_CACHE_KV
   // then paste the returned id below.
