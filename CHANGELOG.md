@@ -11,6 +11,7 @@ settings Charles changes in a dashboard should be added here too (or Claude logs
 
 ## 2026-10-13
 
+- `code` · **Fixed prompt view counts never incrementing.** New `/api/view` + client beacon (deduped per session): opening a feed card or a promoted-prompt page now counts a view, updates `prompts.view_count` + `prompt_daily_stats`, and ticks the feed number up live. Why: views were displayed but never recorded. Ref: deploy #18 (pending).
 - `code` · **Added first-party traffic attribution** (visits + outbound-click logging, classifier, `/api/track/*`, client beacon, `data-track` on money links, report queries in `docs/ANALYTICS.md`). Why: know every traffic source (source/term/AI/clicks) and never guess attribution again. Ref: deploy #17 (pending).
 - `code` · Started this CHANGELOG and `docs/HANDOFF.md` session memory. (docs-only, `[skip ci]`)
 - `cloudflare`/`ssl` · **Enabled "Always Use HTTPS"** (Charles, dashboard). Why: clear the ⚠️ not-secure warning; force http→https.

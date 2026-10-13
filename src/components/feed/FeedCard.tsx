@@ -6,6 +6,7 @@ import type { FeedPrompt } from "@/lib/feed/types";
 import ShareBar from "@/components/ShareBar";
 import InstructionText from "@/components/InstructionText";
 import { renderTools, linkifyInstructions, plainInstructions } from "@/lib/tools/render";
+import { recordView } from "@/lib/clientView";
 
 function truncate(s: string, n: number) {
   return s.length > n ? s.slice(0, n).trimEnd() + "…" : s;
@@ -17,6 +18,14 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
   const [votes, setVotes] = useState(prompt.upvoteCount);
   const [voted, setVoted] = useState(false);
   const [reported, setReported] = useState(false);
+  const [views, setViews] = useState(prompt.viewCount);
+
+  // Count a view the first time this card is opened (deduped per session).
+  function toggleExpand() {
+    const opening = !expanded;
+    setExpanded(opening);
+    if (opening && recordView(prompt.id)) setViews((v) => v + 1);
+  }
 
   // Business prompts get inline tool links (recommended + any registry tool
   // mentioned); personal prompts stay link-free.
@@ -140,7 +149,7 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
       )}
 
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-        <button type="button" onClick={() => setExpanded((e) => !e)} className="font-medium text-indigo-600 hover:text-indigo-800">
+        <button type="button" onClick={toggleExpand} className="font-medium text-indigo-600 hover:text-indigo-800">
           {expanded ? "Hide" : "View prompt"}
         </button>
         <button type="button" onClick={copy} className="font-medium text-slate-600 hover:text-slate-900">
@@ -155,7 +164,7 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
           text="Found this AI prompt on Promptbuildr:"
           variant="compact"
         />
-        <span className="text-slate-400">{prompt.viewCount} views</span>
+        <span className="text-slate-400">{views} views</span>
         <button
           type="button"
           onClick={report}

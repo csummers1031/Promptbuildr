@@ -8,6 +8,7 @@ import { getPromptBySlug, getRelatedPrompts } from "@/db/feed";
 import { resolveToolLink } from "@/lib/tools/resolve";
 import { linkifyInstructions, plainInstructions } from "@/lib/tools/render";
 import InstructionText from "@/components/InstructionText";
+import ViewBeacon from "@/components/ViewBeacon";
 import { selectCta } from "@/lib/cta";
 import { taxonomySlug } from "@/lib/feed/taxonomy";
 import {
@@ -82,6 +83,7 @@ export default async function PromotedPromptPage({
   return (
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ViewBeacon promptId={prompt.id} />
 
       <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">

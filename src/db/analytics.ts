@@ -1,6 +1,29 @@
+import { sql, eq } from "drizzle-orm";
 import { getDb } from "@/db/client";
-import { visits, outboundClicks } from "@/db/schema";
+import { visits, outboundClicks, prompts, promptDailyStats } from "@/db/schema";
 import type { Channel } from "@/lib/attribution";
+
+/** Increment a prompt's view count (+ per-day stat). No-op without a DB. */
+export async function recordPromptView(promptId: string): Promise<void> {
+  const db = getDb();
+  if (!db) return;
+  try {
+    await db
+      .update(prompts)
+      .set({ viewCount: sql`${prompts.viewCount} + 1` })
+      .where(eq(prompts.id, promptId));
+    const day = new Date().toISOString().slice(0, 10); // YYYY-MM-DD (UTC)
+    await db
+      .insert(promptDailyStats)
+      .values({ promptId, date: day, views: 1, upvotes: 0 })
+      .onConflictDoUpdate({
+        target: [promptDailyStats.promptId, promptDailyStats.date],
+        set: { views: sql`${promptDailyStats.views} + 1` },
+      });
+  } catch (e) {
+    console.error("recordPromptView failed:", e);
+  }
+}
 
 const cap = (s: string | null | undefined, n: number): string | null =>
   s == null ? null : s.slice(0, n);
