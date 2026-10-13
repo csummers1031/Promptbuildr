@@ -6,6 +6,9 @@ import { typeFromSlug, typeSlugs, taxonomyIntro } from "@/lib/feed/taxonomy";
 import { OUTPUT_TYPES } from "@/config/constants";
 import { SITE_URL } from "@/lib/seo";
 
+// ISR: regenerate hourly so newly promoted prompts surface here without a redeploy.
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return typeSlugs().map((type) => ({ "output-type": type }));
 }

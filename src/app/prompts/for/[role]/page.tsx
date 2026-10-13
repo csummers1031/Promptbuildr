@@ -7,6 +7,9 @@ import { taxonomyIntro } from "@/lib/feed/taxonomy";
 import { ROLES } from "@/config/constants";
 import { SITE_URL } from "@/lib/seo";
 
+// ISR: regenerate hourly so newly promoted prompts surface here without a redeploy.
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return roleSlugs().map((role) => ({ role }));
 }

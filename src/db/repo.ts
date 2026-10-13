@@ -6,6 +6,7 @@ import {
   generations,
   toolOpportunities,
   moderationLog,
+  cronRuns,
 } from "./schema";
 import type { ToolRef } from "@/lib/tools/resolve";
 import type { PresentedGeneration } from "@/lib/present";
@@ -145,6 +146,25 @@ export async function recordModerationBlock(
     reason,
     matchedPattern: matchedPattern ?? undefined,
   });
+}
+
+/** Log a cron run (one row per job per hour; re-runs in the hour update it). */
+export async function recordCronRun(
+  jobName: string,
+  startedAt: Date,
+  status: "ok" | "failed",
+  detail: Record<string, unknown>,
+): Promise<void> {
+  const db = getDb();
+  if (!db) return;
+  const periodKey = startedAt.toISOString().slice(0, 13); // YYYY-MM-DDTHH
+  await db
+    .insert(cronRuns)
+    .values({ jobName, periodKey, status, detail, startedAt, finishedAt: new Date() })
+    .onConflictDoUpdate({
+      target: [cronRuns.jobName, cronRuns.periodKey],
+      set: { status, detail, finishedAt: new Date() },
+    });
 }
 
 // --- Users ---

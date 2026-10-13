@@ -1,0 +1,33 @@
+name: Cron (promote / demote)
+
+# Drives the promotion pipeline on a schedule. Runs on GitHub's infra, which
+# can reach the live site, and hits the protected cron endpoints with the
+# shared CRON_SECRET. New prompts are also promoted inline at generation time;
+# the promote sweep is a backstop that catches any that failed inline and
+# re-pings IndexNow. Demote deindexes pages that crossed the report threshold.
+on:
+  schedule:
+    - cron: "17 */6 * * *" # promote backstop, every 6 hours
+    - cron: "41 3 * * *" # demote, once daily (also runs a promote first)
+  workflow_dispatch: # manual "run now" button
+
+concurrency:
+  group: cron
+  cancel-in-progress: false
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Promote sweep
+        run: |
+          curl -fsS --max-time 60 -X POST https://promptbuildr.ai/api/cron/promote \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            && echo "" && echo "promote ok" || echo "promote failed (non-fatal)"
+
+      - name: Demote sweep (daily only)
+        if: github.event.schedule == '41 3 * * *' || github.event_name == 'workflow_dispatch'
+        run: |
+          curl -fsS --max-time 60 -X POST https://promptbuildr.ai/api/cron/demote \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            && echo "" && echo "demote ok" || echo "demote failed (non-fatal)"

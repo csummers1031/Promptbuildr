@@ -6,6 +6,9 @@ import { toolFromSlug, toolSlugs, taxonomyIntro } from "@/lib/feed/taxonomy";
 import { AI_TOOLS } from "@/config/constants";
 import { SITE_URL } from "@/lib/seo";
 
+// ISR: regenerate hourly so newly promoted prompts surface here without a redeploy.
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return toolSlugs().map((tool) => ({ "ai-tool": tool }));
 }

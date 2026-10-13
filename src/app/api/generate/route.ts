@@ -21,6 +21,8 @@ import {
   recordToolOpportunities,
   recordModerationBlock,
 } from "@/db/repo";
+import { promotePromptById } from "@/db/promote";
+import { pingIndexNow } from "@/lib/indexnow";
 
 export const runtime = "nodejs";
 
@@ -167,6 +169,19 @@ export async function POST(req: NextRequest) {
       result.reason,
       result.hits?.[0]?.pattern,
     );
+  }
+
+  // --- promote to an indexable page (gated on quality + dedup) ---
+  // Best-effort: a promotion failure must never break the user's generation.
+  if (isOk && promptId) {
+    try {
+      const promo = await promotePromptById(promptId);
+      if (promo.promoted && promo.url && promo.reason !== "already") {
+        await pingIndexNow([promo.url]);
+      }
+    } catch (e) {
+      console.error("inline promotion failed:", e);
+    }
   }
 
   // --- response + anon cookie ---
