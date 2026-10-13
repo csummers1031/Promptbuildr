@@ -1,7 +1,7 @@
 # Promptbuildr — Handoff & Session Memory
 
 > Living source of truth. A fresh session should read this FIRST.
-> Last updated: 2026-10-13 (launch night).
+> Last updated: 2026-10-13 (Cloudflare API access confirmed; Neon access pending allow-list).
 
 ---
 
@@ -43,17 +43,18 @@
 | Have | Scope |
 |---|---|
 | GitHub | read/write, deploy logs, push → deploy |
-| HubSpot connector | portal 23513958 — CRM + content analytics (pageviews) |
-| Cloudflare **Developer Platform** connector | Workers/KV/D1/R2 ONLY — **no DNS/SSL/zone/custom-domain** tools |
+| HubSpot connector | portal 23513958 — CRM + content analytics (pageviews). NOTE: shared HackingDemand portal (~5,581 contacts); NOT a clean Promptbuildr measure. |
+| Cloudflare **Developer Platform** connector | Workers/KV/D1/R2 (MCP tools) |
+| Cloudflare **zone/DNS/SSL API** | ✅ **WORKING** (2026-10-13) via scoped token as a network secret → `api.cloudflare.com` allow-listed. Verified: zone `promptbuildr.ai` id `265911ce0c474003dd8ac99f03e950b7`, DNS records, SSL=Full, Always-HTTPS=on, all readable/editable via `curl https://api.cloudflare.com/client/v4/...` (Authorization header auto-injected). |
 
-**NOT reachable:** Cloudflare DNS/SSL/zone settings, Google Search Console, any affiliate partner portal (Instantly/Apollo/etc. — separate dashboards, no connectors).
+**NOT reachable (yet):**
+- **Neon DB** — proxy denies `neon.tech` (403). To enable: allow-list the Neon host in env Network access + add `DATABASE_URL` as a plain env secret, then new session. This is THE source of truth for Promptbuildr visits/generations/signups/clicks.
+- **Live site** `promptbuildr.ai` — proxy denies it (403); allow-list if we need to curl our own endpoints.
+- Google Search Console; affiliate partner portals (Instantly/Apollo/etc. — separate dashboards, no connectors).
 
-**To give Claude full Cloudflare control (pending — Charles setting up a scoped token):**
-- Create a Cloudflare API token scoped to zone `promptbuildr.ai`: **Zone→DNS:Edit, Zone→SSL and Certificates:Edit, Zone→Zone Settings:Edit, Zone→Zone:Read, Account→Workers Scripts:Edit, Zone→Workers Routes:Edit**.
-- Add as **environment secrets** (not GitHub secrets): `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
-- Allow **`api.cloudflare.com`** in environment Network access.
-- New session to pick up. (GitHub Actions secrets are NOT readable by the interactive session — that's why a separate env secret is needed.)
-- Note: this sandbox's outbound is proxy-gated; arbitrary hosts (incl. the live site + api.cloudflare.com) are blocked unless allow-listed.
+**Proxy model (important):** this sandbox's outbound is gateway-gated. EVERY host is denied (403 on CONNECT) unless allow-listed in the environment's Network access settings. That's why `api.cloudflare.com` works and `neon.tech`/`promptbuildr.ai` don't. Add hosts there, not in code.
+
+**Setup script:** must be a no-op (`#!/bin/bash` + `true`). `npm install` failed because the script's CWD is `/home/user` (home), not the repo at `/home/user/Promptbuildr` → package.json not found. Deps are installed inside the booted session as needed; node_modules is already present here.
 
 ---
 

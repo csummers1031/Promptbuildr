@@ -11,6 +11,9 @@ settings Charles changes in a dashboard should be added here too (or Claude logs
 
 ## 2026-10-13
 
+- `cloudflare` · **Gained full Cloudflare zone/DNS/SSL API access** via a scoped API token (network secret; `api.cloudflare.com` allow-listed). Verified read of zone `promptbuildr.ai`, DNS records, SSL=Full, Always-Use-HTTPS=on. Claude can now manage DNS/SSL/zone settings directly. Why: standing requirement to trace/fix infra without waiting on dashboard screenshots.
+- `env` · **Fixed the environment Setup script** to a no-op (`#!/bin/bash` + `true`). The prior `npm install` failed because the script runs from `/home/user` (not the repo at `/home/user/Promptbuildr`) → no package.json. Deps are installed in-session. Why: new sessions were failing to boot.
+- `3rd-party` · **Verified HubSpot email capture works.** Confirmed a Promptbuildr form submission (first-touch URL `https://promptbuildr.ai/`) reached HubSpot portal 23513958 (1 contact, a test). Caveat: that portal is the shared HackingDemand DB (~5,581 contacts) — Neon is the clean Promptbuildr measure.
 - `code` · **Fixed prompt view counts never incrementing.** New `/api/view` + client beacon (deduped per session): opening a feed card or a promoted-prompt page now counts a view, updates `prompts.view_count` + `prompt_daily_stats`, and ticks the feed number up live. Why: views were displayed but never recorded. Ref: deploy #18 (pending).
 - `code` · **Added first-party traffic attribution** (visits + outbound-click logging, classifier, `/api/track/*`, client beacon, `data-track` on money links, report queries in `docs/ANALYTICS.md`). Why: know every traffic source (source/term/AI/clicks) and never guess attribution again. Ref: deploy #17 (pending).
 - `code` · Started this CHANGELOG and `docs/HANDOFF.md` session memory. (docs-only, `[skip ci]`)
