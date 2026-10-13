@@ -26,17 +26,19 @@ const BUSINESS_ROLES = new Set([
 
 /**
  * Curated top offers per output type (slugs from the tool registry), ordered by
- * monetization value. Personal output types map to [] so no offers show.
+ * monetization value. ONLY earning partners appear here — tools on plain
+ * homepages (no affiliate program) are deliberately excluded so every offer
+ * slot can generate revenue. Personal output types map to [] so no offers show.
  */
 const OFFERS_BY_OUTPUT: Record<string, string[]> = {
   "Email/Outreach": ["instantly", "apollo-io", "smartlead"],
-  "Content/Copy": ["rytr", "notion", "canva"],
-  "Strategy/Plan": ["hubspot", "close", "clay"],
-  "Analysis/Research": ["semrush", "hotjar", "posthog"],
-  "Code/Automation": ["n8n", "make", "zapier"],
-  "Agent/Workflow": ["n8n", "make", "fireflies"],
-  "Data/Spreadsheet": ["clay", "apollo-io", "uplead"],
-  "Image/Creative": ["canva", "synthesia", "figma"],
+  "Content/Copy": ["rytr", "quillbot", "gamma"],
+  "Strategy/Plan": ["hubspot", "close", "apollo-io"],
+  "Analysis/Research": ["omniseo", "hotjar", "databox"],
+  "Code/Automation": ["n8n", "make", "railway"],
+  "Agent/Workflow": ["n8n", "mindstudio", "make"],
+  "Data/Spreadsheet": ["apollo-io", "uplead", "databox"],
+  "Image/Creative": ["synthesia", "gamma", "descript"],
   "Writing/Personal": [],
   "Learning/How-To": [],
   "Other": [],
