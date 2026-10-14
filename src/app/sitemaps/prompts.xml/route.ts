@@ -2,7 +2,7 @@ import { SITE_URL } from "@/lib/seo";
 import { urlSet, XML_HEADERS } from "@/lib/sitemap";
 import { getPromotedSlugs } from "@/db/feed";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 /** Only PROMOTED prompts get indexed URLs (small, clean footprint). */
 export async function GET(): Promise<Response> {

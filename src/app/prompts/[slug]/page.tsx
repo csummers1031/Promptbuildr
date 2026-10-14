@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
 import CopyButton from "@/components/CopyButton";
 import ShareBar from "@/components/ShareBar";
-import { getPromptBySlug, getRelatedPrompts } from "@/db/feed";
+import { getPromptBySlug, getRelatedPrompts, getPromotedSlugs } from "@/db/feed";
 import { resolveToolLink } from "@/lib/tools/resolve";
 import { linkifyInstructions, plainInstructions } from "@/lib/tools/render";
 import InstructionText from "@/components/InstructionText";
@@ -21,6 +21,20 @@ import {
   orgJsonLd,
   directAnswer,
 } from "@/lib/seo";
+
+// ISR: cache each prompt page in KV and serve it without re-querying the DB or
+// re-rendering on every hit. Crawlers hammer these URLs, so this is the biggest
+// CPU/DB saver. New prompts render on first hit then cache; a demoted prompt's
+// page refreshes to 404 within the window.
+export const revalidate = 3600;
+
+// Pre-render the promoted prompt pages at build so they're cached (SSG + ISR),
+// not re-rendered from the DB on every crawler hit. New prompts promoted after
+// a build render on first request and then cache (dynamicParams default = true).
+export async function generateStaticParams() {
+  const slugs = await getPromotedSlugs();
+  return slugs.map((s) => ({ slug: s.slug }));
+}
 
 export async function generateMetadata({
   params,

@@ -1,7 +1,7 @@
 import { SITE_URL } from "@/lib/seo";
 import { sitemapIndex, XML_HEADERS } from "@/lib/sitemap";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 /** Sitemap index pointing to the split child sitemaps. */
 export async function GET(): Promise<Response> {

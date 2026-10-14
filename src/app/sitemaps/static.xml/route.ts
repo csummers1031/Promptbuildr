@@ -1,7 +1,7 @@
 import { SITE_URL } from "@/lib/seo";
 import { urlSet, XML_HEADERS } from "@/lib/sitemap";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export async function GET(): Promise<Response> {
   const xml = urlSet([

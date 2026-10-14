@@ -3,7 +3,7 @@ import { urlSet, XML_HEADERS, type SitemapUrl } from "@/lib/sitemap";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
 import { taxonomySlug } from "@/lib/feed/taxonomy";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export async function GET(): Promise<Response> {
   const urls: SitemapUrl[] = [
