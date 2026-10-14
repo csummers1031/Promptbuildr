@@ -14,7 +14,7 @@ export function orgJsonLd(): JsonLd {
     "@id": ORG_ID,
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/apple-icon.png`,
+    logo: `${SITE_URL}/logo.png`,
     description:
       "Promptbuildr turns plain-language tasks into high-quality, ready-to-use AI prompts for business and personal use.",
     sameAs: [HD.home],
