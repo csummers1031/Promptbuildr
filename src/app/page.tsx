@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import BuilderForm from "@/components/BuilderForm";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
 import { taxonomySlug } from "@/lib/feed/taxonomy";
 import { orgJsonLd, webSiteJsonLd, SITE_URL } from "@/lib/seo";
@@ -63,8 +64,8 @@ export default async function Home({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
-          <Link href="/" className="text-lg font-bold tracking-tight text-slate-900">
-            Prompt<span className="text-indigo-600">buildr</span>
+          <Link href="/" aria-label="Promptbuildr home">
+            <Logo />
           </Link>
           <Link href="/prompts" className="text-sm font-medium text-slate-500 hover:text-slate-900">
             Browse feed

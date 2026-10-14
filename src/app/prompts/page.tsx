@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import Footer from "@/components/Footer";
 import FeedCard from "@/components/feed/FeedCard";
 import { getFeed } from "@/db/feed";
@@ -84,8 +85,8 @@ export default async function FeedPage({
 
       <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
-          <Link href="/" className="text-lg font-bold tracking-tight text-slate-900">
-            Prompt<span className="text-indigo-600">buildr</span>
+          <Link href="/" aria-label="Promptbuildr home">
+            <Logo />
           </Link>
           <Link href="/#builder" className="text-sm font-medium text-slate-500 hover:text-slate-900">
             Build a prompt

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import Footer from "@/components/Footer";
 import FeedCard from "@/components/feed/FeedCard";
 import type { FeedPrompt } from "@/lib/feed/types";
@@ -53,8 +54,8 @@ export default function TaxonomyView({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <header className="mx-auto flex max-w-4xl items-center justify-between px-4 py-5">
-        <Link href="/" className="text-lg font-bold tracking-tight text-slate-900">
-          Prompt<span className="text-indigo-600">buildr</span>
+        <Link href="/" aria-label="Promptbuildr home">
+          <Logo />
         </Link>
         <Link href="/#builder" className="text-sm font-medium text-slate-500 hover:text-slate-900">
           Build a prompt
