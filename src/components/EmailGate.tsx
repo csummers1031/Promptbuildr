@@ -48,7 +48,7 @@ export default function EmailGate({
 
   return (
     <div className="rounded-2xl border border-indigo-200 bg-indigo-50 p-6 sm:p-8">
-      <h2 className="text-lg font-semibold text-slate-900">Keep generating — free</h2>
+      <h2 className="text-lg font-semibold text-slate-900">Keep generating for free</h2>
       <p className="mt-1 text-sm text-slate-600">{message}</p>
       <form onSubmit={submit} className="mt-4 flex flex-col gap-3">
         <input

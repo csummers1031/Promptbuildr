@@ -112,7 +112,7 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
       `&outputType=${encodeURIComponent(outputType)}`;
     return {
       url: remixHref,
-      title: `${result.title} — a ready-to-use ${aiTool} prompt`,
+      title: `${result.title}: a ready-to-use ${aiTool} prompt`,
       text: "I built this AI prompt on Promptbuildr:",
     };
   }

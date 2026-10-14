@@ -80,7 +80,7 @@ export default async function Home({
             <span className="text-indigo-600">great AI prompt</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-balance text-lg text-slate-600">
-            Describe your task — business or personal. Get a ready-to-paste prompt plus
+            Describe your task, business or personal. Get a ready-to-paste prompt plus
             step-by-step setup, tuned for the AI tool you actually use.
           </p>
         </section>
@@ -90,7 +90,7 @@ export default async function Home({
         </section>
 
         <section className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <Feature title="For anything" body="Cold emails, trip plans, agents, speeches, spreadsheets — any task, any purpose." />
+          <Feature title="For anything" body="Cold emails, trip plans, agents, speeches, spreadsheets. Any task, any purpose." />
           <Feature title="Tool-tuned" body="XML for Claude, clean sections for ChatGPT, code-ready for Cursor & Copilot, dense descriptors for image AI." />
           <Feature title="Ready to run" body="Copy the prompt, follow the steps, and go. No prompt-engineering degree required." />
         </section>

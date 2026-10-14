@@ -104,7 +104,7 @@ const SEEDS: SampleSeed[] = [
       "You are a witty speechwriter. Write a best man speech for [FRIEND] at their wedding. Balance humor and heart, include a short story about [MEMORY], and land on a sincere toast. Keep it to 3–4 minutes spoken.",
     instructions: [
       "Fill in [FRIEND] and [MEMORY] with your own details.",
-      "Read it aloud and time it — aim for 3–4 minutes.",
+      "Read it aloud and time it, aim for 3-4 minutes.",
       "Ask for two alternate opening jokes if the first doesn't land.",
     ],
     recommendedTools: [],

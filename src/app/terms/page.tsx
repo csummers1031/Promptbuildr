@@ -43,7 +43,7 @@ export default function TermsPage() {
         <h2 className="mt-8 text-xl font-semibold text-slate-900">No warranty</h2>
         <p className="mt-3">
           Promptbuildr is provided &quot;as is,&quot; without warranties of any kind. AI output can
-          be inaccurate — review it before relying on it. To the extent permitted by law, we are not
+          be inaccurate. Review it before relying on it. To the extent permitted by law, we are not
           liable for damages arising from your use of the service.
         </p>
 

@@ -18,7 +18,7 @@ export default function AboutPage() {
         <h1 className="text-3xl font-bold tracking-tight text-slate-900">About Promptbuildr</h1>
         <p className="mt-4 text-slate-700">
           Promptbuildr turns a plain-language description of what you&apos;re trying to do into a
-          high-quality, ready-to-paste AI prompt — plus step-by-step setup instructions, tuned for
+          high-quality, ready-to-paste AI prompt, plus step-by-step setup instructions, tuned for
           the AI tool you actually use. It works for business tasks and personal ones alike, and
           it&apos;s completely free.
         </p>

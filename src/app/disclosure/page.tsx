@@ -16,9 +16,9 @@ export default function DisclosurePage() {
         <p className="mt-2 text-sm text-slate-500">Last updated: {new Date().getFullYear()}</p>
 
         <p className="mt-6">
-          Promptbuildr is free to use. To support the service, some of the tools we recommend —
-          in generated prompt instructions, on prompt pages, in the feed, and while a prompt is
-          generating — are linked with affiliate (&quot;sponsored&quot;) links.
+          Promptbuildr is free to use. To support the service, some of the tools we recommend
+          (in generated prompt instructions, on prompt pages, in the feed, and while a prompt is
+          generating) are linked with affiliate (&quot;sponsored&quot;) links.
         </p>
 
         <h2 className="mt-8 text-xl font-semibold text-slate-900">What that means</h2>
@@ -30,7 +30,7 @@ export default function DisclosurePage() {
 
         <h2 className="mt-8 text-xl font-semibold text-slate-900">How we choose what to recommend</h2>
         <p className="mt-3">
-          Tool recommendations are based on how well a tool fits the task you described — not on
+          Tool recommendations are based on how well a tool fits the task you described, not on
           whether it pays a commission. Many tools we link to have no affiliate program at all. We
           only suggest tools we believe are genuinely useful for the job.
         </p>

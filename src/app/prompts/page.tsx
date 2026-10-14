@@ -9,7 +9,7 @@ import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
 import { SITE_URL, orgJsonLd, webSiteJsonLd, breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "AI Prompt Feed — the best prompts, ranked | Promptbuildr",
+  title: "AI Prompt Feed: the best prompts, ranked | Promptbuildr",
   description:
     "Browse and upvote the best AI prompts for business and personal tasks. Filter by role, AI tool, and output type. Copy, remix, and run them in Claude, ChatGPT, Gemini, and more.",
   alternates: { canonical: `${SITE_URL}/prompts` },
@@ -73,7 +73,7 @@ export default async function FeedPage({
     collectionPageJsonLd({
       name: "AI Prompt Feed",
       description:
-        "The best AI prompts for business and personal tasks — copy, remix, and run them in Claude, ChatGPT, Gemini, and more.",
+        "The best AI prompts for business and personal tasks. Copy, remix, and run them in Claude, ChatGPT, Gemini, and more.",
       url: `${SITE_URL}/prompts`,
       items: listItems,
     }),
@@ -98,7 +98,7 @@ export default async function FeedPage({
         <div className="mb-6">
           <h1 className="text-3xl font-bold tracking-tight text-slate-900">AI Prompt Feed</h1>
           <p className="mt-1 text-slate-600">
-            The best AI prompts for business and personal tasks — upvoted by the community. Copy,
+            The best AI prompts for business and personal tasks, upvoted by the community. Copy,
             remix, and run them in your tool of choice.
           </p>
         </div>
@@ -134,7 +134,7 @@ export default async function FeedPage({
           <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center">
             <p className="text-slate-600">No prompts here yet.</p>
             <Link href="/#builder" className="mt-2 inline-block font-medium text-indigo-600 hover:text-indigo-800">
-              Be the first — build one →
+              Be the first, build one →
             </Link>
           </div>
         ) : (

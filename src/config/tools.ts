@@ -70,5 +70,5 @@ export function buildMarketplaceUrl(tool: RegistryTool, campaign: string): strin
 
 /** Compact registry listing injected into the meta-prompt. */
 export function registryForPrompt(): string {
-  return TOOLS.map((t) => `${t.slug}: ${t.name} — ${t.description}`).join("\n");
+  return TOOLS.map((t) => `${t.slug}: ${t.name}: ${t.description}`).join("\n");
 }

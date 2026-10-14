@@ -58,7 +58,7 @@ export default function GeneratingView({
       {offers.length > 0 && (
         <div className="w-full">
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">
-            While you wait — tools people use for this
+            While you wait: tools people use for this
           </p>
           <div className="flex flex-col gap-2.5">
             {offers.map((offer, i) => (

@@ -32,7 +32,7 @@ export function taxonomyIntro(kind: TaxonomyKind, label: string): { h1: string; 
     case "for":
       return {
         h1: `AI prompts for ${label}`,
-        intro: `Ready-to-use AI prompts built for ${label}. Each one is copy-paste ready, tuned for your AI tool, and comes with setup steps — so you spend minutes, not hours, getting a strong first draft.`,
+        intro: `Ready-to-use AI prompts built for ${label}. Each one is copy-paste ready, tuned for your AI tool, and comes with setup steps, so you spend minutes, not hours, getting a strong first draft.`,
       };
     case "tool":
       return {
@@ -42,7 +42,7 @@ export function taxonomyIntro(kind: TaxonomyKind, label: string): { h1: string; 
     case "type":
       return {
         h1: `${label} prompts`,
-        intro: `Prompts that produce ${label.toLowerCase()} — for work and life. Browse the best community-upvoted examples, copy the one that fits, and remix it for your situation.`,
+        intro: `Prompts that produce ${label.toLowerCase()} for work and life. Browse the best community-upvoted examples, copy the one that fits, and remix it for your situation.`,
       };
   }
 }
@@ -67,7 +67,7 @@ export function taxonomyFaqs(kind: TaxonomyKind, label: string): { q: string; a:
         }
       : {
           q: `Can I get a prompt tailored to my exact task?`,
-          a: `Yes — use the builder on the homepage. Describe what you're trying to do, pick your role and tool, and you'll get a custom, ready-to-paste prompt with instructions.`,
+          a: `Yes. Use the builder on the homepage. Describe what you're trying to do, pick your role and tool, and you'll get a custom, ready-to-paste prompt with instructions.`,
         };
   return [...base, specific];
 }

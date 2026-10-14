@@ -20,7 +20,7 @@ export async function GET(): Promise<Response> {
     .map((u) => `- ${u}`)
     .join("\n");
 
-  const body = `# Promptbuildr — full URL list
+  const body = `# Promptbuildr full URL list
 
 > Promptbuildr turns a plain-language task into a high-quality, ready-to-paste AI prompt with setup instructions. Free, for business and personal use. Powered by Hacking Demand.
 

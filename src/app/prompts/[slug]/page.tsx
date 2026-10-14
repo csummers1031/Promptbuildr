@@ -44,7 +44,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const prompt = await getPromptBySlug(slug, new Date());
   if (!prompt) return { title: "Prompt not found | Promptbuildr" };
-  const title = `${prompt.title} — ${prompt.aiTool} prompt`;
+  const title = `${prompt.title}: ${prompt.aiTool} prompt`;
   const description = directAnswer(prompt.role, prompt.outputType, prompt.title).slice(0, 155);
   const url = `${SITE_URL}/prompts/${slug}`;
   const og = `${SITE_URL}/api/og?title=${encodeURIComponent(prompt.title)}&tag=${encodeURIComponent(prompt.categoryTags[0] ?? prompt.outputType)}`;
@@ -169,7 +169,7 @@ export default async function PromotedPromptPage({
           <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3">
             <ShareBar
               url={url}
-              title={`${prompt.title} — a ready-to-use ${prompt.aiTool} prompt`}
+              title={`${prompt.title}: a ready-to-use ${prompt.aiTool} prompt`}
               text="Found this AI prompt on Promptbuildr:"
               variant="full"
             />

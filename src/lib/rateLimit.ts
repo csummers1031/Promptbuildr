@@ -78,7 +78,7 @@ export async function checkRateLimit(ctx: RateContext): Promise<RateDecision> {
 export function rateMessage(reason: RateDecision["reason"]): string {
   switch (reason) {
     case "anon-used":
-      return "You've used your free prompt. Add your email to keep generating — it's still free.";
+      return "You've used your free prompt. Add your email to keep generating, it's still free.";
     case "account-daily":
       return "You've hit today's generation limit. Come back tomorrow!";
     case "ip-daily":

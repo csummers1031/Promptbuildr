@@ -9,11 +9,11 @@ const DEFAULT_OG = `${SITE_URL}/api/og?title=${encodeURIComponent("Turn any task
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Promptbuildr — AI prompt generator for any task",
+    default: "Promptbuildr: AI prompt generator for any task",
     template: "%s",
   },
   description:
-    "Describe what you want to do and get a high-quality, ready-to-use AI prompt with setup instructions — tuned for Claude, ChatGPT, Gemini, and more. Free.",
+    "Describe what you want to do and get a high-quality, ready-to-use AI prompt with setup instructions, tuned for Claude, ChatGPT, Gemini, and more. Free.",
   // Durable Bing Webmaster verification (so it doesn't depend solely on the
   // Google Search Console import). Renders <meta name="msvalidate.01" ...>.
   verification: { other: { "msvalidate.01": "1BB856310F968F4C326A710B3978590C" } },

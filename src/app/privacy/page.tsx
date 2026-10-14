@@ -24,20 +24,20 @@ export default function PrivacyPage() {
         <ul className="mt-3 list-disc space-y-2 pl-5">
           <li><strong>Your email and role</strong>, if you provide them to unlock unlimited prompt generation.</li>
           <li><strong>The prompts you generate</strong>, including the task you describe. By default, generated prompts may appear in our public feed; nothing that identifies you personally is attached.</li>
-          <li><strong>Basic usage data</strong> — a cookie identifier and a one-way hashed version of your IP address (we never store your raw IP), used to rate-limit free usage and prevent abuse.</li>
+          <li><strong>Basic usage data</strong>: a cookie identifier and a one-way hashed version of your IP address (we never store your raw IP), used to rate-limit free usage and prevent abuse.</li>
         </ul>
 
         <h2 className="mt-8 text-xl font-semibold text-slate-900">How we use it</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5">
           <li>To provide and improve the product.</li>
           <li>To enforce fair usage limits.</li>
-          <li>To send occasional email — such as a weekly best-of-prompts newsletter — if you gave us your email. You can unsubscribe from any email.</li>
+          <li>To send occasional email, such as a weekly best-of-prompts newsletter, if you gave us your email. You can unsubscribe from any email.</li>
         </ul>
 
         <h2 className="mt-8 text-xl font-semibold text-slate-900">Who we share it with</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5">
-          <li><strong>Anthropic</strong> — the text you submit is processed by Anthropic&apos;s API to generate your prompt.</li>
-          <li><strong>Our email/CRM provider (HubSpot)</strong> — to store your email and send newsletters, if you opted in.</li>
+          <li><strong>Anthropic</strong>: the text you submit is processed by Anthropic&apos;s API to generate your prompt.</li>
+          <li><strong>Our email/CRM provider (HubSpot)</strong>: to store your email and send newsletters, if you opted in.</li>
           <li>We do not sell your personal data.</li>
         </ul>
 

@@ -160,7 +160,7 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
         </Link>
         <ShareBar
           url={shareHref}
-          title={`${prompt.title} — a ready-to-use ${prompt.aiTool} prompt`}
+          title={`${prompt.title}: a ready-to-use ${prompt.aiTool} prompt`}
           text="Found this AI prompt on Promptbuildr:"
           variant="compact"
         />

@@ -128,7 +128,7 @@ export function promptFaqs(args: {
     },
     {
       q: "Which AI tool is this prompt for?",
-      a: `It's tuned for ${args.aiTool}, but it works in other assistants too — paste it into ChatGPT, Claude, or Gemini and adjust the formatting if needed.`,
+      a: `It's tuned for ${args.aiTool}, but it works in other assistants too. Paste it into ChatGPT, Claude, or Gemini and adjust the formatting if needed.`,
     },
     {
       q: "How do I use this prompt?",
