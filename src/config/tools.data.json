@@ -306,5 +306,12 @@
     "description": "AI calendar that auto-schedules tasks and habits",
     "category": "ai-tools",
     "url": "https://go.reclaim.ai/promptbuildr"
+  },
+  {
+    "slug": "lindy",
+    "name": "Lindy",
+    "description": "Build AI agents that automate email meetings and multi-step workflows",
+    "category": "ai-tools",
+    "url": "https://try.lindy.ai/z07fp7u29kjb"
   }
 ]
