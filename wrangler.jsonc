@@ -11,6 +11,12 @@
   "observability": {
     "enabled": true
   },
+  // Per-request CPU ceiling (safety net against a runaway request racking up
+  // cost). 1000ms is ~2x the heaviest legit render and 100x the old free-tier
+  // 10ms cap that was erroring, so normal traffic is unaffected.
+  "limits": {
+    "cpu_ms": 1000
+  },
   // Custom domains — LIVE. Serves the apex and www in addition to the
   // *.workers.dev URL. Attaching www as a custom domain auto-creates its
   // DNS record + cert (covered by the *.promptbuildr.ai wildcard). Requires
