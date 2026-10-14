@@ -17,6 +17,8 @@ settings Charles changes in a dashboard should be added here too (or Claude logs
 > pins it; remote tag push is blocked by the scoped token, so the SHA is the source of truth).
 > Each tier below ships as its own commit/deploy so a partial revert is possible.
 
+- `code`/`seo` · **Bing + sitemap fixes** (from Cowork's Bing Webmaster audit). Added the 4 static pages (`/about`, `/disclosure`, `/privacy`, `/terms`) to the sitemap — they were missing. Added a durable Bing site-verification `<meta name="msvalidate.01">` tag to the root layout so Bing verification no longer depends solely on the Google Search Console import (removes a single point of failure). Ref: deploy #26 (pending). Note: IndexNow still only pings on prompt promote/demote (home/feed/taxonomy/static rely on sitemap crawl) — fine for now; revisit when the cron backstop is enabled.
+
 - `code`/`brand` · **Logo lockup in the site header.** New `<Logo />` component (mark + "Promptbuildr" wordmark) now in all 5 headers (home, feed, prompt, taxonomy, static shell), replacing the text-only wordmark. Added `public/logo.svg` (vector master). Ref: deploy #25 (pending).
 
 - `code`/`brand` · **New logo shipped** — the "P-bubble caret" mark (a speech bubble whose silhouette reads as a "P", with a `>` chevron inside; indigo #4F46E5). Designed with Fable over two iterations + a refinement (dropped the underscore, centered the chevron) — approved by Charles. Replaced `icon.svg` (now an indigo chip favicon), `apple-icon.png` (180², chip), `favicon.ico` (16+32 multi-size), added `public/logo.png` (512² rounded chip) and pointed the `Organization` schema `logo` at it. Source SVG + variants in scratchpad. 140 tests green, build OK. Ref: deploy #24 (pending).
