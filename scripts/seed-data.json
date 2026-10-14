@@ -2,7 +2,7 @@
   {
     "slug": "cold-outreach-emails-for-saas-hr-demo-offers-to-mid-market-l",
     "title": "Cold outreach emails for SaaS HR demo offers to mid-market leaders",
-    "promptText": "# Task\nWrite 5 unique cold outreach emails pitching a free demo of [YOUR_SAAS_PRODUCT_NAME] to mid-market HR leaders. Each email must feel personalized, direct, and benefit-focused—not salesy.\n\n# Context\n- **Product**: [YOUR_SAAS_PRODUCT_NAME] — [ONE-LINE DESCRIPTION: what it does and the core pain it solves]\n- **Target audience**: HR leaders at mid-market companies (100–2,000 employees)\n- **Key pain points they face**: [LIST 2-3 SPECIFIC CHALLENGES YOUR PRODUCT SOLVES, e.g., \"manual onboarding bottlenecks,\" \"fragmented HR tech stack,\" \"high employee turnover\"]\n- **Unique value prop**: [YOUR SINGLE STRONGEST DIFFERENTIATOR: e.g., \"fastest implementation (2 days)\", \"50% cost savings vs. competitors\", \"AI-powered compliance\"]\n- **Call to action**: Book a 20-minute demo\n- **Your name/company**: [YOUR_NAME], [YOUR_COMPANY_NAME]\n- **Your email/calendar link**: [YOUR_EMAIL] or [CALENDLY_OR_BOOKING_LINK]\n\n# Constraints\n- **Length**: 50–80 words (tight, scannable, mobile-friendly)\n- **Tone**: Conversational, confident, problem-focused—avoid hype words (\"revolutionary,\" \"game-changer\") and false urgency\n- **Format**: Email body only; no subject lines in this batch (we'll refine those separately)\n- **Personalization hooks**: Reference a recognizable challenge or context (e.g., \"if your team is still exporting payroll to spreadsheets\") that signals you understand their world\n- **What to avoid**: Generic compliments (\"I know you're busy\"), overly long value props, multiple CTAs, mentioning price or discounts\n\n# Output Format\nProvide exactly 5 emails, labeled **Email 1, Email 2**, etc. Each should:\n1. Open with a single specific problem or observation\n2. State the solution in one sentence\n3. Include one credibility detail (e.g., \"already helping [COMPANY_TYPE] like [EXAMPLE_COMPANY_NAME]\") if provided\n4. Close with a single, soft CTA\n\nBefore writing the emails, briefly list the 5 distinct angle/hook you will use for variety (e.g., \"Angle 1: Automation pain,\" \"Angle 2: Compliance risk\"). This helps you avoid repetition and land better with different reader motivations.",
+    "promptText": "# Task\nWrite 5 unique cold outreach emails pitching a free demo of [YOUR_SAAS_PRODUCT_NAME] to mid-market HR leaders. Each email must feel personalized, direct, and benefit-focused, not salesy.\n\n# Context\n- **Product**: [YOUR_SAAS_PRODUCT_NAME], [ONE-LINE DESCRIPTION: what it does and the core pain it solves]\n- **Target audience**: HR leaders at mid-market companies (100–2,000 employees)\n- **Key pain points they face**: [LIST 2-3 SPECIFIC CHALLENGES YOUR PRODUCT SOLVES, e.g., \"manual onboarding bottlenecks,\" \"fragmented HR tech stack,\" \"high employee turnover\"]\n- **Unique value prop**: [YOUR SINGLE STRONGEST DIFFERENTIATOR: e.g., \"fastest implementation (2 days)\", \"50% cost savings vs. competitors\", \"AI-powered compliance\"]\n- **Call to action**: Book a 20-minute demo\n- **Your name/company**: [YOUR_NAME], [YOUR_COMPANY_NAME]\n- **Your email/calendar link**: [YOUR_EMAIL] or [CALENDLY_OR_BOOKING_LINK]\n\n# Constraints\n- **Length**: 50–80 words (tight, scannable, mobile-friendly)\n- **Tone**: Conversational, confident, problem-focused, avoid hype words (\"revolutionary,\" \"game-changer\") and false urgency\n- **Format**: Email body only; no subject lines in this batch (we'll refine those separately)\n- **Personalization hooks**: Reference a recognizable challenge or context (e.g., \"if your team is still exporting payroll to spreadsheets\") that signals you understand their world\n- **What to avoid**: Generic compliments (\"I know you're busy\"), overly long value props, multiple CTAs, mentioning price or discounts\n\n# Output Format\nProvide exactly 5 emails, labeled **Email 1, Email 2**, etc. Each should:\n1. Open with a single specific problem or observation\n2. State the solution in one sentence\n3. Include one credibility detail (e.g., \"already helping [COMPANY_TYPE] like [EXAMPLE_COMPANY_NAME]\") if provided\n4. Close with a single, soft CTA\n\nBefore writing the emails, briefly list the 5 distinct angle/hook you will use for variety (e.g., \"Angle 1: Automation pain,\" \"Angle 2: Compliance risk\"). This helps you avoid repetition and land better with different reader motivations.",
     "instructions": [
       "Open ChatGPT and paste the entire prompt into the chat window.",
       "Fill in the five bracketed placeholders: your product name and one-line description, the 2–3 pain points your product solves, your single strongest differentiator, and your contact details. If you don't have a company name yet, use \"[YOUR_STARTUP_NAME]\" as a placeholder.",
@@ -50,14 +50,14 @@
   {
     "slug": "budget-7-day-italy-trip-planner-for-two-in-october",
     "title": "Budget 7-Day Italy Trip Planner for Two in October",
-    "promptText": "# Italy Trip Plan: 7 Days for Two on a Budget\n\n## Context\n- **Travelers:** 2 people\n- **Duration:** 7 days\n- **Time:** October\n- **Budget constraint:** Budget-focused (minimize costs while maintaining enjoyable experience)\n- **Your priorities:** [e.g., food, culture, outdoor activities, art, nightlife — list 2-3]\n- **Must-see or must-do:** [e.g., Venice, Rome, hiking in Cinque Terre — list specific places or experiences, or leave blank]\n- **Accommodation preference:** [e.g., hostels, budget hotels, Airbnb, mix]\n- **Total budget:** [e.g., €1,500 per person, €2,000 per person]\n\n## Task\nCreate a detailed 7-day itinerary for Italy in October that maximizes value and minimizes costs for two travelers. The plan should:\n\n1. **Suggest a route** with 2–4 key cities/regions that minimize backtracking and travel time (budget flights or trains between them).\n2. **Break down by day:**\n   - Morning, afternoon, and evening activities\n   - Free or low-cost attractions (museums with free hours, walking tours, parks, viewpoints)\n   - At least one paid experience per city that is excellent value\n3. **Estimate costs** for:\n   - Accommodation per night (budget options)\n   - Food (breakdown: breakfast, lunch, dinner; identify cheap eats like markets, trattorias, street food)\n   - Local transport (metro passes, buses)\n   - Activities and entry fees\n   - Train/flight between cities\n4. **Money-saving tips** specific to October travel in Italy (e.g., shoulder season discounts, crowds, weather).\n5. **Practical notes:**\n   - Best neighborhoods to stay in for each city\n   - How long to spend in each location\n   - Any bookings to make in advance vs. walk-up\n\n## Output Format\nStructure the response as:\n- **Overview:** Route, total estimated budget, why these cities\n- **Daily Breakdown:** Days 1–7 with times, activities, and estimated cost per day\n- **Accommodation & Transport:** Booking tips and estimated prices\n- **Food Budget:** Suggested restaurants, markets, and street food spots\n- **Money-Saving Hacks:** October-specific advantages and do's/don'ts\n- **Backup Plan:** 1–2 alternatives if weather or delays happen\n\n## Tone\nPractical, encouraging, specific (avoid vague suggestions like \"visit a museum\"; name actual museums). Assume travelers are comfortable with modest comfort but want authentic experiences, not luxury.",
+    "promptText": "# Italy Trip Plan: 7 Days for Two on a Budget\n\n## Context\n- **Travelers:** 2 people\n- **Duration:** 7 days\n- **Time:** October\n- **Budget constraint:** Budget-focused (minimize costs while maintaining enjoyable experience)\n- **Your priorities:** [e.g., food, culture, outdoor activities, art, nightlife, list 2-3]\n- **Must-see or must-do:** [e.g., Venice, Rome, hiking in Cinque Terre, list specific places or experiences, or leave blank]\n- **Accommodation preference:** [e.g., hostels, budget hotels, Airbnb, mix]\n- **Total budget:** [e.g., €1,500 per person, €2,000 per person]\n\n## Task\nCreate a detailed 7-day itinerary for Italy in October that maximizes value and minimizes costs for two travelers. The plan should:\n\n1. **Suggest a route** with 2–4 key cities/regions that minimize backtracking and travel time (budget flights or trains between them).\n2. **Break down by day:**\n   - Morning, afternoon, and evening activities\n   - Free or low-cost attractions (museums with free hours, walking tours, parks, viewpoints)\n   - At least one paid experience per city that is excellent value\n3. **Estimate costs** for:\n   - Accommodation per night (budget options)\n   - Food (breakdown: breakfast, lunch, dinner; identify cheap eats like markets, trattorias, street food)\n   - Local transport (metro passes, buses)\n   - Activities and entry fees\n   - Train/flight between cities\n4. **Money-saving tips** specific to October travel in Italy (e.g., shoulder season discounts, crowds, weather).\n5. **Practical notes:**\n   - Best neighborhoods to stay in for each city\n   - How long to spend in each location\n   - Any bookings to make in advance vs. walk-up\n\n## Output Format\nStructure the response as:\n- **Overview:** Route, total estimated budget, why these cities\n- **Daily Breakdown:** Days 1–7 with times, activities, and estimated cost per day\n- **Accommodation & Transport:** Booking tips and estimated prices\n- **Food Budget:** Suggested restaurants, markets, and street food spots\n- **Money-Saving Hacks:** October-specific advantages and do's/don'ts\n- **Backup Plan:** 1–2 alternatives if weather or delays happen\n\n## Tone\nPractical, encouraging, specific (avoid vague suggestions like \"visit a museum\"; name actual museums). Assume travelers are comfortable with modest comfort but want authentic experiences, not luxury.",
     "instructions": [
       "Open ChatGPT and paste the full prompt above. Before sending, fill in the three [BRACKET PLACEHOLDERS]: your top 2–3 priorities (e.g., 'food and art'), any must-see cities or experiences, your accommodation preference, and your total budget per person.",
       "Send the prompt and review the initial itinerary. Check that the route makes geographic sense (no excessive backtracking) and that daily costs feel realistic for your budget.",
-      "Ask a follow-up question for any city or day you want to refine, e.g., 'I'm not sure about Cinque Terre—can you swap it for Bologna and give me a revised Days 3–4?' ChatGPT will adjust quickly.",
+      "Ask a follow-up question for any city or day you want to refine, e.g., 'I'm not sure about Cinque Terre, can you swap it for Bologna and give me a revised Days 3–4?' ChatGPT will adjust quickly.",
       "Once you have a route you like, ask ChatGPT: 'Create a simple booking checklist: which train tickets, accommodation, and restaurant reservations should I book in advance (with dates), and which can be walk-up?' This ensures you don't overpay or miss availability.",
       "Copy the final itinerary into Notion, a spreadsheet, or a note app. Add a notes column for confirmations, booking links, and any flights or train codes once you book.",
-      "Before finalizing, cross-check the estimated budget against current prices on Booking.com, Trenitalia.com (trains), and Google Maps for local transit—October pricing can vary, so verify your numbers 4–6 weeks before departure."
+      "Before finalizing, cross-check the estimated budget against current prices on Booking.com, Trenitalia.com (trains), and Google Maps for local transit, October pricing can vary, so verify your numbers 4–6 weeks before departure."
     ],
     "recommendedTools": [],
     "categoryTags": [
@@ -102,9 +102,9 @@
         "homepageUrl": null
       },
       {
-        "name": "HubSpot CRM",
-        "normalized": "hubspotcrm",
-        "registrySlug": "hubspot-crm",
+        "name": "HubSpot",
+        "normalized": "hubspot",
+        "registrySlug": "hubspot",
         "homepageUrl": null
       }
     ],
@@ -129,13 +129,13 @@
   {
     "slug": "best-man-speech-funny-heartfelt",
     "title": "Best Man Speech: Funny & Heartfelt",
-    "promptText": "<context>\nYou are helping write a best man speech that will be delivered at a wedding reception. The speech should make guests laugh while also genuinely honoring the groom and celebrating his relationship.\n</context>\n\n<task>\nWrite a best man speech approximately [SPEECH_LENGTH] words long that:\n- Opens with a hook that gets the room's attention (a funny anecdote, joke, or observation)\n- Includes [NUMBER_OF_FUNNY_STORIES] humorous stories or moments that reveal the groom's character in a lighthearted way\n- Transitions into sincere moments that show why the groom and bride are perfect together\n- References specific details about the groom and bride's relationship (how they met, inside jokes, qualities you admire)\n- Includes a heartfelt toast at the end that the whole room can raise a glass to\n- Avoids crude jokes, ex-girlfriend references, or anything that might embarrass the bride\n- Feels natural and conversational, not overly polished\n\nPersonalize it based on:\n- Groom's name: [GROOM_NAME]\n- Bride's name: [BRIDE_NAME]\n- Your relationship to the groom: [YOUR_RELATIONSHIP] (e.g., college roommate, childhood friend, brother)\n- Number of years you've known the groom: [YEARS_KNOWN]\n- One specific funny memory or quirk: [FUNNY_MOMENT]\n- One specific reason they're a great match: [WHY_THEYRE_PERFECT]\n</task>\n\n<output_format>\nProvide the speech in a single flowing format, organized into 4-5 natural sections:\n1. Opening/Hook\n2. Funny stories (1-2 paragraphs)\n3. Transition to sincerity\n4. Heartfelt reflections on the couple\n5. Toast (2-3 sentences)\n\nUse natural paragraph breaks. Write as if you'll read it aloud—keep sentences conversational and punchy. Mark [PAUSE] where you'd naturally pause for breath or laughter.\n</output_format>",
+    "promptText": "<context>\nYou are helping write a best man speech that will be delivered at a wedding reception. The speech should make guests laugh while also genuinely honoring the groom and celebrating his relationship.\n</context>\n\n<task>\nWrite a best man speech approximately [SPEECH_LENGTH] words long that:\n- Opens with a hook that gets the room's attention (a funny anecdote, joke, or observation)\n- Includes [NUMBER_OF_FUNNY_STORIES] humorous stories or moments that reveal the groom's character in a lighthearted way\n- Transitions into sincere moments that show why the groom and bride are perfect together\n- References specific details about the groom and bride's relationship (how they met, inside jokes, qualities you admire)\n- Includes a heartfelt toast at the end that the whole room can raise a glass to\n- Avoids crude jokes, ex-girlfriend references, or anything that might embarrass the bride\n- Feels natural and conversational, not overly polished\n\nPersonalize it based on:\n- Groom's name: [GROOM_NAME]\n- Bride's name: [BRIDE_NAME]\n- Your relationship to the groom: [YOUR_RELATIONSHIP] (e.g., college roommate, childhood friend, brother)\n- Number of years you've known the groom: [YEARS_KNOWN]\n- One specific funny memory or quirk: [FUNNY_MOMENT]\n- One specific reason they're a great match: [WHY_THEYRE_PERFECT]\n</task>\n\n<output_format>\nProvide the speech in a single flowing format, organized into 4-5 natural sections:\n1. Opening/Hook\n2. Funny stories (1-2 paragraphs)\n3. Transition to sincerity\n4. Heartfelt reflections on the couple\n5. Toast (2-3 sentences)\n\nUse natural paragraph breaks. Write as if you'll read it aloud, keep sentences conversational and punchy. Mark [PAUSE] where you'd naturally pause for breath or laughter.\n</output_format>",
     "instructions": [
       "Fill in the placeholders in the prompt above: add the groom and bride's names, your relationship to the groom, how long you've known him, one funny story or quirk, and why you think they're perfect together. Keep each placeholder response brief (1-2 sentences max).",
       "Paste the completed prompt into Claude (claude.ai) in a new conversation.",
-      "Read Claude's first draft aloud to yourself—this helps you catch phrasing that feels unnatural. Note any lines that don't sound like your voice.",
+      "Read Claude's first draft aloud to yourself, this helps you catch phrasing that feels unnatural. Note any lines that don't sound like your voice.",
       "Edit for personalization: replace any generic phrases with specific details only you'd know (inside jokes, exact dates, real names of places you've been together). This makes the speech authentically yours.",
-      "If the tone feels too formal or too crude, ask Claude to \"adjust the tone—make it [more conversational / less edgy]\" and it will refine just the parts that need it.",
+      "If the tone feels too formal or too crude, ask Claude to \"adjust the tone, make it [more conversational / less edgy]\" and it will refine just the parts that need it.",
       "Practice it 2-3 times before the wedding, marking pauses where the audience will likely laugh or where you want to slow down for emotional impact."
     ],
     "recommendedTools": [],
@@ -159,9 +159,9 @@
   {
     "slug": "30-day-linkedin-authority-building-content-calendar",
     "title": "30-Day LinkedIn Authority-Building Content Calendar",
-    "promptText": "You are a LinkedIn content strategist specializing in B2B professional services. Your task is to create a strategic 30-day content calendar designed to establish thought leadership and build authority for a B2B consulting brand.\n\n<CONTEXT>\nBrand/Consulting Focus: [YOUR CONSULTING SPECIALIZATION, e.g., \"digital transformation for mid-market manufacturers\"]\nBrand Voice: [TONE & VALUES, e.g., \"data-driven, approachable, no corporate jargon\"]\nTarget Audience: [WHO YOU'RE SPEAKING TO, e.g., \"C-suite executives at companies with 50-500 employees\"]\nCurrent LinkedIn Following: [APPROXIMATE NUMBER, e.g., \"2,000 engaged connections\"]\nKey Expertise/Proof Points: [2-3 CREDENTIALS OR RECENT WINS, e.g., \"led 12 digital-first implementations in Q3 2024; published in Forbes CIO\"]\nContent Pillars: [3-4 CORE THEMES, e.g., \"change management, ROI measurement, emerging tools, client success stories\"]\n</CONTEXT>\n\n<TASK>\nCreate a 30-day LinkedIn content calendar (calendar view or day-by-day breakdown) that:\n\n1. Balances content types: 40% insights/thought leadership, 30% client wins/case studies, 20% industry news commentary, 10% personal/behind-the-scenes.\n2. Follows a strategic rhythm: Mix educational posts (Mondays/Wednesdays), hot takes on news (Tuesdays/Thursdays), wins/social proof (Fridays).\n3. Each post includes:\n   - Suggested headline (5-8 words, curiosity-driven or stat-led)\n   - Post body (150-200 words, conversation starter, 1-2 CTA suggestions)\n   - Suggested media (video, carousel, document, or link)\n   - Hashtag strategy (3-4 relevant hashtags per post)\n   - Engagement hook (a question or conversation starter)\n4. Includes 2-3 carousel post ideas with specific slide breakdowns.\n5. Recommends optimal posting times (e.g., \"Tuesday 9 AM ET when your audience is active\").\n6. Flags opportunities for LinkedIn native features: articles, documents, polls.\n7. Includes an engagement strategy: how to respond to comments in the first 2 hours to boost algorithm reach.\n\n</TASK>\n\n<OUTPUT_FORMAT>\nDeliver the calendar in one of these formats (choose the clearest):\n\nOption A: Day-by-Day Breakdown\n- Day 1 (Monday): [Headline] | [150-200 word post body] | Media: [type] | Hashtags: | CTA: | Engagement Hook:\n- Day 2 (Tuesday): [same structure]\n[...continue through Day 30]\n\nOption B: Week-by-Week Table\n[Use a clean table with columns: Date | Day | Content Type | Headline | Post Body | Media | Hashtags | CTA]\n\nOption C: Narrative + Structured List\n[Brief strategy narrative explaining the 30-day arc, then a bulleted list of 30 posts with titles and quick summaries]\n\nChoose whichever format will be easiest for you to iterate on.\n\nAfter the calendar, include a 100-150 word \"Quick Wins Checklist\" covering:\n- Pre-posting: profile optimization, link testing, image resizing\n- Posting: scheduling tool setup, timezone best practices\n- Engagement: response template for first-hour comments, when to hop into trending conversations\n- Month 2: which posts to repurpose (video, email, newsletter) and how\n</OUTPUT_FORMAT>\n\n<CONSTRAINTS>\n- Do NOT include posts about promotions, free giveaways, or hard selling.\n- Do NOT repeat the same topic within 5 days.\n- Assume the user will post once per day for 30 days.\n- Keep post bodies conversational and authentic, avoiding buzzwords like \"synergy,\" \"leverage,\" \"shift,\" and \"digital transformation\" (unless deeply specific to the consulting angle).\n- Avoid generic advice (\"work smarter, not harder\") — anchor every post to a specific insight, number, or client lesson.\n</CONSTRAINTS>",
+    "promptText": "You are a LinkedIn content strategist specializing in B2B professional services. Your task is to create a strategic 30-day content calendar designed to establish thought leadership and build authority for a B2B consulting brand.\n\n<CONTEXT>\nBrand/Consulting Focus: [YOUR CONSULTING SPECIALIZATION, e.g., \"digital transformation for mid-market manufacturers\"]\nBrand Voice: [TONE & VALUES, e.g., \"data-driven, approachable, no corporate jargon\"]\nTarget Audience: [WHO YOU'RE SPEAKING TO, e.g., \"C-suite executives at companies with 50-500 employees\"]\nCurrent LinkedIn Following: [APPROXIMATE NUMBER, e.g., \"2,000 engaged connections\"]\nKey Expertise/Proof Points: [2-3 CREDENTIALS OR RECENT WINS, e.g., \"led 12 digital-first implementations in Q3 2024; published in Forbes CIO\"]\nContent Pillars: [3-4 CORE THEMES, e.g., \"change management, ROI measurement, emerging tools, client success stories\"]\n</CONTEXT>\n\n<TASK>\nCreate a 30-day LinkedIn content calendar (calendar view or day-by-day breakdown) that:\n\n1. Balances content types: 40% insights/thought leadership, 30% client wins/case studies, 20% industry news commentary, 10% personal/behind-the-scenes.\n2. Follows a strategic rhythm: Mix educational posts (Mondays/Wednesdays), hot takes on news (Tuesdays/Thursdays), wins/social proof (Fridays).\n3. Each post includes:\n   - Suggested headline (5-8 words, curiosity-driven or stat-led)\n   - Post body (150-200 words, conversation starter, 1-2 CTA suggestions)\n   - Suggested media (video, carousel, document, or link)\n   - Hashtag strategy (3-4 relevant hashtags per post)\n   - Engagement hook (a question or conversation starter)\n4. Includes 2-3 carousel post ideas with specific slide breakdowns.\n5. Recommends optimal posting times (e.g., \"Tuesday 9 AM ET when your audience is active\").\n6. Flags opportunities for LinkedIn native features: articles, documents, polls.\n7. Includes an engagement strategy: how to respond to comments in the first 2 hours to boost algorithm reach.\n\n</TASK>\n\n<OUTPUT_FORMAT>\nDeliver the calendar in one of these formats (choose the clearest):\n\nOption A: Day-by-Day Breakdown\n- Day 1 (Monday): [Headline] | [150-200 word post body] | Media: [type] | Hashtags: | CTA: | Engagement Hook:\n- Day 2 (Tuesday): [same structure]\n[...continue through Day 30]\n\nOption B: Week-by-Week Table\n[Use a clean table with columns: Date | Day | Content Type | Headline | Post Body | Media | Hashtags | CTA]\n\nOption C: Narrative + Structured List\n[Brief strategy narrative explaining the 30-day arc, then a bulleted list of 30 posts with titles and quick summaries]\n\nChoose whichever format will be easiest for you to iterate on.\n\nAfter the calendar, include a 100-150 word \"Quick Wins Checklist\" covering:\n- Pre-posting: profile optimization, link testing, image resizing\n- Posting: scheduling tool setup, timezone best practices\n- Engagement: response template for first-hour comments, when to hop into trending conversations\n- Month 2: which posts to repurpose (video, email, newsletter) and how\n</OUTPUT_FORMAT>\n\n<CONSTRAINTS>\n- Do NOT include posts about promotions, free giveaways, or hard selling.\n- Do NOT repeat the same topic within 5 days.\n- Assume the user will post once per day for 30 days.\n- Keep post bodies conversational and authentic, avoiding buzzwords like \"synergy,\" \"leverage,\" \"shift,\" and \"digital transformation\" (unless deeply specific to the consulting angle).\n- Avoid generic advice (\"work smarter, not harder\"), anchor every post to a specific insight, number, or client lesson.\n</CONSTRAINTS>",
     "instructions": [
-      "Fill in the six [PLACEHOLDERS] in the prompt with your consulting specialization, brand voice, target audience, current following size, key credentials, and 3-4 core expertise pillars. Be specific—the more detail, the better the calendar quality.",
+      "Fill in the six [PLACEHOLDERS] in the prompt with your consulting specialization, brand voice, target audience, current following size, key credentials, and 3-4 core expertise pillars. Be specific, the more detail, the better the calendar quality.",
       "Paste the complete filled-in prompt into ChatGPT. Under \"Chat Settings,\" ensure the model is set to \"GPT-4\" or \"GPT-4o\" for the best strategic output.",
       "Review the calendar output and choose whether Option A (day-by-day), Option B (weekly table), or Option C (narrative + list) works best for your planning workflow. If unsure, ask ChatGPT to convert it to a different format.",
       "For each post in the calendar, screenshot or copy the headline and post body into a LinkedIn draft or notes app, then use a visual editor (Canva) to design any recommended carousel slides or graphics.",
@@ -203,14 +203,14 @@
   {
     "slug": "3-month-conversational-spanish-learning-plan",
     "title": "3-Month Conversational Spanish Learning Plan",
-    "promptText": "# Your Role\nYou are an experienced Spanish language coach designing a personalized, intensive conversational Spanish curriculum.\n\n# Task\nCreate a detailed 12-week learning plan to help a student become conversationally fluent in Spanish in 3 months, with 30 minutes of daily practice.\n\n# Key Constraints\n- **Duration:** 12 weeks (3 months)\n- **Daily commitment:** 30 minutes per day\n- **Goal:** Conversational fluency (ability to hold basic-to-intermediate conversations, ask for help, discuss familiar topics)\n- **Learning style:** [PREFERRED_LEARNING_STYLE, e.g., \"visual learner\", \"audio/listening-focused\", \"interactive conversation\"]\n- **Current level:** [CURRENT_SPANISH_LEVEL, e.g., \"complete beginner\", \"A1-A2 (false beginner)\"]\n- **Specific focus areas (optional):** [OPTIONAL_FOCUS, e.g., \"travel Spanish\", \"business Spanish\", \"everyday conversations\" — leave blank if no preference]\n- **Access to resources:** [RESOURCE_ACCESS, e.g., \"free apps only\", \"willing to pay for paid courses\", \"prefer in-person tutoring\"]\n\n# Output Format\nStructure your plan as follows:\n\n1. **Weeks 1–4: Foundation Phase**\n   - Key grammar and vocabulary targets (with word count)\n   - Daily 30-minute breakdown (e.g., 10 min listening, 10 min speaking, 10 min grammar drills)\n   - Recommended activities and apps for this phase\n   - Measurable milestone (what the student should be able to do by week 4)\n\n2. **Weeks 5–8: Intermediate Phase**\n   - Grammar progression and thematic vocabulary (e.g., shopping, dining, directions)\n   - Updated daily structure\n   - Conversation practice methods (language partners, tutors, apps)\n   - Measurable milestone\n\n3. **Weeks 9–12: Fluency Phase**\n   - Complex structures, idioms, and cultural nuance\n   - Real-world conversation scenarios\n   - How to maintain momentum and avoid burnout\n   - Final assessment and next steps\n\n4. **Daily Habits & Tools**\n   - Specific apps, websites, or methods to use during the 30-minute block\n   - How to track progress\n   - Tips for staying consistent\n\n5. **Conversation Practice Partners**\n   - Where to find language exchange partners or tutors\n   - How to prepare for conversation sessions\n\n# Tone & Style\n- Encouraging and realistic (acknowledge the ambition, set honest expectations)\n- Practical and actionable (no vague advice)\n- Evidence-based where possible (reference language acquisition research if relevant)\n\n# Important Notes\n- Do not assume the student has access to paid services; suggest free and paid options separately\n- Provide 2–3 specific activity examples for each phase\n- Include one \"reality check\" section addressing common challenges (plateaus, motivation dips, pronunciation anxiety)",
+    "promptText": "# Your Role\nYou are an experienced Spanish language coach designing a personalized, intensive conversational Spanish curriculum.\n\n# Task\nCreate a detailed 12-week learning plan to help a student become conversationally fluent in Spanish in 3 months, with 30 minutes of daily practice.\n\n# Key Constraints\n- **Duration:** 12 weeks (3 months)\n- **Daily commitment:** 30 minutes per day\n- **Goal:** Conversational fluency (ability to hold basic-to-intermediate conversations, ask for help, discuss familiar topics)\n- **Learning style:** [PREFERRED_LEARNING_STYLE, e.g., \"visual learner\", \"audio/listening-focused\", \"interactive conversation\"]\n- **Current level:** [CURRENT_SPANISH_LEVEL, e.g., \"complete beginner\", \"A1-A2 (false beginner)\"]\n- **Specific focus areas (optional):** [OPTIONAL_FOCUS, e.g., \"travel Spanish\", \"business Spanish\", \"everyday conversations\", leave blank if no preference]\n- **Access to resources:** [RESOURCE_ACCESS, e.g., \"free apps only\", \"willing to pay for paid courses\", \"prefer in-person tutoring\"]\n\n# Output Format\nStructure your plan as follows:\n\n1. **Weeks 1–4: Foundation Phase**\n   - Key grammar and vocabulary targets (with word count)\n   - Daily 30-minute breakdown (e.g., 10 min listening, 10 min speaking, 10 min grammar drills)\n   - Recommended activities and apps for this phase\n   - Measurable milestone (what the student should be able to do by week 4)\n\n2. **Weeks 5–8: Intermediate Phase**\n   - Grammar progression and thematic vocabulary (e.g., shopping, dining, directions)\n   - Updated daily structure\n   - Conversation practice methods (language partners, tutors, apps)\n   - Measurable milestone\n\n3. **Weeks 9–12: Fluency Phase**\n   - Complex structures, idioms, and cultural nuance\n   - Real-world conversation scenarios\n   - How to maintain momentum and avoid burnout\n   - Final assessment and next steps\n\n4. **Daily Habits & Tools**\n   - Specific apps, websites, or methods to use during the 30-minute block\n   - How to track progress\n   - Tips for staying consistent\n\n5. **Conversation Practice Partners**\n   - Where to find language exchange partners or tutors\n   - How to prepare for conversation sessions\n\n# Tone & Style\n- Encouraging and realistic (acknowledge the ambition, set honest expectations)\n- Practical and actionable (no vague advice)\n- Evidence-based where possible (reference language acquisition research if relevant)\n\n# Important Notes\n- Do not assume the student has access to paid services; suggest free and paid options separately\n- Provide 2–3 specific activity examples for each phase\n- Include one \"reality check\" section addressing common challenges (plateaus, motivation dips, pronunciation anxiety)",
     "instructions": [
       "Open Gemini and paste the entire prompt above.",
       "Before submitting, fill in the four placeholders in square brackets: [PREFERRED_LEARNING_STYLE] (how you learn best), [CURRENT_SPANISH_LEVEL] (where you're starting), [OPTIONAL_FOCUS] (any specialty like travel or business, or leave blank), and [RESOURCE_ACCESS] (free apps, paid courses, or tutors). If you're unsure of your level, use \"complete beginner.\"",
       "Click Submit and let Gemini generate your full 12-week plan. This should take 2–3 minutes.",
-      "Review the daily structure for each phase — it should feel doable in 30 minutes. If any phase feels too dense or too light, copy the plan into a new chat and ask Gemini to rebalance that week.",
+      "Review the daily structure for each phase, it should feel doable in 30 minutes. If any phase feels too dense or too light, copy the plan into a new chat and ask Gemini to rebalance that week.",
       "Pick one app or method from the \"Daily Habits & Tools\" section and use it for your first week. Most free options include Duolingo, Busuu, or iTalki (for language partners).",
-      "Set a recurring 30-minute calendar block and adjust the plan every 4 weeks based on what's working — if listening feels easier than speaking, shift time accordingly."
+      "Set a recurring 30-minute calendar block and adjust the plan every 4 weeks based on what's working, if listening feels easier than speaking, shift time accordingly."
     ],
     "recommendedTools": [],
     "categoryTags": [
@@ -309,16 +309,16 @@
     "promptText": "# Task\nYou are writing a professional 4-email renewal sequence targeting at-risk customers 60 days before their contract ends. The goal is to re-engage them, remind them of value, address likely concerns, and drive renewal.\n\n# Context\n- **Product/Service**: [YOUR_PRODUCT_NAME]\n- **Key Value Propositions**: [TOP_3_BENEFITS_OR_USE_CASES]\n- **Common Churn Reasons**: [WHY_AT_RISK_CUSTOMERS_TYPICALLY_LEAVE]\n- **Renewal Terms**: [CONTRACT_VALUE, LENGTH, ANY_DISCOUNTS_AVAILABLE]\n- **Customer Segment**: [INDUSTRY, COMPANY_SIZE, OR_ROLE]\n\n# Requirements\n\n## Email 1: Soft Re-engagement (Day 1)\n- Tone: Friendly, not pushy\n- Goal: Remind them of their success and open the door for conversation\n- Length: 3–4 sentences in the body\n- Include one subtle win or metric they achieved\n\n## Email 2: Value Reinforcement (Day 7)\n- Tone: Educational, helpful\n- Goal: Highlight specific features or ROI relevant to their use case\n- Length: 3–5 sentences\n- Include one concrete case study, metric, or testimonial\n- End with a soft CTA: \"Happy to chat if you have questions\"\n\n## Email 3: Problem-Solving (Day 14)\n- Tone: Solution-oriented, acknowledging potential friction\n- Goal: Address the top churn reason and show how you solve it\n- Length: 4–6 sentences\n- Offer a specific solution, resource, or alternative plan\n- Include a direct calendar link or email-to-book CTA\n\n## Email 4: Urgency + Incentive (Day 21)\n- Tone: Professional, time-sensitive\n- Goal: Create urgency and close the loop\n- Length: 4–6 sentences\n- Mention the contract end date and any renewal incentive (discount, upgrade, added features)\n- Clear next step: renewal link, reply to confirm, or book a call\n\n# Output Format\n\nProvide exactly 4 emails in this structure:\n\n**Email 1: [Subject Line]**\nDear [NAME],\n\n[Body]\n\nBest,\n[YOUR_NAME]\n\n---\n\n**Email 2: [Subject Line]**\nDear [NAME],\n\n[Body]\n\nBest,\n[YOUR_NAME]\n\n---\n\n(continue for Emails 3 and 4)\n\n# Tone & Style\n- Professional yet personable\n- Short paragraphs, scannable\n- Avoid jargon; focus on outcomes\n- No aggressive sales language\n- Assume the customer values your product but may be distracted or reconsidering",
     "instructions": [
       "Open Gemini (gemini.google.com) and paste the full prompt into a new conversation.",
-      "Fill in the five context placeholders in [SQUARE BRACKETS] with your product details, value props, churn drivers, renewal terms, and customer segment. Use real specifics—this improves email relevance.",
+      "Fill in the five context placeholders in [SQUARE BRACKETS] with your product details, value props, churn drivers, renewal terms, and customer segment. Use real specifics, this improves email relevance.",
       "Run the prompt and review the four generated emails. Check that each one matches its intended day and goal (re-engagement → value → problem-solving → urgency).",
       "Customize the subject lines and signature to match your brand voice and actual sender name. Adapt case studies or metrics to your real customer data if the AI used placeholders.",
       "Test the sequence by sending emails 1 and 2 to a small pilot cohort (5–10 at-risk customers) before rolling out. Track open rates and replies to refine tone or timing for the full send."
     ],
     "recommendedTools": [
       {
-        "name": "HubSpot CRM",
-        "normalized": "hubspotcrm",
-        "registrySlug": "hubspot-crm",
+        "name": "HubSpot",
+        "normalized": "hubspot",
+        "registrySlug": "hubspot",
         "homepageUrl": null
       },
       {
@@ -387,7 +387,7 @@
     "title": "Senior Product Designer Job Description & Phone Screen Questions",
     "promptText": "You are an experienced HR professional and hiring manager. Your task is to create two complementary outputs:\n\n1. A professional job description for a Senior Product Designer position\n2. A set of 5-7 phone screening questions tailored to this role\n\n## Context\n\n**Company/Product info:** [COMPANY_NAME]\n**Industry:** [INDUSTRY]\n**Team size:** [TEAM_SIZE] (e.g., 3 designers, 20 person product team)\n**Key responsibilities:** [PRIMARY_RESPONSIBILITIES] (e.g., \"lead design for web platform and mobile app\", \"establish design systems\", \"mentor junior designers\")\n**Required experience:** [YEARS_REQUIRED] years in product/UX design\n**Must-have skills:** [MUST_HAVE_SKILLS] (e.g., \"Figma proficiency\", \"design systems experience\", \"user research facilitation\")\n**Nice-to-have:** [NICE_TO_HAVE] (e.g., \"prototyping\", \"front-end HTML/CSS\", \"accessibility compliance\")\n**Team dynamics:** [TEAM_CONTEXT] (e.g., \"fast-paced startup\", \"distributed team\", \"cross-functional collaboration with engineers and PMs\")\n**Compensation range (if sharing):** [SALARY_RANGE]\n**Location/remote:** [LOCATION_DETAILS]\n\n## Job Description Requirements\n\n- Start with a compelling 2-3 sentence overview of the role and impact\n- Include clear sections: About Us, The Role, What You'll Do, What You Bring, Why You'll Love It Here, How to Apply\n- Tone: Professional but warm; avoid jargon overload\n- Length: 350-450 words\n- Emphasize growth opportunity and influence, not just execution\n- Include 3-4 specific, measurable impact areas (not generic duties)\n\n## Phone Screen Questions Requirements\n\n- Ask 5-7 open-ended questions designed to assess:\n  - Relevant product design experience (portfolio/case study depth)\n  - Problem-solving approach and design thinking\n  - Communication and collaboration style\n  - Motivation and cultural fit\n  - One technical/tool question (Figma, prototyping, etc.)\n- Avoid yes/no questions\n- Include brief notes on what good answers should touch on\n- Format each question with scoring guidance (e.g., \"Look for: process clarity, evidence of user research, ownership\")\n\n## Output Format\n\n**JOB DESCRIPTION:**\n[Full job description formatted for posting]\n\n**PHONE SCREEN QUESTIONS:**\n[Numbered list with question, scoring notes, and red flags for each]\n\n## Tone & Style\n\n- Job description: Inviting, honest about what the role entails, emphasizing agency and growth\n- Phone screen: Conversational, probing but not aggressive; questions should feel like a genuine conversation, not an interrogation\n\nDo not include salary details in the job description unless explicitly requested. Do not oversell or make promises about role scope that cannot be kept. Ensure questions are legally compliant and non-discriminatory.",
     "instructions": [
-      "Fill in all [PLACEHOLDERS] in brackets with your company details, team size, key responsibilities, experience requirements, and location. Be as specific as possible—vague placeholders lead to generic outputs.",
+      "Fill in all [PLACEHOLDERS] in brackets with your company details, team size, key responsibilities, experience requirements, and location. Be as specific as possible, vague placeholders lead to generic outputs.",
       "Paste the full prompt into ChatGPT. If you're using ChatGPT web (free or Plus), copy it all at once. For best results, use GPT-4.",
       "Review the generated job description first. Check that it accurately reflects your team's values and the real scope of the role. Edit tone or emphasis if needed (e.g., if the description over-promises mentorship, dial it back).",
       "Review the phone screen questions. Look for clarity and fairness; ensure none inadvertently ask about protected characteristics (age, family status, nationality, etc.). Adjust scoring notes to match your hiring rubric.",
@@ -402,9 +402,9 @@
         "homepageUrl": null
       },
       {
-        "name": "HubSpot CRM",
-        "normalized": "hubspotcrm",
-        "registrySlug": "hubspot-crm",
+        "name": "HubSpot",
+        "normalized": "hubspot",
+        "registrySlug": "hubspot",
         "homepageUrl": null
       }
     ],
@@ -431,7 +431,7 @@
     "promptText": "<context>\nYou are a strategic business analyst helping a founder/CEO identify market opportunities by analyzing competitor positioning and pricing strategies.\n\nCompetitor List:\n[LIST YOUR TOP 5 COMPETITORS]\n\nYour Product/Service: [BRIEF 1-2 SENTENCE DESCRIPTION]\nTarget Market: [PRIMARY CUSTOMER SEGMENT]\nCurrent Pricing (if any): [YOUR CURRENT PRICING OR 'TBD']\nKey Differentiators: [2-3 FEATURES OR VALUES YOU BELIEVE SET YOU APART]\n</context>\n\n<task>\nConduct a comprehensive competitive analysis with the goal of identifying pricing gaps, positioning weaknesses, and market opportunities your business can exploit.\n\nFor each competitor, research and document:\n1. Pricing model (list all tiers/pricing points)\n2. Target customer segment and positioning statement\n3. Top 3-5 advertised features/benefits\n4. Perceived weaknesses or customer pain points (from reviews, if available)\n5. Any recent pricing changes or product launches\n\nThen synthesize across all five competitors to identify:\n- Price clustering (where most competitors land)\n- Underserved segments or use cases\n- Feature gaps (what customers ask for but competitors don't offer)\n- Positioning white space (what messaging angles are unclaimed)\n- Price-to-value misalignment opportunities\n\nFinally, recommend 2-3 specific, actionable positioning or pricing strategies your business should consider, with justification for each.\n</task>\n\n<output_format>\nStructure your response as follows:\n\n## Competitor Breakdown\n[For each of 5 competitors: pricing tiers, positioning, top features, perceived gaps, recent moves]\n\n## Cross-Competitor Synthesis\n- Price Distribution & Clustering\n- Feature Gap Analysis\n- Positioning Whitespace\n- Customer Pain Points (By Segment)\n\n## Opportunity Analysis\n[2-3 specific pricing or positioning strategies with reasoning]\n\n## Recommended Next Steps\n[2-3 quick validation actions: customer interviews, pricing tests, positioning experiments]\n\nKeep analysis concise but specific. Use tables where helpful for price comparison. Avoid generic advice; ground every recommendation in competitor data.\n</output_format>",
     "instructions": [
       "Open Claude (Claude.ai or your API integration) and paste the full prompt above into a new chat.",
-      "Fill in the five placeholders in <context>: your top 5 competitors by name, a brief description of your product, your target market, current pricing, and 2–3 key differentiators. Be specific—vague inputs lead to generic analysis.",
+      "Fill in the five placeholders in <context>: your top 5 competitors by name, a brief description of your product, your target market, current pricing, and 2–3 key differentiators. Be specific, vague inputs lead to generic analysis.",
       "Claude will analyze each competitor's pricing, positioning, and customer perception. If Claude lacks real-time web access, manually gather pricing from competitors' websites and paste key details into a follow-up message (e.g., 'Competitor X pricing: $X/mo, targets Y segment').",
       "Review the cross-competitor synthesis section to spot price clustering, feature gaps, and positioning whitespace. Highlight the 1–2 gaps that feel most defensible for your business.",
       "Shortlist the 2–3 recommended strategies and test them: schedule 3–5 customer interviews to validate positioning, run a pricing survey, or A/B test messaging on your website.",
@@ -502,12 +502,12 @@
   {
     "slug": null,
     "title": "SEO Content Brief Generator for CRM Keywords",
-    "promptText": "<context>\nYou are an expert SEO content strategist. Your task is to generate a comprehensive, data-driven content brief for an SEO writer or content creator.\n\nThe user is writing for: [TARGET_AUDIENCE]\nPrimary keyword: [PRIMARY_KEYWORD]\nSecondary keywords to target: [SECONDARY_KEYWORDS]\nTarget search intent: [SEARCH_INTENT]\nCurrent top competitors: [COMPETITOR_URLS]\nTarget word count: [WORD_COUNT]\nContent type: [CONTENT_TYPE]\nContent angle/unique POV: [UNIQUE_ANGLE]\n</context>\n\n<task>\nGenerate a detailed SEO content brief that will guide the writer to create content optimized for search engines while providing genuine value to readers. The brief should be immediately actionable and evidence-based.\n</task>\n\n<output_format>\nStructure the brief exactly as follows:\n\n# SEO Content Brief: [PRIMARY_KEYWORD]\n\n## Executive Summary\n[1-2 sentences capturing the core opportunity and recommended approach]\n\n## Target Audience\n[Description of who will read this content and what they need]\n\n## Keyword Strategy\n### Primary Keyword\n[PRIMARY_KEYWORD] — [Monthly search volume, difficulty estimate, user intent]\n\n### Secondary Keywords to Naturally Incorporate\n[Bulleted list of 5-8 related keywords with brief context on where to use them]\n\n## Search Intent & Content Angle\n[Explanation of why people search this term and how your unique angle differentiates from competitors]\n\n## Competitive Landscape\n[2-3 sentence summary of what top-ranking pages do well and gaps your content can fill]\n\n## Content Structure & Outline\n[Numbered outline with H2 and H3 headings, key points per section, recommended supporting elements (data, examples, visuals)]\n\n## On-Page Optimization Checklist\n- Meta title: [Recommended format and character length]\n- Meta description: [Recommended format and approach]\n- URL slug: [Recommended URL structure]\n- Internal linking: [2-3 pages to link to/from]\n- Structured data: [Schema markup recommendations if relevant]\n\n## Content Deliverables Checklist\n- Word count: [WORD_COUNT]\n- Target headings: [Number of H2s, H3s]\n- Visual elements: [Types and frequency of images, tables, or embeds]\n- Call-to-action: [Recommended CTA placement and type]\n\n## Success Metrics\n[2-3 measurable outcomes to track after publication: rankings, traffic, conversions]\n</output_format>\n\nBe specific and tactical. Use concrete numbers, real search behaviors, and actionable recommendations. Avoid generic advice.",
+    "promptText": "<context>\nYou are an expert SEO content strategist. Your task is to generate a comprehensive, data-driven content brief for an SEO writer or content creator.\n\nThe user is writing for: [TARGET_AUDIENCE]\nPrimary keyword: [PRIMARY_KEYWORD]\nSecondary keywords to target: [SECONDARY_KEYWORDS]\nTarget search intent: [SEARCH_INTENT]\nCurrent top competitors: [COMPETITOR_URLS]\nTarget word count: [WORD_COUNT]\nContent type: [CONTENT_TYPE]\nContent angle/unique POV: [UNIQUE_ANGLE]\n</context>\n\n<task>\nGenerate a detailed SEO content brief that will guide the writer to create content optimized for search engines while providing genuine value to readers. The brief should be immediately actionable and evidence-based.\n</task>\n\n<output_format>\nStructure the brief exactly as follows:\n\n# SEO Content Brief: [PRIMARY_KEYWORD]\n\n## Executive Summary\n[1-2 sentences capturing the core opportunity and recommended approach]\n\n## Target Audience\n[Description of who will read this content and what they need]\n\n## Keyword Strategy\n### Primary Keyword\n[PRIMARY_KEYWORD], [Monthly search volume, difficulty estimate, user intent]\n\n### Secondary Keywords to Naturally Incorporate\n[Bulleted list of 5-8 related keywords with brief context on where to use them]\n\n## Search Intent & Content Angle\n[Explanation of why people search this term and how your unique angle differentiates from competitors]\n\n## Competitive Landscape\n[2-3 sentence summary of what top-ranking pages do well and gaps your content can fill]\n\n## Content Structure & Outline\n[Numbered outline with H2 and H3 headings, key points per section, recommended supporting elements (data, examples, visuals)]\n\n## On-Page Optimization Checklist\n- Meta title: [Recommended format and character length]\n- Meta description: [Recommended format and approach]\n- URL slug: [Recommended URL structure]\n- Internal linking: [2-3 pages to link to/from]\n- Structured data: [Schema markup recommendations if relevant]\n\n## Content Deliverables Checklist\n- Word count: [WORD_COUNT]\n- Target headings: [Number of H2s, H3s]\n- Visual elements: [Types and frequency of images, tables, or embeds]\n- Call-to-action: [Recommended CTA placement and type]\n\n## Success Metrics\n[2-3 measurable outcomes to track after publication: rankings, traffic, conversions]\n</output_format>\n\nBe specific and tactical. Use concrete numbers, real search behaviors, and actionable recommendations. Avoid generic advice.",
     "instructions": [
-      "Open Claude or paste this prompt into your Claude workspace. Before submitting, fill in the [PLACEHOLDER] values with your specific details: [TARGET_AUDIENCE] (e.g., 'small business owners and entrepreneurs'), [PRIMARY_KEYWORD] ('crm for small business'), [SECONDARY_KEYWORDS] (e.g., 'best crm for small business, affordable crm, crm software for startups'), [SEARCH_INTENT] (e.g., 'informational—users want to understand options and compare'), [COMPETITOR_URLS] (paste 3 URLs currently ranking top 5 for your keyword), [WORD_COUNT] (e.g., '2,500'), [CONTENT_TYPE] (e.g., 'comparison guide', 'buyer's guide', 'how-to'), and [UNIQUE_ANGLE] (e.g., 'focus on cost-effectiveness and ease of setup for solo founders').",
+      "Open Claude or paste this prompt into your Claude workspace. Before submitting, fill in the [PLACEHOLDER] values with your specific details: [TARGET_AUDIENCE] (e.g., 'small business owners and entrepreneurs'), [PRIMARY_KEYWORD] ('crm for small business'), [SECONDARY_KEYWORDS] (e.g., 'best crm for small business, affordable crm, crm software for startups'), [SEARCH_INTENT] (e.g., 'informational, users want to understand options and compare'), [COMPETITOR_URLS] (paste 3 URLs currently ranking top 5 for your keyword), [WORD_COUNT] (e.g., '2,500'), [CONTENT_TYPE] (e.g., 'comparison guide', 'buyer's guide', 'how-to'), and [UNIQUE_ANGLE] (e.g., 'focus on cost-effectiveness and ease of setup for solo founders').",
       "Submit the prompt to Claude. Review the generated brief to ensure the keyword strategy, outline, and competitive insights match your research and brand positioning.",
       "Use the outline and on-page checklist as your writing template. Copy the 'Content Structure & Outline' section into your writing doc and expand each bullet point into full paragraphs.",
-      "After your first draft, use Claude again to audit your written content against the brief: paste your draft and ask Claude to score it against the keyword strategy, word count, and recommended structure—this ensures on-brand and on-strategy delivery.",
+      "After your first draft, use Claude again to audit your written content against the brief: paste your draft and ask Claude to score it against the keyword strategy, word count, and recommended structure, this ensures on-brand and on-strategy delivery.",
       "Before publishing, verify all internal links are correct and meta title/description match the recommendations in the brief. Use Google Search Console or Ahrefs to track ranking progress for 4-8 weeks post-publication."
     ],
     "recommendedTools": [
@@ -544,10 +544,10 @@
   {
     "slug": "hubspot-lead-scoring-automation-with-slack-alerts",
     "title": "HubSpot Lead Scoring Automation with Slack Alerts",
-    "promptText": "<context>\nYou are building a HubSpot workflow automation that scores inbound leads based on engagement and fit signals, then notifies the sales team in Slack when a lead crosses a quality threshold.\n\nBusiness context:\n- Lead source: [INBOUND_CHANNEL] (e.g., form submission, demo request, website visitor)\n- Scoring criteria: [SCORING_FIELDS] (e.g., company size, industry, email domain, page visits, demo attendance)\n- Quality threshold: leads scoring [THRESHOLD_SCORE] or above trigger an alert\n- Sales team Slack channel: [SLACK_CHANNEL_NAME] (e.g., #sales-leads or #hot-leads)\n- Any custom properties already in HubSpot: [CUSTOM_PROPERTIES] (e.g., \"Industry\", \"Deal Size\", \"Use Case\")\n</context>\n\n<task>\nDesign a HubSpot workflow automation that:\n1. Triggers when a new contact enters HubSpot (inbound form, API, or manual creation)\n2. Calculates a lead score by assigning points to engagement and fit signals\n3. Updates a \"Lead Score\" property on the contact\n4. If the score meets or exceeds the threshold, sends a formatted Slack message to the sales channel with:\n   - Contact name and company\n   - Lead score and score breakdown (which signals contributed most)\n   - Key properties (industry, company size, or other relevant fit signals)\n   - A direct link to the contact in HubSpot\n5. If the score is below threshold, logs it silently (no Slack alert)\n\nProvide:\n- A step-by-step guide to set up the workflow in HubSpot (using native workflows, not custom code)\n- The exact fields, conditions, and actions to configure\n- A Slack message template (formatted for readability)\n- Troubleshooting tips for common setup errors\n</task>\n\n<output_format>\nProvide your response in the following sections:\n\n1. **Workflow Overview** — Brief description of the automation logic and decision tree\n2. **HubSpot Workflow Setup** — Numbered steps to create the workflow, including:\n   - Enrollment trigger(s)\n   - Enrollment conditions (if any)\n   - All branches and conditions in the workflow\n   - Actions (property updates, delays, Slack notifications)\n3. **Slack Message Template** — Ready-to-paste message text (use Slack's message formatting and HubSpot dynamic tokens like {{contact.firstname}}, {{contact.hs_lead_status}}, etc.)\n4. **Scoring Logic Table** — A simple table showing signal → points mapping (e.g., \"Website demo attended → +25 points\")\n5. **Slack Integration Checklist** — How to connect HubSpot to Slack and authorize the notification action\n6. **Troubleshooting & Next Steps** — Common pitfalls, how to test, and ideas for refinement\n</output_format>",
+    "promptText": "<context>\nYou are building a HubSpot workflow automation that scores inbound leads based on engagement and fit signals, then notifies the sales team in Slack when a lead crosses a quality threshold.\n\nBusiness context:\n- Lead source: [INBOUND_CHANNEL] (e.g., form submission, demo request, website visitor)\n- Scoring criteria: [SCORING_FIELDS] (e.g., company size, industry, email domain, page visits, demo attendance)\n- Quality threshold: leads scoring [THRESHOLD_SCORE] or above trigger an alert\n- Sales team Slack channel: [SLACK_CHANNEL_NAME] (e.g., #sales-leads or #hot-leads)\n- Any custom properties already in HubSpot: [CUSTOM_PROPERTIES] (e.g., \"Industry\", \"Deal Size\", \"Use Case\")\n</context>\n\n<task>\nDesign a HubSpot workflow automation that:\n1. Triggers when a new contact enters HubSpot (inbound form, API, or manual creation)\n2. Calculates a lead score by assigning points to engagement and fit signals\n3. Updates a \"Lead Score\" property on the contact\n4. If the score meets or exceeds the threshold, sends a formatted Slack message to the sales channel with:\n   - Contact name and company\n   - Lead score and score breakdown (which signals contributed most)\n   - Key properties (industry, company size, or other relevant fit signals)\n   - A direct link to the contact in HubSpot\n5. If the score is below threshold, logs it silently (no Slack alert)\n\nProvide:\n- A step-by-step guide to set up the workflow in HubSpot (using native workflows, not custom code)\n- The exact fields, conditions, and actions to configure\n- A Slack message template (formatted for readability)\n- Troubleshooting tips for common setup errors\n</task>\n\n<output_format>\nProvide your response in the following sections:\n\n1. **Workflow Overview**, Brief description of the automation logic and decision tree\n2. **HubSpot Workflow Setup**, Numbered steps to create the workflow, including:\n   - Enrollment trigger(s)\n   - Enrollment conditions (if any)\n   - All branches and conditions in the workflow\n   - Actions (property updates, delays, Slack notifications)\n3. **Slack Message Template**, Ready-to-paste message text (use Slack's message formatting and HubSpot dynamic tokens like {{contact.firstname}}, {{contact.hs_lead_status}}, etc.)\n4. **Scoring Logic Table**, A simple table showing signal → points mapping (e.g., \"Website demo attended → +25 points\")\n5. **Slack Integration Checklist**, How to connect HubSpot to Slack and authorize the notification action\n6. **Troubleshooting & Next Steps**, Common pitfalls, how to test, and ideas for refinement\n</output_format>",
     "instructions": [
       "Open HubSpot, navigate to Automation > Workflows, and click \"Create workflow.\" Select \"Contact-based\" and choose \"Trigger when a contact is created or updated.\" Set the trigger to fire when a new contact enters, optionally filtering by lead source [INBOUND_CHANNEL].",
-      "Define your scoring criteria: In HubSpot, create or identify custom properties for each signal you want to measure (e.g., \"Email Domain Quality\", \"Product Interest\", \"Meeting Booked\"). For each contact, decide which actions or property values earn points — the workflow will calculate these using conditional branches.",
+      "Define your scoring criteria: In HubSpot, create or identify custom properties for each signal you want to measure (e.g., \"Email Domain Quality\", \"Product Interest\", \"Meeting Booked\"). For each contact, decide which actions or property values earn points, the workflow will calculate these using conditional branches.",
       "Build the workflow branches: Create one branch per scoring signal. For example, branch 1: \"If email domain is @[COMPANY_DOMAIN], add 10 points to Lead Score.\" Use HubSpot's \"Set property value\" action to update the \"Lead Score\" property incrementally. Use conditional logic (\"If/Then\") to check each criterion.",
       "Add the decision gate: After all scoring branches merge, create a condition: \"If Lead Score >= [THRESHOLD_SCORE], proceed to Slack alert. Else, do nothing.\" This prevents low-scoring leads from cluttering Slack.",
       "Connect Slack: Before publishing the workflow, ensure HubSpot is authorized to send Slack messages. Go to HubSpot Settings > Integrations > Slack, authenticate, and select the target Slack workspace and channel [SLACK_CHANNEL_NAME]. In the workflow, add a \"Send Slack message\" action and paste your message template (see Slack Message Template section below).",
@@ -555,9 +555,9 @@
     ],
     "recommendedTools": [
       {
-        "name": "HubSpot CRM",
-        "normalized": "hubspotcrm",
-        "registrySlug": "hubspot-crm",
+        "name": "HubSpot",
+        "normalized": "hubspot",
+        "registrySlug": "hubspot",
         "homepageUrl": null
       },
       {
@@ -578,6 +578,387 @@
     "taskInput": "Build a HubSpot automation that scores inbound leads and alerts sales in Slack",
     "isBusiness": true,
     "isAgentOrAutomation": true,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "find-20-low-competition-blog-topics-and-cluster-them-for-seo",
+    "title": "Find 20 low-competition blog topics and cluster them for SEO",
+    "promptText": "<role>You are an SEO content strategist.</role>\n<task>Find 20 low-competition, high-intent blog topic ideas for [WEBSITE_OR_BRAND] in the [NICHE] space, then group them into 3 to 5 content pillars (topic clusters), each with one pillar page.</task>\n<context>\n- Site: [WEBSITE_URL]\n- Niche and audience: [NICHE], written for [TARGET_READER]\n- Primary goal of the blog: [GOAL, for example rank for buying-intent searches, build authority, capture email signups]\n- Topics we already cover: [EXISTING_TOPICS, or \"none yet\"]\n</context>\n<constraints>\n- Favor long-tail topics a newer site can realistically rank for (specific, lower competition) over broad head terms.\n- Every topic must map to a clear search intent and a reason someone would read it.\n- No duplicate angles. Each title should be distinct.\n</constraints>\n<output_format>\nReturn a markdown table with columns: Topic Title, Target Keyword, Search Intent (informational, commercial, or transactional), Content Pillar, Suggested Internal Link. After the table, list the 3 to 5 pillars with a one line description of each.\n</output_format>",
+    "instructions": [
+      "Paste this prompt into Claude and fill in [WEBSITE_OR_BRAND], [NICHE], [TARGET_READER], your goal, and any topics you already cover.",
+      "Validate the suggested keywords in Ahrefs or Semrush: confirm the target keywords really have low difficulty and non-zero volume, and drop any that look too competitive.",
+      "Ask Claude to expand the best pillar into a full outline: \"Write a detailed outline for the pillar page on [PILLAR], with H2s and the supporting posts that link to it.\"",
+      "Prioritize the table by intent: write the commercial and transactional topics first, since those convert."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Ahrefs",
+        "normalized": "ahrefs",
+        "registrySlug": "ahrefs",
+        "homepageUrl": null
+      },
+      {
+        "name": "Semrush",
+        "normalized": "semrush",
+        "registrySlug": "semrush",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "seo",
+      "content-strategy",
+      "keyword-research"
+    ],
+    "role": "Content/SEO",
+    "aiTool": "Claude",
+    "outputType": "Analysis/Research",
+    "taskInput": "Find 20 low-competition blog topic ideas and cluster them into content pillars for SEO",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "ai-prospect-research-agent-that-drafts-personalized-cold-out",
+    "title": "AI prospect research agent that drafts personalized cold outreach",
+    "promptText": "<role>You are an automation architect building an AI outbound research agent.</role>\n<task>Design an agent that takes a list of target companies or contacts, researches each one, and drafts a personalized cold outreach email ready for a human to review and send.</task>\n<context>\n- What we sell: [PRODUCT_AND_ONE_LINE_VALUE_PROP]\n- Ideal customer: [ICP: industry, company size, role to contact]\n- Input source: [WHERE_LEADS_COME_FROM, for example a CRM list, a CSV, a Clay table]\n- Signals that make a good hook: [for example recent funding, hiring for a role, tech stack, a new product launch]\n- Send channel and tone: [for example email, warm and direct, under 90 words]\n</context>\n<steps>\n1. For each prospect, gather: a company one-liner, a recent trigger event, and the contact's likely priority.\n2. Match the strongest trigger to one benefit of [PRODUCT].\n3. Draft a short email: a specific opener tied to the trigger, one sentence on the value, one soft CTA.\n4. Output a review queue. Never auto-send.\n</steps>\n<output_format>\nFor each prospect return: Name, Company, Research Summary (2 to 3 bullets), Chosen Hook, and the Draft Email. Flag any prospect where research was thin so a human can check it.\n</output_format>",
+    "instructions": [
+      "Decide where the agent will run: Lindy is the fastest path for an email research agent (it connects to your inbox and data sources), or use a custom pipeline if you prefer. Paste this prompt into Claude first to design the logic.",
+      "Fill in [PRODUCT_AND_ONE_LINE_VALUE_PROP], your ICP, lead source, and the trigger signals that matter for your market.",
+      "Connect your prospect source: a Clay table or an Apollo.io list works well for pulling company data and verified contacts the agent can research.",
+      "Run it on 10 real prospects first and read every draft. Tune the hook rules until the emails sound like you, then scale the batch.",
+      "Keep a human in the loop on send: the agent drafts, you approve."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Lindy",
+        "normalized": "lindy",
+        "registrySlug": "lindy",
+        "homepageUrl": null
+      },
+      {
+        "name": "Clay",
+        "normalized": "clay",
+        "registrySlug": "clay",
+        "homepageUrl": null
+      },
+      {
+        "name": "Apollo.io",
+        "normalized": "apolloio",
+        "registrySlug": "apollo-io",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "cold-outbound",
+      "sales-automation",
+      "ai-agents"
+    ],
+    "role": "Sales/SDR",
+    "aiTool": "Claude",
+    "outputType": "Agent/Workflow",
+    "taskInput": "Build an AI agent that researches prospects and drafts personalized cold outreach emails",
+    "isBusiness": true,
+    "isAgentOrAutomation": true,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "linkedin-connection-and-follow-up-sequence-for-b2b-founders",
+    "title": "LinkedIn connection and follow-up sequence for B2B founders",
+    "promptText": "# Task\nWrite a 4-message LinkedIn outreach sequence to [TARGET_PERSONA] that starts with a connection request and nurtures toward a [GOAL, for example a 15-minute intro call].\n\n# Context\n- Who I am: [YOUR_NAME], [YOUR_ROLE] at [YOUR_COMPANY]\n- What we do: [ONE-LINE VALUE PROP]\n- Who I am reaching: [TARGET_PERSONA, for example founders of seed-stage B2B SaaS]\n- Why they would care: [THE PROBLEM YOU SOLVE FOR THEM]\n- Call to action: [GOAL]\n\n# Constraints\n- Connection request: under 300 characters, no pitch, just a genuine reason to connect.\n- Follow-ups: short, conversational, value first. No copy-paste salesiness.\n- Space the messages so they do not feel pushy. Suggest timing between each.\n- Avoid buzzwords and fake flattery.\n\n# Output Format\nLabel each message: Connection Request, Follow-up 1 (after they accept), Follow-up 2 (3 days later), Follow-up 3 (soft breakup). For each, give the message plus one line on why it works.",
+    "instructions": [
+      "Open ChatGPT and paste the prompt. Fill in your name, role, company, value prop, target persona, and the specific problem you solve.",
+      "Review the sequence and cut anything that sounds generic. The connection request should give a real reason you want to connect.",
+      "Load the messages into your outreach tool. Lemlist or Apollo.io can run LinkedIn plus email steps together and track replies.",
+      "Test on 20 to 30 prospects, then ask ChatGPT to rewrite the lowest-performing message with a new angle."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Lemlist",
+        "normalized": "lemlist",
+        "registrySlug": "lemlist",
+        "homepageUrl": null
+      },
+      {
+        "name": "Apollo.io",
+        "normalized": "apolloio",
+        "registrySlug": "apollo-io",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "linkedin-outreach",
+      "social-selling",
+      "b2b-sales"
+    ],
+    "role": "Sales/SDR",
+    "aiTool": "ChatGPT",
+    "outputType": "Email/Outreach",
+    "taskInput": "Write a cold LinkedIn connection request and follow-up message sequence for B2B founders",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "5-email-onboarding-sequence-for-a-saas-free-trial",
+    "title": "5-email onboarding sequence for a SaaS free trial",
+    "promptText": "<role>You are a lifecycle marketing specialist.</role>\n<task>Write a 5-email onboarding sequence that turns a [PRODUCT] free-trial signup into an activated, paying customer.</task>\n<context>\n- Product: [PRODUCT], described as [ONE-LINE DESCRIPTION]\n- Trial length: [for example 14 days]\n- The one action that predicts activation (the aha moment): [KEY_ACTION, for example \"connect a data source\"]\n- Common reasons trials stall: [LIST 1 to 3]\n- Upgrade CTA: [WHAT YOU WANT THEM TO DO, for example pick a paid plan]\n</context>\n<constraints>\n- Each email has one job and one CTA.\n- Lead with the customer outcome, not the feature.\n- Keep each email under 120 words, scannable on mobile.\n- Map the sequence across the trial: welcome, drive the aha action, show value, handle the common objection, then the upgrade push near trial end.\n</constraints>\n<output_format>\nFor each of the 5 emails give: Send Timing, Subject Line, Preview Text, Body, and the single CTA. End with 2 subject-line variants per email for A/B testing.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and fill in your product details, trial length, the key activation action, and why trials usually stall.",
+      "Review the sequence so the aha email lands early (day 1 or 2), not at the end.",
+      "Build the emails in your CRM or email platform. HubSpot can trigger the sequence on signup and branch based on whether the user hit the activation action.",
+      "For the design-heavy emails, Beefree lets you drag-and-drop a clean template to paste the copy into.",
+      "Watch trial-to-paid conversion and ask Claude to rewrite the upgrade email if that step underperforms."
+    ],
+    "recommendedTools": [
+      {
+        "name": "HubSpot",
+        "normalized": "hubspot",
+        "registrySlug": "hubspot",
+        "homepageUrl": null
+      },
+      {
+        "name": "Beefree",
+        "normalized": "beefree",
+        "registrySlug": "beefree",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "saas-onboarding",
+      "lifecycle-email",
+      "activation"
+    ],
+    "role": "Customer Success",
+    "aiTool": "Claude",
+    "outputType": "Email/Outreach",
+    "taskInput": "Create a 5-email customer onboarding sequence for a SaaS free trial",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "zapier-automation-to-capture-form-leads-and-send-a-welcome-e",
+    "title": "Zapier automation to capture form leads and send a welcome email",
+    "promptText": "<role>You are an automation engineer.</role>\n<task>Design a Zapier workflow (Zap) that captures a new lead from [FORM_SOURCE], adds or updates them in [CRM], and sends a personalized welcome email, with basic de-duplication and error handling.</task>\n<context>\n- Form source: [for example Typeform, a website form, a Facebook lead ad]\n- CRM: [for example HubSpot]\n- Email tool: [for example Gmail, or the CRM's email]\n- Fields captured: [LIST, for example name, email, company, interest]\n- What the welcome email should say: [GOAL plus any offer]\n</context>\n<output_format>\nReturn the Zap as numbered steps (Trigger, then each Action), naming the exact app and event for each. For every step list the key field mappings. Add a short section covering: de-duplication logic, what to do on failure, and 2 things to test before turning it on.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and fill in your form source, CRM, email tool, captured fields, and the welcome message goal.",
+      "Build the Zap in Zapier following the step list. Use a Find Record search step before Create so you update existing contacts instead of duplicating them.",
+      "Connect your CRM: with HubSpot you can map the lead fields and trigger a follow-up workflow on the CRM side too.",
+      "Turn on Zapier's error notifications and run a test submission end to end before going live.",
+      "If volume is high, ask Claude to add lead-scoring or routing logic to the workflow."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Zapier",
+        "normalized": "zapier",
+        "registrySlug": "zapier",
+        "homepageUrl": null
+      },
+      {
+        "name": "HubSpot",
+        "normalized": "hubspot",
+        "registrySlug": "hubspot",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "marketing-automation",
+      "lead-capture",
+      "no-code"
+    ],
+    "role": "Marketer",
+    "aiTool": "Claude",
+    "outputType": "Code/Automation",
+    "taskInput": "Build a Zapier automation that captures form leads, adds them to the CRM, and sends a welcome email",
+    "isBusiness": true,
+    "isAgentOrAutomation": true,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "60-second-product-explainer-video-script-and-shot-list",
+    "title": "60-second product explainer video script and shot list",
+    "promptText": "# Task\nWrite a 60-second explainer video script for [PRODUCT] that takes a cold viewer from problem to \"I need this,\" plus a matching shot list.\n\n# Context\n- Product: [PRODUCT], described as [ONE-LINE DESCRIPTION]\n- Audience: [WHO IT IS FOR]\n- The core problem it solves: [PROBLEM]\n- The single thing we want viewers to do: [CTA, for example start a free trial]\n- Tone: [for example friendly, confident, slightly playful]\n\n# Constraints\n- Target 150 to 165 spoken words (about 60 seconds).\n- Hook in the first 5 seconds. Problem, then solution, then proof, then CTA.\n- Plain language, no jargon. One idea per line.\n\n# Output Format\nReturn a two-column script: left column Voiceover (the spoken line), right column On-Screen (visual, text overlay, or b-roll). End with a 3-option list of hooks for the first line so I can test which opens strongest.",
+    "instructions": [
+      "Paste the prompt into ChatGPT and fill in your product, audience, the core problem, your CTA, and tone.",
+      "Read the voiceover aloud and time it. Trim until it lands near 60 seconds.",
+      "Produce the video: Synthesia can turn the script into an AI-presenter video without a camera, or use Descript to record and edit by editing the transcript.",
+      "Test the three hook options as the opening line and keep the one with the best watch-through."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Synthesia",
+        "normalized": "synthesia",
+        "registrySlug": "synthesia",
+        "homepageUrl": null
+      },
+      {
+        "name": "Descript",
+        "normalized": "descript",
+        "registrySlug": "descript",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "video-marketing",
+      "explainer-video",
+      "script-writing"
+    ],
+    "role": "Marketer",
+    "aiTool": "ChatGPT",
+    "outputType": "Content/Copy",
+    "taskInput": "Write a 60-second product explainer video script and shot list",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "turn-one-webinar-recording-into-a-week-of-social-posts",
+    "title": "Turn one webinar recording into a week of social posts",
+    "promptText": "<role>You are a content repurposing strategist.</role>\n<task>Turn the transcript of [WEBINAR_OR_VIDEO_TITLE] into a week of social posts across [PLATFORMS], each able to stand on its own.</task>\n<context>\n- Source: paste the transcript or key points of [WEBINAR_OR_VIDEO_TITLE] below.\n- Platforms: [for example LinkedIn, X, Instagram]\n- Audience: [WHO FOLLOWS YOU]\n- Goal: [for example drive signups, grow the audience, book calls]\n- Voice: [HOW YOU SOUND]\n\n[PASTE TRANSCRIPT OR BULLET NOTES HERE]\n</context>\n<constraints>\n- Pull the 5 to 7 strongest ideas, one per post. Do not resummarize the whole thing in each post.\n- Match each post to the platform: short and punchy for X, a hook plus story for LinkedIn.\n- Every post needs a scroll-stopping first line and a clear takeaway.\n</constraints>\n<output_format>\nReturn 7 posts. For each: Platform, the full post text, up to 3 hashtags (only where they fit), and a note on the best day or time to post it.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and drop your webinar transcript or detailed notes into the context block.",
+      "Fill in your platforms, audience, goal, and voice so the posts sound like you.",
+      "Review each post and cut anything generic. Keep the first line strong, since that decides whether people stop scrolling.",
+      "Clip supporting video with Descript (edit by editing the transcript) and organize the week in a Notion content calendar so posting stays consistent.",
+      "Ask Claude to spin any high-performing post into a short thread or carousel outline."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Descript",
+        "normalized": "descript",
+        "registrySlug": "descript",
+        "homepageUrl": null
+      },
+      {
+        "name": "Notion",
+        "normalized": "notion",
+        "registrySlug": "notion",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "content-repurposing",
+      "social-media",
+      "creator"
+    ],
+    "role": "Creator/Influencer",
+    "aiTool": "Claude",
+    "outputType": "Content/Copy",
+    "taskInput": "Turn a long webinar recording into a week of social media posts",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "12-week-half-marathon-training-plan-for-beginners",
+    "title": "12-week half-marathon training plan for beginners",
+    "promptText": "# Task\nBuild a 12-week half-marathon training plan for a beginner, starting from my current fitness and ending ready to finish 13.1 miles.\n\n# Context\n- Current running: [for example can run 2 miles without stopping, twice per week]\n- Days per week I can train: [NUMBER]\n- Race date: [DATE]\n- Any injuries or limits: [LIST, or \"none\"]\n- Goal: [for example finish comfortably, or a target time]\n\n# Constraints\n- Build mileage gradually and safely (no more than about 10 percent per week).\n- Include easy runs, one long run per week, rest days, and 1 to 2 cross-training or strength days.\n- Keep it realistic for my available days. Explain paces in plain terms (easy, steady, hard).\n\n# Output Format\nGive a week-by-week table: Week, each day's workout, weekly total mileage, and a one line focus for the week. Add a short note on fueling and what to do the week of the race.",
+    "instructions": [
+      "Paste the prompt into ChatGPT and fill in your current running level, days per week, race date, and any injuries.",
+      "Sanity-check week 1 against how you feel. If it is too hard or too easy, tell ChatGPT to adjust your starting mileage.",
+      "Put the long runs on days you have the most time, and ask for swaps if a week does not fit your schedule.",
+      "Each week, tell ChatGPT how the runs felt and have it adjust the next week up or down."
+    ],
+    "recommendedTools": [],
+    "categoryTags": [
+      "running",
+      "fitness",
+      "training-plan"
+    ],
+    "role": "Personal Use",
+    "aiTool": "ChatGPT",
+    "outputType": "Learning/How-To",
+    "taskInput": "Create a 12-week half-marathon training plan for a beginner",
+    "isBusiness": false,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "10-day-first-timer-japan-itinerary-for-spring",
+    "title": "10-day first-timer Japan itinerary for spring",
+    "promptText": "# Task\nPlan a 10-day Japan itinerary for first-time visitors traveling in [MONTH], balancing must-see highlights with a realistic pace.\n\n# Context\n- Travelers: [NUMBER and who, for example a couple in their 30s]\n- Arrival and departure cities: [for example land in Tokyo, leave from Osaka]\n- Budget level: [for example mid-range]\n- Interests: [for example food, temples, nature, anime, nightlife]\n- Pace preference: [packed vs relaxed]\n\n# Constraints\n- Group activities by neighborhood to cut backtracking.\n- Account for travel time between cities and suggest when a rail pass makes sense.\n- Note cherry-blossom timing and any seasonal events for [MONTH].\n- Keep each day realistic, not overloaded.\n\n# Output Format\nGive a day-by-day plan: Day, City or Area, morning, afternoon, evening, where to eat, and a travel tip. Add a short packing and etiquette note at the end.",
+    "instructions": [
+      "Paste the prompt into ChatGPT and fill in your travel month, who is going, arrival and departure cities, budget, and interests.",
+      "Ask for a cost estimate per day if you want a budget breakdown.",
+      "Have ChatGPT swap any day that feels too packed, and ask for rainy-day backups for outdoor plans.",
+      "Save the final plan and book trains and popular restaurants a few weeks ahead."
+    ],
+    "recommendedTools": [],
+    "categoryTags": [
+      "travel-planning",
+      "japan",
+      "itinerary"
+    ],
+    "role": "Personal Use",
+    "aiTool": "ChatGPT",
+    "outputType": "Strategy/Plan",
+    "taskInput": "Plan a 10-day Japan itinerary for a first-time visitor in spring",
+    "isBusiness": false,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "script-for-asking-your-manager-for-a-raise",
+    "title": "Script for asking your manager for a raise",
+    "promptText": "<role>You are a career coach who has sat on both sides of salary conversations.</role>\n<task>Write a script I can use to ask my manager for a raise, plus answers to the pushback I am likely to get.</task>\n<context>\n- My role and time in it: [ROLE, and how long]\n- Recent wins and impact: [LIST 2 to 4, with numbers if possible]\n- Current pay and what I am asking for: [CURRENT to TARGET, or a range]\n- My manager's likely concern: [for example budget timing, or \"let us wait for review season\"]\n- My relationship and tone with them: [for example friendly and direct]\n</context>\n<constraints>\n- Confident and specific, not apologetic or demanding.\n- Lead with value delivered, then the ask, then openness to discuss.\n- Keep the opening ask under 60 seconds spoken.\n- Prepare for a \"no\" without burning the relationship.\n</constraints>\n<output_format>\nReturn: (1) the opening ask, word for word, (2) a short bank of proof points to reference, (3) responses to 3 likely objections, and (4) a graceful way to set a follow-up if they cannot say yes now.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and fill in your role, recent wins (with numbers wherever you can), current and target pay, and your manager's likely concern.",
+      "Read the opening ask out loud and adjust the wording until it sounds like you.",
+      "Rehearse the objection responses so they feel natural, not scripted.",
+      "If you want, ask Claude to role-play your manager and push back so you can practice the conversation."
+    ],
+    "recommendedTools": [],
+    "categoryTags": [
+      "career",
+      "salary-negotiation",
+      "communication"
+    ],
+    "role": "Personal Use",
+    "aiTool": "Claude",
+    "outputType": "Writing/Personal",
+    "taskInput": "Write a script to ask my manager for a raise",
+    "isBusiness": false,
+    "isAgentOrAutomation": false,
     "promote": true,
     "moderation": {
       "verdict": "allow",
