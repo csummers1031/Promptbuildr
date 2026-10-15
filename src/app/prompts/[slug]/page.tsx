@@ -10,6 +10,7 @@ import { linkifyInstructions, plainInstructions } from "@/lib/tools/render";
 import InstructionText from "@/components/InstructionText";
 import Logo from "@/components/Logo";
 import ViewBeacon from "@/components/ViewBeacon";
+import ScrollTopOnMount from "@/components/ScrollTopOnMount";
 import { selectCta } from "@/lib/cta";
 import { taxonomySlug } from "@/lib/feed/taxonomy";
 import {
@@ -124,6 +125,7 @@ export default async function PromotedPromptPage({
   return (
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
+      <ScrollTopOnMount />
       <ViewBeacon promptId={prompt.id} />
 
       <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/85 backdrop-blur">
