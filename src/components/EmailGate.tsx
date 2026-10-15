@@ -11,10 +11,12 @@ export default function EmailGate({
   message,
   defaultRole,
   onUnlocked,
+  onBack,
 }: {
   message: string;
   defaultRole: string;
   onUnlocked: () => void;
+  onBack?: () => void;
 }) {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState(defaultRole || "");
@@ -51,16 +53,25 @@ export default function EmailGate({
       <h2 className="text-lg font-semibold text-slate-900">Keep generating for free</h2>
       <p className="mt-1 text-sm text-slate-600">{message}</p>
       <form onSubmit={submit} className="mt-4 flex flex-col gap-3">
+        <label htmlFor="gate-email" className="sr-only">
+          Email address
+        </label>
         <input
+          id="gate-email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@email.com"
           autoComplete="email"
+          autoFocus
           disabled={submitting}
           className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-base text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 disabled:opacity-60"
         />
+        <label htmlFor="gate-role" className="sr-only">
+          Your role
+        </label>
         <select
+          id="gate-role"
           value={role}
           onChange={(e) => setRole(e.target.value)}
           disabled={submitting}
@@ -73,7 +84,11 @@ export default function EmailGate({
             </option>
           ))}
         </select>
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && (
+          <p role="alert" className="text-sm text-red-600">
+            {error}
+          </p>
+        )}
         <button
           type="submit"
           disabled={submitting}
@@ -81,6 +96,15 @@ export default function EmailGate({
         >
           {submitting ? "Unlocking…" : "Unlock unlimited prompts"}
         </button>
+        {onBack && (
+          <button
+            type="button"
+            onClick={onBack}
+            className="self-center text-sm font-medium text-slate-500 underline underline-offset-2 hover:text-slate-800"
+          >
+            ← Back
+          </button>
+        )}
         <p className="text-center text-xs text-slate-400">
           No spam. We'll send the occasional best-of-prompts email; unsubscribe anytime.
         </p>

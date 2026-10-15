@@ -98,6 +98,7 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
         message={state.message}
         defaultRole={role}
         onUnlocked={() => void generate()}
+        onBack={reset}
       />
     );
   }
@@ -179,18 +180,22 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
-          <Field label="Who are you?">
+          <Field label="Who are you?" htmlFor="role">
             <Select id="role" value={role} onChange={setRole} disabled={loading} placeholder="Select…" options={ROLES} />
           </Field>
-          <Field label="Which AI tool?">
+          <Field label="Which AI tool?" htmlFor="aiTool">
             <Select id="aiTool" value={aiTool} onChange={setAiTool} disabled={loading} options={AI_TOOLS} />
           </Field>
-          <Field label="Desired output">
+          <Field label="Desired output" htmlFor="outputType">
             <Select id="outputType" value={outputType} onChange={setOutputType} disabled={loading} placeholder="Select…" options={OUTPUT_TYPES} />
           </Field>
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && (
+          <p role="alert" className="text-sm text-red-600">
+            {error}
+          </p>
+        )}
 
         <button
           type="submit"
@@ -205,16 +210,29 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
             "Generate my prompt"
           )}
         </button>
-        <p className="text-center text-xs text-slate-400">Free. No signup needed for your first prompt.</p>
+        <p className="text-center text-xs text-slate-400">
+          Free, no signup for your first prompt. Prompts you create may be published to the
+          public feed, so leave out private or sensitive details.
+        </p>
       </div>
     </form>
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({
+  label,
+  htmlFor,
+  children,
+}: {
+  label: string;
+  htmlFor?: string;
+  children: React.ReactNode;
+}) {
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-semibold text-slate-700">{label}</label>
+      <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-semibold text-slate-700">
+        {label}
+      </label>
       {children}
     </div>
   );

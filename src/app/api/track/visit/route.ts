@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { classifyTraffic, hostFromUrl } from "@/lib/attribution";
 import { extractIp, hashIp } from "@/lib/identity";
 import { recordVisit } from "@/db/analytics";
+import { isBotRequest } from "@/lib/bots";
 import { SITE_URL } from "@/lib/seo";
 
 export const runtime = "nodejs";
@@ -11,6 +12,7 @@ const str = (v: unknown): string | null =>
 
 /** POST /api/track/visit — first-party landing attribution (client beacon). */
 export async function POST(req: NextRequest) {
+  if (isBotRequest(req.headers)) return new NextResponse(null, { status: 204 });
   let b: Record<string, unknown> = {};
   try {
     b = JSON.parse(await req.text());

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { recordPromptView } from "@/db/analytics";
+import { isBotRequest } from "@/lib/bots";
 
 export const runtime = "nodejs";
 
@@ -7,6 +8,7 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 /** POST /api/view — count a prompt view (client beacon, deduped per session). */
 export async function POST(req: NextRequest) {
+  if (isBotRequest(req.headers)) return new NextResponse(null, { status: 204 });
   let b: Record<string, unknown> = {};
   try {
     b = JSON.parse(await req.text());

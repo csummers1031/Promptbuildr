@@ -3,11 +3,15 @@ import { sql } from "drizzle-orm";
 import { getDb } from "@/db/client";
 import { upvotes, prompts } from "@/db/schema";
 import { COOKIE_ANON, extractIp, visitorHash, verifyValue, type AnonData } from "@/lib/identity";
+import { isBotRequest } from "@/lib/bots";
 
 export const runtime = "nodejs";
 
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 /** POST /api/upvote { promptId } — 1 per prompt per visitor (composite PK). */
 export async function POST(req: NextRequest) {
+  if (isBotRequest(req.headers)) return NextResponse.json({ status: "ok", counted: false });
   let body: unknown;
   try {
     body = await req.json();
@@ -15,8 +19,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "invalid body" }, { status: 400 });
   }
   const promptId = (body as { promptId?: unknown }).promptId;
-  if (typeof promptId !== "string" || !promptId) {
-    return NextResponse.json({ error: "promptId required" }, { status: 400 });
+  if (typeof promptId !== "string" || !UUID.test(promptId)) {
+    return NextResponse.json({ error: "valid promptId required" }, { status: 400 });
   }
 
   const db = getDb();

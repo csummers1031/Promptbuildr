@@ -66,10 +66,12 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ promptId: prompt.id }),
       });
-      if (!res.ok) {
-        setVoted(false);
-        setVotes((v) => v - 1);
-      }
+      const data = await res.json().catch(() => ({}) as { counted?: boolean });
+      // Roll back the optimistic +1 when the server didn't actually count it
+      // (already voted from this device/IP, or an error). Keep the button
+      // disabled on an "already voted" so it doesn't re-fire.
+      if (!res.ok || data.counted === false) setVotes((v) => v - 1);
+      if (!res.ok) setVoted(false);
     } catch {
       setVoted(false);
       setVotes((v) => v - 1);
@@ -113,8 +115,9 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
           type="button"
           onClick={upvote}
           disabled={voted}
-          aria-label="Upvote"
-          className={`flex shrink-0 flex-col items-center rounded-lg border px-2.5 py-1 text-sm font-semibold transition ${
+          aria-pressed={voted}
+          aria-label={`${voted ? "Upvoted" : "Upvote"}, ${votes} ${votes === 1 ? "vote" : "votes"}`}
+          className={`flex min-h-11 shrink-0 flex-col items-center justify-center rounded-lg border px-2.5 py-1 text-sm font-semibold transition ${
             voted
               ? "border-indigo-300 bg-indigo-50 text-indigo-700"
               : "border-slate-200 text-slate-600 hover:border-indigo-300 hover:text-indigo-700"

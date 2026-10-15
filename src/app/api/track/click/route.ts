@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { hostFromUrl } from "@/lib/attribution";
 import { extractIp, hashIp } from "@/lib/identity";
 import { recordOutboundClick } from "@/db/analytics";
+import { isBotRequest } from "@/lib/bots";
 
 export const runtime = "nodejs";
 
@@ -10,6 +11,7 @@ const str = (v: unknown): string | null =>
 
 /** POST /api/track/click — outbound money-link clicks (sendBeacon). */
 export async function POST(req: NextRequest) {
+  if (isBotRequest(req.headers)) return new NextResponse(null, { status: 204 });
   let b: Record<string, unknown> = {};
   try {
     b = JSON.parse(await req.text());
@@ -18,7 +20,10 @@ export async function POST(req: NextRequest) {
   }
 
   const href = str(b.href);
-  if (!href) return new NextResponse(null, { status: 204 });
+  // Only record real outbound http(s) links (no javascript:/data: etc., capped).
+  if (!href || href.length > 2048 || !/^https?:\/\//i.test(href)) {
+    return new NextResponse(null, { status: 204 });
+  }
 
   const ipHash = await hashIp(extractIp(req.headers)).catch(() => null);
 
