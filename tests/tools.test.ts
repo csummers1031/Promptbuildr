@@ -46,8 +46,8 @@ describe("buildMarketplaceUrl UTM rule", () => {
     }
   });
 
-  it("leaves the Claude referral link intact", () => {
+  it("returns the Claude partner URL as-is (no UTMs on non-hackingdemand links)", () => {
     const claude = getToolBySlug("claude")!;
-    expect(buildMarketplaceUrl(claude, "writing")).toBe("https://claude.ai/referral/VBG0kPVoSQ?s=ios");
+    expect(buildMarketplaceUrl(claude, "writing")).toBe("https://claude.ai");
   });
 });

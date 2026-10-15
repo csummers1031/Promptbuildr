@@ -44,8 +44,8 @@ describe("presentGeneration — inline tool linking", () => {
     const names = links.map((l) => l.value);
     expect(names).toContain("Zapier");
     expect(names).toContain("Claude");
-    // Claude resolves to the referral link (revenue intact).
-    expect(links.find((l) => l.value === "Claude")?.href).toContain("claude.ai/referral/");
+    // Claude resolves to its registry URL (claude.ai).
+    expect(links.find((l) => l.value === "Claude")?.href).toContain("claude.ai");
   });
 
   it("does not misfire on common words that collide with tool names", () => {

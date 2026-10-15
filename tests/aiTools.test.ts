@@ -2,15 +2,15 @@ import { describe, it, expect } from "vitest";
 import { aiToolLaunch } from "@/config/aiTools";
 
 describe("aiToolLaunch", () => {
-  it("resolves Claude to the monetized referral link", () => {
+  it("opens Claude in a new chat, not the referral/signup link", () => {
     const l = aiToolLaunch("Claude");
     expect(l).not.toBeNull();
-    expect(l!.affiliate).toBe(true);
     expect(l!.mode).toBe("chat");
-    expect(l!.href).toContain("claude.ai/referral/");
+    expect(l!.href).toBe("https://claude.ai/new");
+    expect(l!.href).not.toContain("referral");
   });
 
-  it("links non-registry chat tools to their web app (no affiliate)", () => {
+  it("links chat tools to their web app", () => {
     const l = aiToolLaunch("ChatGPT");
     expect(l).not.toBeNull();
     expect(l!.affiliate).toBe(false);

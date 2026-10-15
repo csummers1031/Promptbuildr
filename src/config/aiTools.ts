@@ -1,24 +1,26 @@
-import { getToolBySlug, buildMarketplaceUrl } from "@/config/tools";
-
 /**
  * Where to send a user to actually USE the AI tool they picked. This powers
  * the "Copy & open in [tool]" action (the clear next step after generating a
  * prompt) and the always-present tool link on result/prompt pages.
  *
- * - Claude resolves to the registry affiliate link (monetized).
- * - Every other tool maps to its official web app (no affiliate program, but
- *   we still link it so there's a one-tap path to paste the prompt).
- * - "Other/Any" has no single destination, so it returns null and callers fall
- *   back to a plain Copy button.
+ * These open the tool's CHAT (so the user can paste), NOT an affiliate/referral
+ * link. A referral link lands on a signup page, which is the wrong destination
+ * for "open and paste" (and Claude's referral link can expire). Affiliate
+ * monetization lives on the "Recommended tools" chips (the registry), not here.
+ *
+ * - Chat/image tools map to their official web app (deep-links into the app on
+ *   mobile when installed, else the web app; no App Store dependency).
+ * - "Other/Any" has no single destination, so it returns null and callers show
+ *   a small chooser instead.
  */
 export type AiToolMode = "chat" | "editor" | "image";
 
 export interface AiToolLaunch {
   /** Display name of the tool. */
   name: string;
-  /** URL that opens the tool's web app. */
+  /** URL that opens the tool's web app / chat. */
   href: string;
-  /** True only for monetized affiliate links (currently Claude). */
+  /** True only for monetized affiliate links (none here; kept for callers). */
   affiliate: boolean;
   /**
    * How the user consumes the prompt:
@@ -30,10 +32,12 @@ export interface AiToolLaunch {
 }
 
 /**
- * Official web destinations for tools NOT in the partner registry. Root URLs
- * only (no fabricated deep links).
+ * Official web destinations that open a usable chat/surface. Root or new-chat
+ * URLs only (no fabricated deep links). Claude opens a new chat (claude.ai/new)
+ * rather than the referral link, which is a signup page and can expire.
  */
 const AI_TOOL_WEB: Record<string, { href: string; mode: AiToolMode }> = {
+  Claude: { href: "https://claude.ai/new", mode: "chat" },
   ChatGPT: { href: "https://chatgpt.com/", mode: "chat" },
   Gemini: { href: "https://gemini.google.com/app", mode: "chat" },
   Grok: { href: "https://grok.com/", mode: "chat" },
@@ -48,11 +52,7 @@ const AI_TOOL_WEB: Record<string, { href: string; mode: AiToolMode }> = {
 };
 
 /** Resolve the launch target for a selected AI tool, or null if there isn't one. */
-export function aiToolLaunch(aiTool: string, campaign = "open-in-tool"): AiToolLaunch | null {
-  if (aiTool === "Claude") {
-    const t = getToolBySlug("claude");
-    if (t) return { name: "Claude", href: buildMarketplaceUrl(t, campaign), affiliate: true, mode: "chat" };
-  }
+export function aiToolLaunch(aiTool: string): AiToolLaunch | null {
   const entry = AI_TOOL_WEB[aiTool];
   if (!entry) return null;
   return { name: aiTool, href: entry.href, affiliate: false, mode: entry.mode };
