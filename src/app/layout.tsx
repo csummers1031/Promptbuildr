@@ -4,7 +4,7 @@ import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
 import Tracker from "@/components/Tracker";
 
-const DEFAULT_OG = `${SITE_URL}/api/og?title=${encodeURIComponent("Turn any task into a great AI prompt")}`;
+const DEFAULT_OG = `${SITE_URL}/api/og?variant=home`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
