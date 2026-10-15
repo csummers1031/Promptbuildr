@@ -964,5 +964,364 @@
       "verdict": "allow",
       "reason": null
     }
+  },
+  {
+    "slug": "write-a-1500-word-seo-blog-post-from-a-target-keyword",
+    "title": "Write a 1500-word SEO blog post from a target keyword",
+    "promptText": "<role>You are an SEO content writer who ranks posts without keyword stuffing.</role>\n<task>Write a 1500-word blog post targeting the keyword [TARGET_KEYWORD] for [BRAND], written to rank and to genuinely help the reader.</task>\n<context>\n- Target keyword: [TARGET_KEYWORD]\n- Search intent behind it: [informational, commercial, or transactional]\n- Audience: [WHO IS SEARCHING THIS]\n- Brand and angle: [BRAND], [WHAT MAKES OUR TAKE DIFFERENT]\n- Secondary keywords to include naturally: [LIST, or \"suggest some\"]\n- Internal links to work in: [URLS, or \"none yet\"]\n</context>\n<constraints>\n- Lead with a direct answer in the first 100 words (helps featured snippets).\n- Use clear H2 and H3 headings that include natural keyword variants.\n- Write for a human first: specific, concrete, no fluff or repetition.\n- Add a short FAQ section of 3 to 4 questions people also ask.\n- No keyword stuffing. Use the keyword and its variants naturally.\n</constraints>\n<output_format>\nReturn: an H1 title, a meta title (under 60 characters) and meta description (under 155 characters), the full post with headings, and the FAQ section. End with 3 suggested internal-link anchor texts.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and fill in your target keyword, the search intent, audience, brand angle, and any internal links.",
+      "Confirm the keyword's intent and pull 3 to 5 secondary keywords from Semrush or Ahrefs, then add them to the prompt so the draft covers the full topic.",
+      "Review the draft for accuracy and voice. Tighten the intro so the direct answer lands in the first 100 words.",
+      "Publish with the generated meta title and description, and add the suggested internal links."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Semrush",
+        "normalized": "semrush",
+        "registrySlug": "semrush",
+        "homepageUrl": null
+      },
+      {
+        "name": "Ahrefs",
+        "normalized": "ahrefs",
+        "registrySlug": "ahrefs",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "seo",
+      "blog-writing",
+      "content-marketing"
+    ],
+    "role": "Content/SEO",
+    "aiTool": "Claude",
+    "outputType": "Content/Copy",
+    "taskInput": "Write a 1500-word SEO-optimized blog post from a target keyword",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "10-google-search-ad-variations-for-a-product-launch",
+    "title": "10 Google Search ad variations for a product launch",
+    "promptText": "# Task\nWrite 10 Google Search ad variations for [PRODUCT], each with headlines and descriptions that fit Google's character limits and compete for [TARGET_KEYWORD].\n\n# Context\n- Product: [PRODUCT], described as [ONE-LINE VALUE PROP]\n- Target keyword or theme: [TARGET_KEYWORD]\n- Audience and their intent: [WHO plus WHAT THEY WANT]\n- Offer or hook: [for example free trial, discount, demo]\n- Landing page promise: [WHAT THE PAGE DELIVERS]\n\n# Constraints\n- Headlines: max 30 characters each. Give 3 headlines per ad.\n- Descriptions: max 90 characters each. Give 2 descriptions per ad.\n- Vary the angle across the 10: benefit, pain point, social proof, offer, question.\n- Include the keyword naturally in at least one headline per ad.\n- Avoid unverifiable superlatives (no \"best\" or \"number 1\").\n\n# Output Format\nNumber each ad 1 to 10. For each: the 3 headlines, 2 descriptions, and a one-word label for its angle. Show the character count after each headline and description.",
+    "instructions": [
+      "Paste into ChatGPT and fill in your product, target keyword, audience, offer, and what the landing page delivers.",
+      "Research the keyword and competitor ad angles in Semrush so your variations actually differentiate.",
+      "Check every headline and description against Google's limits (30 and 90 characters), and cut any superlative that could be disapproved.",
+      "Load the top 3 to 4 angles into a responsive search ad, let Google test them, then ask ChatGPT for 5 more of the winning angle."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Semrush",
+        "normalized": "semrush",
+        "registrySlug": "semrush",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "google-ads",
+      "ppc",
+      "ad-copy"
+    ],
+    "role": "Marketer",
+    "aiTool": "ChatGPT",
+    "outputType": "Content/Copy",
+    "taskInput": "Write 10 Google Search ad variations for a product launch",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "post-demo-follow-up-email-sequence-that-moves-deals-forward",
+    "title": "Post-demo follow-up email sequence that moves deals forward",
+    "promptText": "# Task\nWrite a 3-email follow-up sequence to send after a sales demo of [PRODUCT] to keep the deal moving toward [NEXT_STEP].\n\n# Context\n- Product: [PRODUCT], described as [ONE-LINE VALUE PROP]\n- Who attended the demo: [ROLES, for example a VP plus an analyst]\n- What resonated most in the demo: [KEY POINT, or \"fill in after the call\"]\n- Their likely objection or blocker: [for example price, timing, internal buy-in]\n- Next step I want: [NEXT_STEP, for example a proposal, a pilot, a decision date]\n\n# Constraints\n- Email 1 (same day): recap the value, offer the next step. Under 120 words.\n- Email 2 (3 days later): address the likely objection with proof.\n- Email 3 (7 days later): a light, respectful nudge with a clear ask.\n- Specific and human. Reference the demo, not a generic template.\n\n# Output Format\nFor each email: Send Timing, Subject Line, Body, and the single CTA. Add a one-line note on what to personalize before sending.",
+    "instructions": [
+      "Paste into ChatGPT and fill in the product, who attended, what resonated, the likely objection, and your desired next step.",
+      "Personalize each email with a real detail from the call before sending.",
+      "Load the sequence into your CRM so it sends on schedule and logs against the deal. HubSpot or Close can automate the timing and stop the sequence when they reply.",
+      "If a deal stalls, ask ChatGPT to rewrite email 3 as a breakup email, which often re-engages."
+    ],
+    "recommendedTools": [
+      {
+        "name": "HubSpot",
+        "normalized": "hubspot",
+        "registrySlug": "hubspot",
+        "homepageUrl": null
+      },
+      {
+        "name": "Close",
+        "normalized": "close",
+        "registrySlug": "close",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "sales-follow-up",
+      "deal-closing",
+      "b2b-sales"
+    ],
+    "role": "Sales/SDR",
+    "aiTool": "ChatGPT",
+    "outputType": "Email/Outreach",
+    "taskInput": "Write a post-demo sales follow-up email sequence",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "meeting-notes-to-action-items-workflow-from-call-recordings",
+    "title": "Meeting notes to action items workflow from call recordings",
+    "promptText": "<role>You are an automation architect.</role>\n<task>Design a workflow that takes a meeting recording or transcript and outputs a clean summary with owners, action items, and due dates, then files it where the team will see it.</task>\n<context>\n- Where meetings happen: [for example Zoom, Google Meet]\n- Where notes should land: [for example a Notion database, a Slack channel, email]\n- Meeting types to cover: [for example client calls, internal standups]\n- What a good summary includes: decisions, action items with an owner and due date, open questions, and next steps.\n</context>\n<output_format>\nReturn the workflow as numbered steps (trigger, transcribe, summarize, route), naming the tool for each step. Then give the summary template the agent should fill: Decisions, Action Items (owner, task, due date), Open Questions, Next Steps. Add 2 checks to run before trusting it unattended.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and fill in where your meetings happen, where notes should land, and the meeting types to cover.",
+      "Set up capture and transcription: Fireflies joins calls and transcribes them automatically, which is the simplest trigger for this workflow.",
+      "Route the output to where your team works. Sending the formatted summary into a Notion database keeps action items searchable and assignable.",
+      "Run it on 3 real meetings and confirm the action items and owners are correct before letting it post unattended."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Fireflies",
+        "normalized": "fireflies",
+        "registrySlug": "fireflies",
+        "homepageUrl": null
+      },
+      {
+        "name": "Notion",
+        "normalized": "notion",
+        "registrySlug": "notion",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "meeting-notes",
+      "productivity",
+      "automation"
+    ],
+    "role": "Founder/CEO",
+    "aiTool": "Claude",
+    "outputType": "Agent/Workflow",
+    "taskInput": "Build a workflow that turns meeting recordings into summarized action items",
+    "isBusiness": true,
+    "isAgentOrAutomation": true,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "win-back-email-sequence-for-churned-saas-customers",
+    "title": "Win-back email sequence for churned SaaS customers",
+    "promptText": "# Task\nWrite a 4-email win-back sequence to re-engage customers who cancelled [PRODUCT], without sounding desperate.\n\n# Context\n- Product: [PRODUCT], described as [ONE-LINE VALUE PROP]\n- Why they usually churn: [TOP 1 to 2 REASONS]\n- What has changed since they left: [NEW FEATURES, FIXES, OR PRICING]\n- Win-back offer, if any: [for example 30 days free, a discount, a migration hand]\n- Goal: [reactivate, or at least learn why they left]\n\n# Constraints\n- Email 1: acknowledge they left, no guilt, ask one honest question.\n- Email 2: show what has changed that addresses their reason.\n- Email 3: present the offer clearly.\n- Email 4: a final, friendly door-open email.\n- Keep each under 110 words. Warm, not needy.\n\n# Output Format\nFor each email: Send Timing, Subject Line, Body, and CTA. End with one line on who to exclude from this sequence (for example customers who churned for cause).",
+    "instructions": [
+      "Paste into ChatGPT and fill in your product, the top churn reasons, what has changed since, and any win-back offer.",
+      "Make sure the \"what changed\" email honestly maps to why they left, or it will fall flat.",
+      "Build the sequence in your CRM or email tool so it targets only churned contacts. HubSpot can segment cancelled customers, and Smartlead can run the send if you are reaching cold, dormant addresses.",
+      "Track reactivations and replies, and ask ChatGPT to rewrite the offer email if nobody bites."
+    ],
+    "recommendedTools": [
+      {
+        "name": "HubSpot",
+        "normalized": "hubspot",
+        "registrySlug": "hubspot",
+        "homepageUrl": null
+      },
+      {
+        "name": "Smartlead",
+        "normalized": "smartlead",
+        "registrySlug": "smartlead",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "win-back",
+      "retention",
+      "lifecycle-email"
+    ],
+    "role": "Customer Success",
+    "aiTool": "ChatGPT",
+    "outputType": "Email/Outreach",
+    "taskInput": "Write a win-back email sequence for churned customers",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "lead-magnet-ebook-outline-with-landing-page-copy",
+    "title": "Lead-magnet ebook outline with landing page copy",
+    "promptText": "<role>You are a content marketer who builds lead magnets that convert.</role>\n<task>Outline a lead-magnet ebook for [AUDIENCE] in the [NICHE] space and write the landing page copy that gets them to trade their email for it.</task>\n<context>\n- Audience and their biggest problem: [AUDIENCE], struggling with [PROBLEM]\n- What we sell (the ebook should warm them up for it): [PRODUCT_OR_SERVICE]\n- Working title idea: [TITLE, or \"suggest 3\"]\n- Format and length: [for example a 10-page PDF guide]\n- The tool capturing signups: [for example the CRM, an email platform]\n</context>\n<output_format>\nReturn: (1) 3 title options, (2) a chapter-by-chapter outline with a one-line purpose per chapter, (3) landing page copy with a headline, subhead, 3 benefit bullets, and a form CTA, and (4) a 2-email delivery-and-nurture follow-up.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and fill in your audience, their core problem, what you sell, and any title idea.",
+      "Pick the strongest title and outline, then draft the ebook from the chapter purposes.",
+      "Produce the asset and page: Gamma can turn the outline into a designed PDF or page quickly, and Beefree can build the signup and delivery emails.",
+      "Launch the landing page, drive traffic to it, and ask Claude to write ad or social copy pointing at the lead magnet."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Gamma",
+        "normalized": "gamma",
+        "registrySlug": "gamma",
+        "homepageUrl": null
+      },
+      {
+        "name": "Beefree",
+        "normalized": "beefree",
+        "registrySlug": "beefree",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "lead-magnet",
+      "content-marketing",
+      "email-capture"
+    ],
+    "role": "Marketer",
+    "aiTool": "Claude",
+    "outputType": "Content/Copy",
+    "taskInput": "Outline a lead-magnet ebook and write the landing page copy to capture emails",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "customer-discovery-interview-script-to-validate-an-idea",
+    "title": "Customer discovery interview script to validate an idea",
+    "promptText": "<role>You are a product discovery coach who follows the Mom Test approach.</role>\n<task>Write a customer discovery interview script to validate [IDEA_OR_PROBLEM] with [TARGET_CUSTOMER], built to surface the truth rather than polite encouragement.</task>\n<context>\n- The idea or problem I am testing: [IDEA_OR_PROBLEM]\n- Who I am interviewing: [TARGET_CUSTOMER]\n- The riskiest assumption I need to check: [ASSUMPTION]\n- What a \"yes, this is real\" signal looks like: [for example they already pay for a workaround]\n</context>\n<constraints>\n- Ask about their past behavior and real problems, not hypotheticals or whether they \"would\" buy.\n- Open-ended questions only. No leading or pitching.\n- Keep it to a 20 to 25 minute conversation.\n</constraints>\n<output_format>\nReturn: a short warm-up, 8 to 10 core questions grouped by theme, 3 follow-up probes to dig deeper, and a list of the signals that would validate or invalidate the assumption. End with what NOT to do in the interview.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and fill in your idea, who you are interviewing, your riskiest assumption, and what a real yes signal looks like.",
+      "Run 5 to 8 interviews and resist the urge to pitch. Let them talk about their current behavior.",
+      "Capture notes and quotes in a Notion database so you can spot patterns across interviews.",
+      "After a few calls, ask Claude to help you separate real signal from politeness, then refine the questions."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Notion",
+        "normalized": "notion",
+        "registrySlug": "notion",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "customer-discovery",
+      "startup-validation",
+      "product"
+    ],
+    "role": "Founder/CEO",
+    "aiTool": "Claude",
+    "outputType": "Strategy/Plan",
+    "taskInput": "Create a customer discovery interview script to validate a startup idea",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "tailor-your-resume-to-a-specific-job-description",
+    "title": "Tailor your resume to a specific job description",
+    "promptText": "<role>You are a resume writer and former recruiter who screens candidates for a living.</role>\n<task>Tailor my resume to the job description below so it passes keyword screening and makes a human want to interview me, without inventing anything.</task>\n<context>\n- The job description: [PASTE THE FULL JOB POSTING]\n- My current resume or experience: [PASTE YOUR RESUME OR KEY BULLETS]\n- The role and company: [ROLE] at [COMPANY]\n- Anything to emphasize or downplay: [NOTES, or \"none\"]\n</context>\n<constraints>\n- Only use real experience from my resume. Never fabricate titles, dates, or results.\n- Mirror the language and key skills from the job description where they honestly apply.\n- Rewrite bullets to lead with impact and numbers.\n- Keep it to one page of content unless my experience clearly needs two.\n</constraints>\n<output_format>\nReturn: a tailored summary, a reordered skills list matching the posting, rewritten experience bullets, and a short list of any gaps I should address in the cover letter or interview.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude, then paste the full job description and your current resume into the context block.",
+      "Review every rewritten bullet to confirm it is true and that the numbers are accurate.",
+      "Mirror the posting's exact skill wording where it honestly applies, since many screening systems look for those terms.",
+      "Ask Claude to draft a matching cover letter, then address any gaps it flagged."
+    ],
+    "recommendedTools": [],
+    "categoryTags": [
+      "resume",
+      "job-search",
+      "career"
+    ],
+    "role": "Personal Use",
+    "aiTool": "Claude",
+    "outputType": "Writing/Personal",
+    "taskInput": "Tailor my resume to a specific job description",
+    "isBusiness": false,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "monthly-budget-and-debt-payoff-plan",
+    "title": "Monthly budget and debt-payoff plan",
+    "promptText": "# Task\nBuild a realistic monthly budget and a debt-payoff plan based on my income, expenses, and debts.\n\n# Context\n- Monthly take-home income: [AMOUNT]\n- Fixed expenses: [RENT, UTILITIES, and so on, with amounts]\n- Variable or flexible spending: [GROCERIES, DINING, and so on]\n- Debts: [LIST each with balance, interest rate, minimum payment]\n- Savings goal: [for example a 3-month emergency fund, a trip]\n\n# Constraints\n- Use a clear budgeting framework (for example 50/30/20) but adapt it to my real numbers.\n- Recommend a payoff method (avalanche for lowest interest cost, or snowball for motivation) and explain the tradeoff.\n- Be realistic. Do not assume I can cut everything at once.\n\n# Output Format\nReturn: a monthly budget table (category, amount, percent of income), a month-by-month debt-payoff schedule with payoff dates, and 3 specific, doable adjustments that would speed things up.",
+    "instructions": [
+      "Paste into ChatGPT and fill in your income, expenses, and each debt with its balance, rate, and minimum.",
+      "Pick the payoff method it recommends, or ask it to compare avalanche vs snowball for your exact numbers.",
+      "Put the budget somewhere you will check it weekly, and adjust as real spending comes in.",
+      "Each month, tell ChatGPT what actually happened and have it update the payoff schedule."
+    ],
+    "recommendedTools": [],
+    "categoryTags": [
+      "budgeting",
+      "personal-finance",
+      "debt-payoff"
+    ],
+    "role": "Personal Use",
+    "aiTool": "ChatGPT",
+    "outputType": "Strategy/Plan",
+    "taskInput": "Create a monthly budget and debt-payoff plan",
+    "isBusiness": false,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "write-heartfelt-wedding-vows",
+    "title": "Write heartfelt wedding vows",
+    "promptText": "<role>You are a thoughtful writer who helps people say what they mean.</role>\n<task>Help me write heartfelt wedding vows to [PARTNER_NAME] that sound like me, not a greeting card.</task>\n<context>\n- My partner: [PARTNER_NAME]\n- How we met and how long we have been together: [SHORT STORY]\n- What I love most about them: [2 to 3 SPECIFIC THINGS]\n- A moment that sums us up: [A MEMORY]\n- Promises I want to make: [LIST A FEW]\n- Tone: [for example warm with a little humor, or mostly serious]\n</context>\n<constraints>\n- Specific and personal. Use real details, not generic romance lines.\n- Keep it to about 1 to 2 minutes spoken (roughly 150 to 250 words).\n- Balance emotion with one light, true moment if the tone allows.\n- End on a clear promise.\n</constraints>\n<output_format>\nReturn 2 versions: one a little more playful, one a little more sincere. After each, add a one-line note on where to pause for effect.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and fill in your partner's name, your story, what you love about them, a defining memory, and the promises you want to make.",
+      "Read both versions out loud. Keep the lines that sound like how you actually talk.",
+      "Time it to stay near 1 to 2 minutes, and cut anything that feels like filler.",
+      "Ask Claude to blend your favorite parts of both versions into a final draft."
+    ],
+    "recommendedTools": [],
+    "categoryTags": [
+      "wedding",
+      "vows",
+      "personal-writing"
+    ],
+    "role": "Personal Use",
+    "aiTool": "Claude",
+    "outputType": "Writing/Personal",
+    "taskInput": "Write heartfelt personal wedding vows",
+    "isBusiness": false,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
   }
 ]
