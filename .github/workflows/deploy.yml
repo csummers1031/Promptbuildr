@@ -53,6 +53,20 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: pnpm exec tsx scripts/seed-feed.ts
 
+      # One-off content refresh: when the commit message contains "[regen]",
+      # re-run the current generation pipeline over the prompt ids in
+      # scripts/regen-prompts.ts and update them in place (keeping slug +
+      # promotion). Runs BEFORE the build so the regenerated content is baked
+      # into the prerendered pages. No-op on normal commits.
+      - name: Regenerate prompts
+        if: contains(github.event.head_commit.message, '[regen]')
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: "claude-sonnet-5-5"
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: pnpm exec tsx scripts/regen-prompts.ts
+
       - name: Build (OpenNext)
         # DATABASE_URL is REQUIRED here: generateStaticParams, the sitemap route
         # handlers, and taxonomy/prompt page prerendering all query the DB at
