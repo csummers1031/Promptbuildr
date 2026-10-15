@@ -6,7 +6,29 @@ import {
   collectionPageJsonLd,
   promptFaqs,
   faqJsonLd,
+  safeJsonLd,
 } from "@/lib/seo";
+
+describe("safeJsonLd", () => {
+  it("escapes characters that could break out of a <script> tag", () => {
+    const out = safeJsonLd({ text: "</script><script>alert(1)</script>" });
+    expect(out).not.toContain("</script>");
+    expect(out).not.toContain("<");
+    expect(out).not.toContain(">");
+    expect(out).toContain("\\u003c");
+    expect(out).toContain("\\u003e");
+  });
+  it("escapes JS line separators U+2028 / U+2029 and ampersand", () => {
+    const out = safeJsonLd({ t: "a b c&d" });
+    expect(out).toContain("\\u2028");
+    expect(out).toContain("\\u2029");
+    expect(out).toContain("\\u0026");
+  });
+  it("round-trips back to the original data once unescaped", () => {
+    const data = { title: "Build a <b>bold</b> prompt & ship it" };
+    expect(JSON.parse(safeJsonLd(data))).toEqual(data);
+  });
+});
 
 describe("orgJsonLd", () => {
   it("has a logo and a de-duplicated sameAs", () => {

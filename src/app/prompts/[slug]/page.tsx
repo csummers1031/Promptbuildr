@@ -22,6 +22,7 @@ import {
   directAnswer,
   clampForMeta,
   shareTitle,
+  safeJsonLd,
 } from "@/lib/seo";
 
 // ISR: cache each prompt page in KV and serve it without re-querying the DB or
@@ -118,7 +119,7 @@ export default async function PromotedPromptPage({
 
   return (
     <div className="min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
       <ViewBeacon promptId={prompt.id} />
 
       <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/85 backdrop-blur">

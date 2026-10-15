@@ -33,6 +33,11 @@
       "binding": "NEXT_INC_CACHE_KV",
       "id": "b2c3f79ce93845c9aa7aa549fa27ce31"
     }
+  ],
+  // Self-reference so the OpenNext memory queue can call back into this Worker
+  // to regenerate ISR pages (required by the queue override in open-next.config.ts).
+  "services": [
+    { "binding": "WORKER_SELF_REFERENCE", "service": "promptbuildr" }
   ]
   // Secrets (ANTHROPIC_API_KEY, DATABASE_URL, CRON_SECRET, INDEXNOW_KEY,
   // HUBSPOT_ACCESS_TOKEN, SESSION_SECRET) are set with:

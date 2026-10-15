@@ -5,7 +5,7 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
 import { taxonomySlug } from "@/lib/feed/taxonomy";
-import { orgJsonLd, webSiteJsonLd, SITE_URL } from "@/lib/seo";
+import { orgJsonLd, webSiteJsonLd, SITE_URL, safeJsonLd } from "@/lib/seo";
 
 interface HomeSearchParams {
   remix?: string;
@@ -61,7 +61,7 @@ export default async function Home({
   const jsonLd = [orgJsonLd(), webSiteJsonLd()];
   return (
     <div className="min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
       <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
           <Link href="/" aria-label="Promptbuildr home">

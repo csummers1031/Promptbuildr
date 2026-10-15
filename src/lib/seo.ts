@@ -5,6 +5,20 @@ export const SITE_NAME = "Promptbuildr";
 
 type JsonLd = Record<string, unknown>;
 
+/**
+ * Serialize JSON-LD for an inline <script> tag, escaping characters that could
+ * break out of the tag or the enclosing HTML. LLM-generated prompt text and
+ * titles flow into these objects, so a prompt containing "</script>" would
+ * otherwise close the tag early (invalid structured data, and stored XSS if
+ * followed by markup). Escapes <, >, &, and the JS line separators U+2028/9.
+ */
+export function safeJsonLd(data: unknown): string {
+  // U+2028/U+2029 are valid in JSON strings but are JS line terminators, so
+  // build them at runtime to avoid putting literal separators in this source.
+  const cls = new RegExp("[<>&" + String.fromCharCode(0x2028) + String.fromCharCode(0x2029) + "]", "g");
+  return JSON.stringify(data).replace(cls, (c) => "\\u" + c.charCodeAt(0).toString(16).padStart(4, "0"));
+}
+
 export const ORG_ID = `${SITE_URL}/#org`;
 
 export function orgJsonLd(): JsonLd {

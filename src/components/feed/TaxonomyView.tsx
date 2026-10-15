@@ -9,7 +9,7 @@ import {
   taxonomyFaqs,
   taxonomySlug,
 } from "@/lib/feed/taxonomy";
-import { SITE_URL, faqJsonLd, breadcrumbJsonLd, orgJsonLd, collectionPageJsonLd } from "@/lib/seo";
+import { SITE_URL, faqJsonLd, breadcrumbJsonLd, orgJsonLd, collectionPageJsonLd, safeJsonLd } from "@/lib/seo";
 
 const KIND_PREFIX: Record<TaxonomyKind, string> = {
   for: "/prompts/for",
@@ -51,7 +51,7 @@ export default function TaxonomyView({
 
   return (
     <div className="min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
 
       <header className="mx-auto flex max-w-4xl items-center justify-between px-4 py-5">
         <Link href="/" aria-label="Promptbuildr home">

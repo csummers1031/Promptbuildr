@@ -6,7 +6,7 @@ import FeedCard from "@/components/feed/FeedCard";
 import { getFeed } from "@/db/feed";
 import { SORTS, SORT_LABELS, parseSort, type Sort } from "@/lib/feed/types";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
-import { SITE_URL, orgJsonLd, webSiteJsonLd, breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/seo";
+import { SITE_URL, orgJsonLd, webSiteJsonLd, breadcrumbJsonLd, collectionPageJsonLd, safeJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "AI Prompt Feed: the best prompts, ranked | Promptbuildr",
@@ -81,7 +81,7 @@ export default async function FeedPage({
 
   return (
     <div className="min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
 
       <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
