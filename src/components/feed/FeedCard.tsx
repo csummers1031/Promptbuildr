@@ -8,6 +8,7 @@ import InstructionText from "@/components/InstructionText";
 import { renderTools, linkifyInstructions, plainInstructions } from "@/lib/tools/render";
 import { recordView } from "@/lib/clientView";
 import { shareTitle } from "@/lib/seo";
+import { pillLabel } from "@/lib/feed/taxonomy";
 
 function truncate(s: string, n: number) {
   return s.length > n ? s.slice(0, n).trimEnd() + "…" : s;
@@ -28,10 +29,13 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
     if (opening && recordView(prompt.id)) setViews((v) => v + 1);
   }
 
-  // Business prompts get inline tool links (recommended + any registry tool
-  // mentioned); personal prompts stay link-free.
+  // Business and tool-relevant prompts get inline tool links (recommended + any
+  // registry tool mentioned); truly personal prompts stay link-free. Stored
+  // recommendations are only present when generation deemed tools relevant.
   const instructionSteps = useMemo(() => {
-    if (!prompt.isBusiness) return plainInstructions(prompt.instructions);
+    if (!prompt.isBusiness && prompt.recommendedTools.length === 0) {
+      return plainInstructions(prompt.instructions);
+    }
     const { links, campaign } = renderTools(prompt.recommendedTools, prompt.categoryTags);
     return linkifyInstructions(prompt.instructions, links, campaign);
   }, [prompt]);
@@ -106,9 +110,9 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
             )}
           </h3>
           <div className="mt-1 flex flex-wrap gap-1.5">
-            <Tag>{prompt.role}</Tag>
-            <Tag>{prompt.aiTool}</Tag>
-            <Tag>{prompt.outputType}</Tag>
+            <Tag>{pillLabel("for", prompt.role)}</Tag>
+            <Tag>{pillLabel("tool", prompt.aiTool)}</Tag>
+            <Tag>{pillLabel("type", prompt.outputType)}</Tag>
           </div>
         </div>
         <button

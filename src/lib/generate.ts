@@ -168,9 +168,11 @@ export async function generatePrompt(input: GenerationInput): Promise<Generation
   };
 
   // 3. Server-side tool validation (never trust model slugs/URLs).
-  //    Hard rule: personal/consumer tasks get a clean, tool-free experience,
-  //    enforced here regardless of what the model returned.
-  const recommendedTools = raw.is_business
+  //    Tools surface when the task is business OR tool-relevant (AI/software/
+  //    productivity tasks, even for personal users). Truly personal tasks get a
+  //    clean, tool-free experience, enforced here regardless of model output.
+  const showTools = raw.is_business || raw.tools_relevant;
+  const recommendedTools = showTools
     ? validateRecommendations(raw.recommended_tools)
     : [];
   const output = { ...raw, recommended_tools: recommendedTools };

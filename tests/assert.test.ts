@@ -22,6 +22,7 @@ function okResult(over: Partial<{
       recommended_tools: over.recommended_tools ?? [],
       category_tags: over.category_tags ?? ["a", "b"],
       is_business: over.is_business ?? true,
+      tools_relevant: over.is_business ?? true,
       is_agent_or_automation: over.is_agent_or_automation ?? false,
       moderation: { verdict: over.moderationBlock ? "block" : "allow", reason: null },
     },

@@ -8,6 +8,7 @@ const valid = {
   recommended_tools: [{ name: "Instantly", registry_slug: "instantly", homepage_url: null }],
   category_tags: ["cold-outbound", "sales"],
   is_business: true,
+  tools_relevant: true,
   is_agent_or_automation: false,
   moderation: { verdict: "allow", reason: null },
 };
@@ -37,5 +38,12 @@ describe("validateGenerationOutput", () => {
   it("rejects non-boolean is_business", () => {
     const r = validateGenerationOutput({ ...valid, is_business: "yes" });
     expect(r.ok).toBe(false);
+  });
+  it("coerces a missing tools_relevant to false without failing", () => {
+    const { tools_relevant, ...rest } = valid;
+    void tools_relevant;
+    const r = validateGenerationOutput(rest);
+    expect(r.ok).toBe(true);
+    if (r.ok) expect(r.value.tools_relevant).toBe(false);
   });
 });

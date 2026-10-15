@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { PresentedGeneration } from "@/lib/clientTypes";
 import ShareBar from "./ShareBar";
 import InstructionText from "./InstructionText";
+import OpenInTool from "./OpenInTool";
 
 function CopyButton({ text, className = "" }: { text: string; className?: string }) {
   const [copied, setCopied] = useState(false);
@@ -64,13 +65,19 @@ export default function PromptResult({
       <section aria-label="Generated prompt">
         <div className="mb-2 flex items-center justify-between">
           <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-            Your prompt for {data.aiTool}
+            {data.aiTool === "Other/Any" ? "Your prompt" : `Your prompt for ${data.aiTool}`}
           </h3>
           <CopyButton text={data.prompt} className="bg-indigo-600 text-white hover:bg-indigo-700" />
         </div>
         <pre className="max-h-[420px] overflow-auto whitespace-pre-wrap rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm leading-relaxed text-slate-800">
           {data.prompt}
         </pre>
+
+        {/* Clear next step: copy the prompt and open the chosen AI tool. */}
+        <div className="mt-3">
+          <OpenInTool aiTool={data.aiTool} promptText={data.prompt} />
+        </div>
+
         {share && (
           <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3">
             <ShareBar url={share.url} title={share.title} text={share.text} variant="full" />

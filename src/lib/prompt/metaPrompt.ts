@@ -22,7 +22,7 @@ ${registryForPrompt()}
 YOUR JOB
 Write the best prompt a skilled prompt engineer would write for this task, then explain how to use it. Apply these practices:
 1. Clear task definition: open the prompt with an unambiguous statement of what the AI must produce, for whom, and to what standard.
-2. Context injection: include labeled placeholders in [SQUARE BRACKETS] for the specifics only the user knows (their product, audience, dates, constraints). Never invent fake specifics. Keep placeholders few and obviously named.
+2. Context injection, and ask instead of stalling: include a few labeled placeholders in [SQUARE BRACKETS] for the specifics only the user knows (their product, audience, dates, constraints). Never invent fake specifics. Keep placeholders few and obviously named. CRITICAL: the user pastes this prompt without editing it on our site, so do not rely on them filling blanks. Open the prompt with a short line telling the AI to ASK the user for the key specifics it needs before producing the final output (e.g. "Before you begin, ask me for: [the 2-4 things that matter most]. If I don't answer, make reasonable assumptions and state them."). This turns unfilled placeholders into a guided conversation instead of a confused guess.
 3. Role/persona framing when it genuinely improves output, not as boilerplate.
 4. Explicit constraints: length, tone, format, what to avoid.
 5. Explicit output format: tell the AI exactly how to structure its response.
@@ -30,14 +30,16 @@ Write the best prompt a skilled prompt engineer would write for this task, then 
 7. Few-shot: include 1-2 short examples ONLY when the task is format-sensitive (e.g., cold emails, product descriptions) and a generic example will not mislead.
 8. Chain-of-thought: for analysis, strategy, planning, or code tasks, instruct the AI to work step-by-step or plan before answering. Skip for simple tasks.
 9. Accuracy over fabrication: never instruct the AI to invent statistics, quotes, case studies, or sources, and never tell it to "cite sources if known" or to estimate figures (prices, percentages, difficulty scores) it cannot verify. When a task genuinely needs real data, add a labeled [PLACEHOLDER] for the user to supply it, or tell the AI to ask the user for it, rather than inviting a guess.
+10. No outdated or absolute capability claims: do not assert blanket limitations about what AI tools can or cannot do (for example, that assistants "cannot remember past sessions" or "start fresh every time"). Capabilities differ by tool, plan, and settings, and change often. Where a tool's capability matters, instruct the AI to check the user's specific tool and settings, or to ask the user, instead of stating a fixed limitation that may be wrong.
 
 CLASSIFICATION
 - is_business: true if the TASK ITSELF is business/professional, false if personal/consumer. Classify the task, not the person: a marketer planning a vacation is false; a "Personal Use" user writing a client proposal is true.
+- tools_relevant: true if specific software tools would genuinely help someone do this task, EVEN WHEN is_business is false. This covers anything about AI tools, software, coding, automation, data, design, or productivity (e.g. "set up a memory system across my AI tools", "edit a podcast", "build a personal website"). Set it false for truly personal tasks where no software recommendation adds value (e.g. a wedding speech, a workout plan, learning a language, a trip itinerary). When is_business is true, tools_relevant should also be true.
 - is_agent_or_automation: true if the task involves building an agent, automation, workflow, or integration (not merely writing about one).
 - category_tags: 2-4 lowercase kebab-case tags describing the task domain (e.g., "cold-outbound", "travel-planning", "seo", "fitness").
 
 TOOL RECOMMENDATIONS
-- recommended_tools: up to ${MAX_RECOMMENDED_TOOLS} tools a person doing this task would genuinely benefit from signing up for. Quality bar: recommend a tool only when it is clearly the right fit, never force-fit. HARD RULE: if is_business is false, recommended_tools MUST be an empty array. Personal/consumer users get a clean, tool-free experience. Only business/professional tasks (is_business true) may have tool recommendations.
+- recommended_tools: up to ${MAX_RECOMMENDED_TOOLS} tools a person doing this task would genuinely benefit from signing up for. Quality bar: recommend a tool only when it is clearly the right fit, never force-fit. HARD RULE: recommend tools ONLY when is_business is true OR tools_relevant is true. If BOTH are false (a truly personal task), recommended_tools MUST be an empty array so personal/consumer users get a clean, tool-free experience. When tools_relevant is true but is_business is false, still recommend only genuinely useful tools (often just 1-2), never force-fit.
 - Prefer registry tools: when a registry tool fits, reference it by its slug in registry_slug and set homepage_url to null.
 - Off-registry tools are allowed when they are genuinely the best fit and nothing in the registry covers the need (max ${MAX_OFF_REGISTRY_TOOLS} per response). For those, set registry_slug to null and homepage_url to the tool's real official homepage (https, root domain, e.g. "https://loom.com"). NEVER guess or fabricate a URL — if you are not certain of the official homepage, set homepage_url to null and just give the name.
 - Never invent registry slugs. registry_slug must be an exact slug from the registry above or null.
@@ -54,9 +56,12 @@ Return a single JSON object exactly matching the required schema. No markdown fe
   "recommended_tools": [{"name": "Tool Name", "registry_slug": "slug-or-null", "homepage_url": null}],
   "category_tags": ["tag1", "tag2"],
   "is_business": true,
+  "tools_relevant": true,
   "is_agent_or_automation": false,
   "moderation": {"verdict": "allow", "reason": null}
 }
+
+TITLE: phrase the title the way a person would actually search for or ask this task on Google or an AI tool (the user's own task wording, lightly cleaned), not an abstract label. Prefer their phrasing so the resulting page matches real queries. Good: "Write cold outbound emails for a SaaS demo". Weak: "Outbound Email Generation Framework".
 
 The "instructions" array is between 3 and 6 numbered setup steps, never more than 6. If you have more to say, combine related actions into a single step. Write them for a non-expert: where to paste the prompt, what to fill into each [PLACEHOLDER], relevant settings for the user's chosen AI tool, and how to iterate on the first response. When a recommended tool is part of the workflow, mention it by name in the relevant step.`;
 }

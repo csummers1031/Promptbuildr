@@ -31,11 +31,12 @@ export function presentGeneration(
   const { links, campaign } = renderTools(output.recommended_tools, output.category_tags);
 
   // Strip any leading enumerator the model added ("1. ", "2) ", "Step 3: ")
-  // since the UI renders its own numbered badges. Business tasks get inline
-  // tool links (recommended + any registry tool mentioned); personal tasks
-  // stay link-free to keep the clean, ad-free experience.
+  // since the UI renders its own numbered badges. Business and tool-relevant
+  // tasks get inline tool links (recommended + any registry tool mentioned);
+  // truly personal tasks stay link-free to keep the clean, ad-free experience.
+  const showTools = output.is_business || output.tools_relevant;
   const stripped = output.instructions.map(stripLeadingEnumerator);
-  const instructions = output.is_business
+  const instructions = showTools
     ? linkifyInstructions(stripped, links, campaign)
     : plainInstructions(stripped);
   const cta = selectCta({

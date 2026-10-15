@@ -11,7 +11,12 @@ function ref(partial: Partial<ToolRef> & { name: string }): ToolRef {
   };
 }
 
-function build(instructions: string[], recommended: ToolRef[] = [], isBusiness = true) {
+function build(
+  instructions: string[],
+  recommended: ToolRef[] = [],
+  isBusiness = true,
+  toolsRelevant = false,
+) {
   return presentGeneration(
     {
       title: "Test",
@@ -20,6 +25,7 @@ function build(instructions: string[], recommended: ToolRef[] = [], isBusiness =
       recommended_tools: recommended,
       category_tags: ["cold-outbound"],
       is_business: isBusiness,
+      tools_relevant: toolsRelevant,
       is_agent_or_automation: true,
       moderation: { verdict: "allow", reason: null },
     },
@@ -61,9 +67,21 @@ describe("presentGeneration — inline tool linking", () => {
     expect(links.find((l) => l.value === "Airtable")?.href).toBe("https://airtable.com");
   });
 
-  it("keeps personal tasks link-free (ad-free experience)", () => {
-    const out = build(["Use Zapier and paste into Claude to plan your trip."], [], false);
+  it("keeps truly personal tasks link-free (ad-free experience)", () => {
+    const out = build(["Use Zapier and paste into Claude to plan your trip."], [], false, false);
     expect(linkHrefs(out.instructions[0])).toHaveLength(0);
+  });
+
+  it("links tools on a tool-relevant personal task (is_business false, tools_relevant true)", () => {
+    const out = build(
+      ["Use Zapier to connect your AI tools, then paste into Claude."],
+      [],
+      false,
+      true,
+    );
+    const names = linkHrefs(out.instructions[0]).map((l) => l.value);
+    expect(names).toContain("Zapier");
+    expect(names).toContain("Claude");
   });
 
   it("keeps the recommended-tools chips limited to the model's picks", () => {

@@ -6,6 +6,7 @@ import {
   typeFromSlug,
   taxonomyIntro,
   taxonomyFaqs,
+  pillLabel,
 } from "@/lib/feed/taxonomy";
 
 describe("taxonomySlug", () => {
@@ -45,5 +46,18 @@ describe("taxonomy copy", () => {
   it("produces 3 FAQs", () => {
     expect(taxonomyFaqs("for", "Marketer")).toHaveLength(3);
     expect(taxonomyFaqs("tool", "Claude")).toHaveLength(3);
+  });
+});
+
+describe("pillLabel", () => {
+  it("humanizes the Other catch-alls instead of showing bare 'Other'", () => {
+    expect(pillLabel("for", "Other")).toBe("Any role");
+    expect(pillLabel("type", "Other")).toBe("Any task");
+    expect(pillLabel("tool", "Other/Any")).toBe("Any AI tool");
+  });
+  it("passes real labels through unchanged", () => {
+    expect(pillLabel("for", "Marketer")).toBe("Marketer");
+    expect(pillLabel("tool", "Claude")).toBe("Claude");
+    expect(pillLabel("type", "Email/Outreach")).toBe("Email/Outreach");
   });
 });

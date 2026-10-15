@@ -16,6 +16,13 @@ export interface RawGenerationOutput {
   }[];
   category_tags: string[];
   is_business: boolean;
+  /**
+   * True when specific software tools would genuinely help accomplish this
+   * task, even for a personal/consumer user (e.g. anything about AI tools,
+   * software, automation, or productivity). Lets tool-relevant personal tasks
+   * surface recommendations while truly personal tasks stay ad-free.
+   */
+  tools_relevant: boolean;
   is_agent_or_automation: boolean;
   moderation: {
     verdict: "allow" | "block";
@@ -49,6 +56,11 @@ export const GENERATION_OUTPUT_SCHEMA = {
     },
     category_tags: { type: "array", items: { type: "string" } },
     is_business: { type: "boolean" },
+    tools_relevant: {
+      type: "boolean",
+      description:
+        "True if specific software tools would genuinely help this task (AI tools, software, automation, productivity), even for personal use",
+    },
     is_agent_or_automation: { type: "boolean" },
     moderation: {
       type: "object",
@@ -67,6 +79,7 @@ export const GENERATION_OUTPUT_SCHEMA = {
     "recommended_tools",
     "category_tags",
     "is_business",
+    "tools_relevant",
     "is_agent_or_automation",
     "moderation",
   ],
@@ -112,6 +125,11 @@ export function validateGenerationOutput(
   if (typeof mod !== "object" || mod === null || (mod.verdict !== "allow" && mod.verdict !== "block")) {
     problems.push('moderation.verdict must be "allow" or "block"');
   }
+
+  // tools_relevant is non-critical: coerce a missing/invalid value to false
+  // rather than failing the whole generation (structured outputs supply it on
+  // the happy path; this only guards the defensive-parse fallback).
+  if (typeof d.tools_relevant !== "boolean") d.tools_relevant = false;
 
   if (problems.length) return { ok: false, problems };
   return { ok: true, value: d as unknown as RawGenerationOutput };

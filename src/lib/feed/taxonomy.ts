@@ -26,6 +26,17 @@ export const typeSlugs = () => [...TYPE_MAP.keys()];
 
 export type TaxonomyKind = "for" | "tool" | "type";
 
+/**
+ * Short, human display label for a taxonomy value, used on prompt-page pills and
+ * breadcrumbs. Turns the catch-all "Other"/"Other/Any" values into readable
+ * text instead of the bare word "Other" (which read as a bug to reviewers).
+ */
+export function pillLabel(kind: TaxonomyKind, label: string): string {
+  if (kind === "tool") return label === "Other/Any" ? "Any AI tool" : label;
+  if (label !== "Other") return label;
+  return kind === "for" ? "Any role" : "Any task";
+}
+
 /** Natural audience nouns per role, so copy reads as English (never "for Marketer"). */
 const ROLE_NOUN: Record<string, string> = {
   Marketer: "marketers",

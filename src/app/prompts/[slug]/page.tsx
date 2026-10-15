@@ -11,8 +11,9 @@ import InstructionText from "@/components/InstructionText";
 import Logo from "@/components/Logo";
 import ViewBeacon from "@/components/ViewBeacon";
 import ScrollTopOnMount from "@/components/ScrollTopOnMount";
+import OpenInTool from "@/components/OpenInTool";
 import { selectCta } from "@/lib/cta";
-import { taxonomySlug } from "@/lib/feed/taxonomy";
+import { taxonomySlug, pillLabel } from "@/lib/feed/taxonomy";
 import {
   SITE_URL,
   creativeWorkJsonLd,
@@ -80,10 +81,14 @@ export default async function PromotedPromptPage({
 
   const related = await getRelatedPrompts(prompt, now);
   const campaign = prompt.categoryTags[0] ?? "general";
-  const toolLinks = prompt.isBusiness
+  // Tools surface for business OR tool-relevant tasks. Stored recommendations are
+  // only non-empty when generation decided the task warranted them (is_business
+  // or tools_relevant), so their presence is the persisted signal.
+  const showTools = prompt.isBusiness || prompt.recommendedTools.length > 0;
+  const toolLinks = showTools
     ? prompt.recommendedTools.map((r) => resolveToolLink(r, campaign)).filter((l) => l.href)
     : [];
-  const instructionSteps = prompt.isBusiness
+  const instructionSteps = showTools
     ? linkifyInstructions(prompt.instructions, toolLinks, campaign)
     : plainInstructions(prompt.instructions);
   const cta = selectCta({
@@ -144,7 +149,7 @@ export default async function PromotedPromptPage({
           <Link href="/prompts" className="hover:text-slate-800">Prompts</Link>
           <span className="mx-1.5">/</span>
           <Link href={`/prompts/type/${taxonomySlug(prompt.outputType)}`} className="hover:text-slate-800">
-            {prompt.outputType}
+            {pillLabel("type", prompt.outputType)}
           </Link>
         </nav>
 
@@ -157,13 +162,13 @@ export default async function PromotedPromptPage({
 
         <div className="mt-3 flex flex-wrap gap-1.5">
           <Link href={`/prompts/for/${taxonomySlug(prompt.role)}`} className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600 hover:bg-slate-200">
-            {prompt.role}
+            {pillLabel("for", prompt.role)}
           </Link>
           <Link href={`/prompts/tool/${taxonomySlug(prompt.aiTool)}`} className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600 hover:bg-slate-200">
-            {prompt.aiTool}
+            {pillLabel("tool", prompt.aiTool)}
           </Link>
           <Link href={`/prompts/type/${taxonomySlug(prompt.outputType)}`} className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600 hover:bg-slate-200">
-            {prompt.outputType}
+            {pillLabel("type", prompt.outputType)}
           </Link>
         </div>
 
@@ -176,6 +181,10 @@ export default async function PromotedPromptPage({
           <pre className="max-h-[460px] overflow-auto whitespace-pre-wrap rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm leading-relaxed text-slate-800">
             {prompt.promptText}
           </pre>
+          {/* Clear next step: copy the prompt and open the chosen AI tool. */}
+          <div className="mt-3">
+            <OpenInTool aiTool={prompt.aiTool} promptText={prompt.promptText} />
+          </div>
           <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3">
             <ShareBar
               url={url}
