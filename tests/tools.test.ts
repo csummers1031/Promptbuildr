@@ -22,7 +22,7 @@ describe("tool registry data", () => {
   });
 
   it("includes the newly added partner tools", () => {
-    for (const slug of ["seamless-ai", "netlify", "runpod", "mindstudio", "databox", "omniseo", "elevenlabs", "gamma", "descript", "quillbot", "reclaim-ai"]) {
+    for (const slug of ["seamless-ai", "netlify", "runpod", "mindstudio", "databox", "omniseo", "elevenlabs", "gamma", "descript", "quillbot", "reclaim-ai", "customgpt"]) {
       expect(getToolBySlug(slug), slug).toBeDefined();
     }
   });

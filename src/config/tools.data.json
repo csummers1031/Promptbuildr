@@ -313,5 +313,12 @@
     "description": "Build AI agents that automate email meetings and multi-step workflows",
     "category": "ai-tools",
     "url": "https://try.lindy.ai/z07fp7u29kjb"
+  },
+  {
+    "slug": "customgpt",
+    "name": "CustomGPT",
+    "description": "No-code AI agent builder trained on your own content",
+    "category": "ai-tools",
+    "url": "https://customgpt.ai/solutions/no-code-gpt-builder/?fpr=123&fp_sid=pbuildr"
   }
 ]

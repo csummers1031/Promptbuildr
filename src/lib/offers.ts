@@ -61,7 +61,7 @@ const KEYWORD_GROUPS: { terms: string[]; slugs: string[] }[] = [
     slugs: ["railway", "netlify", "gamma"],
   },
   {
-    terms: ["automat", "workflow", "agent", "integrat", "no-code", "nocode", "chatbot", "scrape"],
+    terms: ["automat", "workflow", "agent", "integrat", "no-code", "nocode", "scrape"],
     slugs: ["n8n", "make", "mindstudio", "lindy"],
   },
   {
@@ -98,7 +98,11 @@ const KEYWORD_GROUPS: { terms: string[]; slugs: string[] }[] = [
   },
   {
     terms: ["ai assistant", "ai agent", "build an agent", "llm"],
-    slugs: ["claude", "mindstudio", "lindy"],
+    slugs: ["claude", "mindstudio", "lindy", "customgpt"],
+  },
+  {
+    terms: ["chatbot", "knowledge base", "help center", "helpdesk", "help desk", "support bot", "customer support", "internal search", "custom gpt", "customgpt"],
+    slugs: ["customgpt", "lindy", "mindstudio"],
   },
 ];
 

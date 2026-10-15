@@ -90,4 +90,8 @@ describe("pickLoadingOffers", () => {
       }
     }
   });
+  it("surfaces CustomGPT for chatbot / knowledge-base tasks", () => {
+    const offers = pickLoadingOffers("Customer Success", "Other", "build a chatbot for our help center docs").map((o) => o.name);
+    expect(offers).toContain("CustomGPT");
+  });
 });
