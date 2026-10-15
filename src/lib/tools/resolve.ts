@@ -73,6 +73,22 @@ export function validateHomepageUrl(raw: string | null | undefined): string | nu
   return `https://${host}${segments.length ? `/${segments[0]}` : ""}`;
 }
 
+/**
+ * Does the homepage domain plausibly belong to this tool? The off-registry URL
+ * comes from model memory (or could be steered by an injected task), so require
+ * the domain's main label to share the tool's name. "Loom" -> loom.com passes;
+ * "Loom" -> evil.example is dropped (rendered name-only). Prevents link injection
+ * / phishing on indexable pages.
+ */
+function domainMatchesName(host: string, normalizedName: string): boolean {
+  const label = host
+    .replace(/^www\./, "")
+    .split(".")[0]
+    .replace(/[^a-z0-9]/g, "");
+  if (label.length < 2 || !normalizedName) return false;
+  return label.includes(normalizedName) || normalizedName.includes(label);
+}
+
 /** Sanitize a model-supplied tool display name. */
 function sanitizeName(raw: unknown): string | null {
   if (typeof raw !== "string") return null;
@@ -106,15 +122,26 @@ export function validateRecommendations(raw: unknown): ToolRef[] {
     const name = sanitizeName(rec.name);
     if (!name) continue;
     const normalized = normalizeToolName(name);
-    if (!normalized || seen.has(normalized)) continue;
+    if (!normalized) continue;
 
-    // Prefer registry match: by claimed slug first, then by name.
-    const registryTool =
-      (typeof rec.registry_slug === "string" ? findRegistryTool(rec.registry_slug) : undefined) ??
-      findRegistryTool(name);
+    // Prefer a name match. Only trust the claimed slug when the name didn't
+    // resolve AND is consistent with the slug's tool (guards against a name like
+    // "Salesforce" carrying slug "hubspot").
+    const byName = findRegistryTool(name);
+    const bySlug =
+      typeof rec.registry_slug === "string" ? findRegistryTool(rec.registry_slug) : undefined;
+    let registryTool = byName;
+    if (!registryTool && bySlug) {
+      const slugNorm = normalizeToolName(bySlug.name);
+      if (slugNorm.includes(normalized) || normalized.includes(slugNorm)) registryTool = bySlug;
+    }
 
     if (registryTool) {
-      seen.add(normalized);
+      // Dedup registry tools by SLUG so "HubSpot CRM" and "HubSpot" don't both
+      // consume a recommendation slot.
+      const key = `slug:${registryTool.slug}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
       refs.push({
         name: registryTool.name,
         normalized: normalizeToolName(registryTool.name),
@@ -125,8 +152,13 @@ export function validateRecommendations(raw: unknown): ToolRef[] {
     }
 
     // Off-registry path
+    if (seen.has(normalized)) continue;
     if (offRegistryCount >= MAX_OFF_REGISTRY_TOOLS) continue;
-    const homepageUrl = validateHomepageUrl(rec.homepage_url);
+    let homepageUrl = validateHomepageUrl(rec.homepage_url);
+    // Drop the URL (keep the name) unless its domain matches the tool name.
+    if (homepageUrl && !domainMatchesName(new URL(homepageUrl).hostname, normalized)) {
+      homepageUrl = null;
+    }
     seen.add(normalized);
     offRegistryCount++;
     refs.push({ name, normalized, registrySlug: null, homepageUrl });

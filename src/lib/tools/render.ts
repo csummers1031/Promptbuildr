@@ -95,7 +95,14 @@ export function linkifyInstructions(
     registryLinks.push({ name: t.name, href: buildMarketplaceUrl(t, campaign), source: "registry" });
     caseSensitiveNames.add(t.name);
   }
-  const pool = [...recommendedLinks, ...registryLinks];
+  // Ambiguous names (Make, Close, Clay, folk, Gamma) are common words, so even
+  // case-sensitive matching misfires at sentence start ("Make sure…"). Never
+  // inline-link them, even when recommended — they still render as tool chips
+  // (with the correct affiliate link) elsewhere, so no attribution is lost.
+  const pool = [
+    ...recommendedLinks.filter((l) => !AMBIGUOUS_TOOL_NAMES.has(l.name)),
+    ...registryLinks,
+  ];
   return instructions.map((step) => linkifyInstruction(step, pool, { caseSensitiveNames }));
 }
 

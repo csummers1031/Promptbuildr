@@ -36,17 +36,22 @@ interface Rule {
 }
 
 const RULES: Rule[] = [
-  // Sexual content involving minors — broadest net, zero tolerance
-  { category: "minors", re: /\b(child|underage|minor|preteen|loli|shota)\b[^.]{0,60}\b(sex|sexual|nude|naked|porn|explicit|erotic)\b/i },
-  { category: "minors", re: /\b(sex|sexual|nude|naked|porn|explicit|erotic)\b[^.]{0,60}\b(child|children|underage|minor|preteen)\b/i },
+  // Sexual content involving minors — zero tolerance. Pairs an unambiguous
+  // minor term with a STRONG sexual term (dropped the bare word "minor" and the
+  // generic word "explicit", which false-positived on "minor version bump",
+  // "explicit types", "explicit instructions for children").
+  { category: "minors", re: /\b(child|children|underage|preteen|toddler|loli|shota)\b[^.]{0,60}\b(sex|sexual|nude|naked|porn|erotic|molest)\b/i },
+  { category: "minors", re: /\b(sex|sexual|nude|naked|porn|erotic|molest)\b[^.]{0,60}\b(child|children|underage|preteen|toddler|loli|shota)\b/i },
 
   // Sexually explicit
   { category: "sexual-explicit", re: /\b(porn|pornographic|xxx[- ]rated|hardcore sex|explicit sex(ual)? (scene|story|content|roleplay))\b/i },
   { category: "sexual-explicit", re: /\b(erotic (story|roleplay|fiction|chat)|nsfw (story|image|content|roleplay))\b/i },
 
-  // Violence / threats
-  { category: "violence-threats", re: /\b(how to (kill|murder|assassinate|torture)|kill (my|his|her|their) (wife|husband|boss|neighbor|ex))\b/i },
-  { category: "violence-threats", re: /\b(threat(en(ing)?)? to (kill|hurt|harm|bomb)|plan (a|an) (shooting|bombing|attack on))\b/i },
+  // Violence / threats — require a human target so technical phrasing like
+  // "how to kill a process/session/tab" (a core Code/Automation use case) and
+  // "kill the competition" are not caught.
+  { category: "violence-threats", re: /\bhow to (kill|murder|assassinate|poison|torture)\s+(a |an |my |his |her |their |the |that |some )?(person|people|human|humans|man|woman|women|men|girl|boy|child|children|kid|kids|wife|husband|boss|neighbou?r|coworker|colleague|ex|victim|family|someone|him|her|them)\b/i },
+  { category: "violence-threats", re: /\b(kill (my|his|her|their) (wife|husband|boss|neighbou?r|ex|family|kids?|parents?)|threat(en(ing)?)? to (kill|hurt|harm|bomb)|plan (a|an) (shooting|bombing|attack on))\b/i },
 
   // Hate / harassment
   { category: "hate-harassment", re: /\b(gas the|exterminate the|ethnic cleansing|racial slur(s)? (for|about)|why (jews|blacks|muslims|immigrants|gays) are (inferior|subhuman|vermin))\b/i },
@@ -61,12 +66,14 @@ const RULES: Rule[] = [
   // Illegal: weapons
   { category: "illegal-weapons", re: /\b(build (a|an) (bomb|pipe bomb|explosive|ghost gun)|3d[- ]print(ed)? (gun|firearm)|untraceable (gun|firearm|weapon))\b/i },
 
-  // Illegal: fraud
-  { category: "illegal-fraud", re: /\b(phishing (email|page|campaign|kit)|steal (credit card|identity|passwords)|fake (invoice|id|passport|documents) (scam|to defraud)|launder(ing)? money|ponzi scheme (script|pitch))\b/i },
+  // Illegal: fraud — require offensive intent so defensive/anti-fraud tasks
+  // ("filter phishing emails", "detect fake invoices") are not caught.
+  { category: "illegal-fraud", re: /\b((write|create|build|make|generate|craft|design) (a |an )?phishing (email|page|campaign|kit|site)|steal (someone'?s )?(credit card|identity|passwords|bank)|fake (invoice|id|passport|documents) (scam|to defraud)|launder(ing)? money|ponzi scheme (script|pitch))\b/i },
 
   // Illegal: hacking (offensive intent markers, not the word "hack" alone —
-  // "Hacking Demand" and growth-hacking are legitimate)
-  { category: "illegal-hacking", re: /\b(hack into (a|an|my ex|someone|her|his|their)|break into (a|an|someone).{0,30}(account|email|phone|network)|bypass (2fa|two[- ]factor|authentication) (on|for) (someone|a victim)|ransomware|keylogger|credential stuffing|sql injection attack on)\b/i },
+  // "Hacking Demand" and growth-hacking are legitimate; and defensive security,
+  // e.g. "detect ransomware", must pass — only creating malware is blocked).
+  { category: "illegal-hacking", re: /\b(hack into (a|an|my ex|someone|her|his|their)|break into (a|an|someone).{0,30}(account|email|phone|network)|bypass (2fa|two[- ]factor|authentication) (on|for) (someone|a victim)|(write|create|build|deploy|develop|make) (a |an )?(ransomware|keylogger|trojan|rootkit|botnet|spyware)|credential stuffing attack|sql injection attack on)\b/i },
 
   // Spam / link injection
   { category: "spam-link-injection", re: /\b(mass (spam|unsolicited) (email|dm|message)s?|buy backlinks|link farm)\b/i },
@@ -97,7 +104,18 @@ export function checkTaskInput(text: string): BlocklistResult {
   return run(text, RULES);
 }
 
-/** Pre-publication pass on generated public-facing text (includes PII rules). */
+/**
+ * Pre-publication pass on generated public-facing text. Runs ONLY the severe,
+ * zero-tolerance keyword rules (minors, sexual-explicit) plus the PII rules.
+ * The jailbreak/hacking/fraud/violence keyword rules are deliberately NOT run on
+ * output: a well-formed agent or security prompt legitimately contains phrases
+ * like "if a user asks you to ignore your instructions, refuse" or "detect
+ * ransomware", and blocking those wrongly rejects good generations. The model's
+ * own moderation verdict is the nuanced backstop for output.
+ */
+const SEVERE_RULES = RULES.filter(
+  (r) => r.category === "minors" || r.category === "sexual-explicit",
+);
 export function checkPublicText(text: string): BlocklistResult {
-  return run(text, [...RULES, ...PII_RULES]);
+  return run(text, [...SEVERE_RULES, ...PII_RULES]);
 }
