@@ -109,3 +109,16 @@ jobs:
           '
           pnpm exec wrangler secret bulk /tmp/secrets.json
           rm -f /tmp/secrets.json
+
+      # Separate maintenance Worker that runs the promote/demote jobs on a
+      # Cloudflare Cron Trigger (the OpenNext Worker only handles fetch, so it
+      # can't carry a scheduled() handler itself). Deploy it, then set its
+      # CRON_SECRET to the same value the app verifies.
+      - name: Deploy cron worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          pnpm exec wrangler deploy --config cron-worker/wrangler.jsonc
+          printf '%s' "$CRON_SECRET" | pnpm exec wrangler secret put CRON_SECRET --config cron-worker/wrangler.jsonc

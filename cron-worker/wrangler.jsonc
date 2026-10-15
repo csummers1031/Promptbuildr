@@ -1,0 +1,20 @@
+{
+  // Standalone maintenance Worker for Promptbuildr.
+  //
+  // Cloudflare Cron Triggers invoke a Worker's scheduled() handler on a
+  // schedule. The main app runs on OpenNext, whose generated Worker only
+  // handles fetch (no scheduled), so this tiny separate Worker drives the
+  // periodic jobs by calling the app's authenticated /api/cron/* endpoints.
+  //
+  // Deployed by the "Deploy cron worker" step in ../.github/workflows/deploy.yml,
+  // which also sets its CRON_SECRET (same value the app verifies).
+  "name": "promptbuildr-cron",
+  "main": "index.js",
+  "compatibility_date": "2025-03-25",
+  "observability": { "enabled": true },
+  // Hourly, on the hour. Demote is the report-based takedown safety net;
+  // promote is a backstop for anything that didn't promote inline at generation.
+  "triggers": {
+    "crons": ["0 * * * *"]
+  }
+}
