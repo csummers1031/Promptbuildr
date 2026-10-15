@@ -156,10 +156,10 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
   const loading = false;
 
   return (
-    <form onSubmit={submit} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-      <div className="flex flex-col gap-4">
+    <form onSubmit={submit} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+      <div className="flex flex-col gap-3 sm:gap-4">
         <div>
-          <label htmlFor="task" className="mb-1.5 block text-sm font-semibold text-slate-700">
+          <label htmlFor="task" className="mb-1 block text-sm font-semibold text-slate-700">
             What are you trying to do?
           </label>
           <textarea
@@ -167,14 +167,14 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
             value={task}
             onChange={(e) => setTask(e.target.value)}
             placeholder={PLACEHOLDERS[placeholderIdx]}
-            rows={3}
+            rows={2}
             maxLength={1000}
             disabled={loading}
-            className="w-full resize-none rounded-xl border border-slate-300 px-3.5 py-2.5 text-base text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 disabled:opacity-60"
+            className="w-full resize-none rounded-xl border border-slate-300 px-3.5 py-2.5 text-base text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 disabled:opacity-60 sm:min-h-[5.25rem]"
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
           <Field label="Who are you?">
             <Select id="role" value={role} onChange={setRole} disabled={loading} placeholder="Select…" options={ROLES} />
           </Field>

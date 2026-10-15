@@ -74,12 +74,12 @@ export default async function Home({
       </header>
 
       <main className="mx-auto max-w-3xl px-4">
-        <section className="pb-8 pt-6 text-center sm:pt-10">
-          <h1 className="mx-auto max-w-2xl text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+        <section className="pb-4 pt-4 text-center sm:pb-8 sm:pt-10">
+          <h1 className="mx-auto max-w-2xl text-balance text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
             Turn what you want to do into a{" "}
             <span className="text-indigo-600">great AI prompt</span>
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-balance text-lg text-slate-600">
+          <p className="mx-auto mt-2.5 max-w-xl text-balance text-base text-slate-600 sm:mt-4 sm:text-lg">
             Describe your task, business or personal. Get a ready-to-paste prompt plus
             step-by-step setup, tuned for the AI tool you actually use.
           </p>
