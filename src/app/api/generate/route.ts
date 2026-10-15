@@ -21,7 +21,7 @@ import {
   recordToolOpportunities,
   recordModerationBlock,
 } from "@/db/repo";
-import { promotePromptById } from "@/db/promote";
+import { promotePromptById, ensureSlug } from "@/db/promote";
 import { pingIndexNow } from "@/lib/indexnow";
 
 export const runtime = "nodejs";
@@ -92,7 +92,13 @@ export async function POST(req: NextRequest) {
       result.status === "ok" || result.status === "error" || result.status === "blocked"
         ? result.usage
         : undefined;
-    if (usage) await recordSpend(now, usage.estimatedCostUsd);
+    if (usage) {
+      try {
+        await recordSpend(now, usage.estimatedCostUsd);
+      } catch (e) {
+        console.error("recordSpend failed (generation already billed):", e);
+      }
+    }
   }
 
   if (result.status === "error") {
@@ -171,20 +177,21 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // --- promote to an indexable page (gated on quality + dedup) ---
-  // Best-effort: a promotion failure must never break the user's generation.
-  // Capture the slug so the client can share the prompt's own page (which shows
-  // the full generated prompt) instead of a remix link that only carries inputs.
+  // --- shareable page + indexing ---
+  // Every ok prompt gets a slug and a shareable page immediately (so the share
+  // button always links to the full prompt). Promotion is a SEPARATE gate that
+  // only decides whether that page is indexed + listed in the feed/sitemap.
+  // Best-effort: a failure here must never break the user's generation.
   let promotedSlug: string | null = null;
   if (isOk && promptId) {
     try {
+      promotedSlug = await ensureSlug(promptId);
       const promo = await promotePromptById(promptId);
-      if (promo.promoted && promo.slug) promotedSlug = promo.slug;
       if (promo.promoted && promo.url && promo.reason !== "already") {
         await pingIndexNow([promo.url]);
       }
     } catch (e) {
-      console.error("inline promotion failed:", e);
+      console.error("inline slug/promotion failed:", e);
     }
   }
 

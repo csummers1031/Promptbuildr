@@ -61,7 +61,9 @@ async function callModel(
 
   const response = await getClient().messages.create({
     model: getModel(),
-    max_tokens: 4096,
+    // Headroom for the structured JSON output plus adaptive thinking on current
+    // models (Sonnet 5.5). 4096 risked truncating complex agent/code prompts.
+    max_tokens: 8192,
     system: [
       { type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } },
     ],

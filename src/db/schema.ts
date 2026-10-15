@@ -4,6 +4,7 @@ import {
   text,
   timestamp,
   integer,
+  bigint,
   smallint,
   boolean,
   jsonb,
@@ -93,15 +94,24 @@ export const upvotes = pgTable(
   (t) => [primaryKey({ columns: [t.promptId, t.visitorHash] })],
 );
 
-export const reports = pgTable("reports", {
-  id: uuid("id").defaultRandom().primaryKey(),
-  promptId: uuid("prompt_id")
-    .notNull()
-    .references(() => prompts.id),
-  reason: text("reason"),
-  visitorHash: text("visitor_hash").notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-});
+export const reports = pgTable(
+  "reports",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    promptId: uuid("prompt_id")
+      .notNull()
+      .references(() => prompts.id),
+    reason: text("reason"),
+    visitorHash: text("visitor_hash").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (t) => [
+    // One report per visitor per prompt, so a single actor can't manufacture the
+    // distinct-reporter count that demotes/unpublishes a page.
+    uniqueIndex("reports_prompt_visitor_idx").on(t.promptId, t.visitorHash),
+    index("reports_prompt_idx").on(t.promptId),
+  ],
+);
 
 export const generations = pgTable(
   "generations",
@@ -247,7 +257,8 @@ export const outboundClicks = pgTable(
 export const monthlySpend = pgTable("monthly_spend", {
   /** 'YYYY-MM' calendar month */
   month: text("month").primaryKey(),
-  costMicros: integer("cost_micros").default(0).notNull(),
+  // bigint: integer micros overflow at ~$2,147/mo; bigint removes that ceiling.
+  costMicros: bigint("cost_micros", { mode: "number" }).default(0).notNull(),
   generations: integer("generations").default(0).notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 });

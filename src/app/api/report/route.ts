@@ -19,8 +19,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "invalid body" }, { status: 400 });
   }
   const b = body as { promptId?: unknown; reason?: unknown };
-  if (typeof b.promptId !== "string" || !b.promptId) {
-    return NextResponse.json({ error: "promptId required" }, { status: 400 });
+  const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if (typeof b.promptId !== "string" || !UUID.test(b.promptId)) {
+    return NextResponse.json({ error: "valid promptId required" }, { status: 400 });
   }
   const reason = typeof b.reason === "string" ? b.reason.slice(0, MAX_REASON) : "user-report";
   const promptId = b.promptId;
@@ -35,7 +36,12 @@ export async function POST(req: NextRequest) {
   const vhash = await visitorHash(anon?.id ?? "anon", ip);
 
   try {
-    await db.insert(reports).values({ promptId, reason, visitorHash: vhash });
+    // One report per (prompt, visitor): the unique index makes repeats no-ops,
+    // so a single actor can't inflate the distinct-reporter count below.
+    await db
+      .insert(reports)
+      .values({ promptId, reason, visitorHash: vhash })
+      .onConflictDoNothing({ target: [reports.promptId, reports.visitorHash] });
 
     // Count distinct reporters; auto-unpublish at threshold.
     const distinct = await db

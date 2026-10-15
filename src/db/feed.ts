@@ -80,11 +80,16 @@ export async function getFeed(q: FeedQuery, now: Date): Promise<FeedPrompt[]> {
   return rows.map(rowToFeed);
 }
 
-/** A single promoted prompt by slug (published + promoted, not demoted). */
+/**
+ * A single prompt by slug for its page. Returns any PUBLISHED, non-demoted
+ * prompt — promoted or not — so a freshly generated prompt is shareable
+ * immediately. The page itself marks non-promoted prompts `noindex` (indexing
+ * is gated separately by promotion); the feed/sitemap stay promoted-only.
+ */
 export async function getPromptBySlug(slug: string, now: Date): Promise<FeedPrompt | null> {
   const db = getDb();
   if (!db) {
-    const found = sampleFeed(now).find((p) => p.slug === slug && p.promotedAt);
+    const found = sampleFeed(now).find((p) => p.slug === slug);
     return found ?? null;
   }
   const rows = await db
@@ -94,7 +99,6 @@ export async function getPromptBySlug(slug: string, now: Date): Promise<FeedProm
       and(
         eq(prompts.slug, slug),
         eq(prompts.status, "published"),
-        isNotNull(prompts.promotedAt),
       ),
     )
     .limit(1);

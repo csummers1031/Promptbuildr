@@ -56,7 +56,11 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { title, description, url, images: [{ url: og, width: 1200, height: 630 }] },
+    // Indexing is gated by promotion: every prompt has a shareable page, but
+    // only promoted (quality-gated, non-vanity) ones are indexed. Non-promoted
+    // pages stay crawlable-but-noindex so shared links still work.
+    robots: { index: Boolean(prompt.promotedAt), follow: true },
+    openGraph: { title, description, url, type: "article", siteName: "Promptbuildr", images: [{ url: og, width: 1200, height: 630 }] },
     twitter: { card: "summary_large_image", title, description, images: [og] },
   };
 }

@@ -15,6 +15,13 @@
       "when": 1791900208207,
       "tag": "0001_friendly_reavers",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792030268135,
+      "tag": "0002_foundation_batch3",
+      "breakpoints": true
     }
   ]
 }

@@ -3,7 +3,7 @@ import { getDb } from "./client";
 import { prompts, reports } from "./schema";
 import { SITE_URL } from "@/lib/seo";
 import { slugify, normalizeForDedup } from "@/lib/feed/slug";
-import { scoreQuality, qualifiesForPromotion } from "@/lib/feed/quality";
+import { scoreQuality, qualifiesForPromotion, looksVanityOrPrivate } from "@/lib/feed/quality";
 
 /**
  * Promotion pipeline — turns qualifying feed prompts into public, indexable
@@ -22,6 +22,8 @@ export type PromoteReason =
   | "not-published"
   | "already"
   | "low-quality"
+  | "vanity"
+  | "demoted"
   | "duplicate";
 
 export interface PromoteResult {
@@ -36,6 +38,32 @@ type Db = NonNullable<ReturnType<typeof getDb>>;
 async function slugExists(db: Db, slug: string): Promise<boolean> {
   const rows = await db.select({ id: prompts.id }).from(prompts).where(eq(prompts.slug, slug)).limit(1);
   return rows.length > 0;
+}
+
+/**
+ * Ensure a prompt has a slug so it always has a shareable page at
+ * /prompts/<slug>, INDEPENDENT of whether it is promoted (indexed). Returns the
+ * slug (existing or newly assigned), or null without a DB. Idempotent and
+ * concurrency-safe: only sets the slug when it is still null.
+ */
+export async function ensureSlug(id: string): Promise<string | null> {
+  const db = getDb();
+  if (!db) return null;
+  const rows = await db
+    .select({ slug: prompts.slug, title: prompts.title, status: prompts.status })
+    .from(prompts)
+    .where(eq(prompts.id, id))
+    .limit(1);
+  const p = rows[0];
+  if (!p || p.status !== "published") return p?.slug ?? null;
+  if (p.slug) return p.slug;
+  const slug = await uniqueSlug(db, p.title);
+  await db
+    .update(prompts)
+    .set({ slug, updatedAt: sql`now()` })
+    .where(and(eq(prompts.id, id), isNull(prompts.slug)));
+  const after = await db.select({ slug: prompts.slug }).from(prompts).where(eq(prompts.id, id)).limit(1);
+  return after[0]?.slug ?? slug;
 }
 
 /** A free slug derived from the title, suffixed on collision. */
@@ -78,26 +106,32 @@ export async function promotePromptById(id: string): Promise<PromoteResult> {
   const p = rows[0];
   if (!p) return { promoted: false, reason: "not-found" };
   if (p.status !== "published") return { promoted: false, reason: "not-published" };
-  if (p.promotedAt && p.slug && !p.demotedAt) {
+  // A demoted prompt stays deindexed. Re-promotion must be an explicit admin
+  // action, never an automatic retry (which would silently undo moderation).
+  if (p.demotedAt) return { promoted: false, reason: "demoted" };
+  if (p.promotedAt && p.slug) {
     return { promoted: true, slug: p.slug, url: promptUrl(p.slug), reason: "already" };
   }
 
   const instructionsCount = Array.isArray(p.instructions) ? (p.instructions as unknown[]).length : 0;
-  const signals = { title: p.title, promptText: p.promptText, instructionsCount };
+  const signals = { title: p.title, promptText: p.promptText, instructionsCount, taskInput: p.taskInput };
+  // Branded/private one-offs get a shareable page but are never indexed.
+  if (looksVanityOrPrivate(p.title, p.taskInput)) return { promoted: false, reason: "vanity" };
   if (!qualifiesForPromotion(signals)) return { promoted: false, reason: "low-quality" };
   if (await hasDuplicatePage(db, p.title, p.id)) return { promoted: false, reason: "duplicate" };
 
   const slug = p.slug ?? (await uniqueSlug(db, p.title));
+  // Guard on promoted_at IS NULL so a concurrent cron + inline promote can't
+  // both flip it (and double-ping IndexNow).
   await db
     .update(prompts)
     .set({
       slug,
       promotedAt: sql`now()`,
-      demotedAt: null,
       qualityScore: scoreQuality(signals),
       updatedAt: sql`now()`,
     })
-    .where(eq(prompts.id, id));
+    .where(and(eq(prompts.id, id), isNull(prompts.promotedAt)));
   return { promoted: true, slug, url: promptUrl(slug) };
 }
 
@@ -137,7 +171,7 @@ export async function demoteEligiblePrompts(
     .leftJoin(reports, eq(reports.promptId, prompts.id))
     .where(and(isNotNull(prompts.promotedAt), isNull(prompts.demotedAt)))
     .groupBy(prompts.id, prompts.slug)
-    .having(sql`count(${reports.id}) >= ${reportThreshold}`);
+    .having(sql`count(distinct ${reports.visitorHash}) >= ${reportThreshold}`);
 
   const demotedUrls: string[] = [];
   for (const r of rows) {
