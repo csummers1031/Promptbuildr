@@ -31,15 +31,14 @@ export interface AiToolLaunch {
 
 /**
  * Official web destinations for tools NOT in the partner registry. Root URLs
- * only (no fabricated deep links). Muse is Meta's assistant per the product
- * owner, so it points at meta.ai.
+ * only (no fabricated deep links).
  */
 const AI_TOOL_WEB: Record<string, { href: string; mode: AiToolMode }> = {
   ChatGPT: { href: "https://chatgpt.com/", mode: "chat" },
   Gemini: { href: "https://gemini.google.com/app", mode: "chat" },
   Grok: { href: "https://grok.com/", mode: "chat" },
   DeepSeek: { href: "https://chat.deepseek.com/", mode: "chat" },
-  Muse: { href: "https://www.meta.ai/", mode: "chat" },
+  Muse: { href: "https://muse.ai/", mode: "chat" },
   "Microsoft Copilot": { href: "https://copilot.microsoft.com/", mode: "chat" },
   Perplexity: { href: "https://www.perplexity.ai/", mode: "chat" },
   "GitHub Copilot": { href: "https://github.com/copilot", mode: "editor" },
