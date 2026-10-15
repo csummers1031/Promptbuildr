@@ -30,7 +30,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const sp = await searchParams;
   // Home always self-canonicalizes to the clean apex root (drops ?remix=… etc.).
-  const canonical = { alternates: { canonical: SITE_URL } };
+  const canonical = { alternates: { canonical: SITE_URL }, openGraph: { url: SITE_URL } };
   const task = sp.remix === "1" && typeof sp.task === "string" ? sp.task.slice(0, 100).trim() : "";
   if (!task) return canonical;
   const og = `${SITE_URL}/api/og?title=${encodeURIComponent(task)}&tag=${encodeURIComponent("AI prompt")}`;
@@ -38,7 +38,9 @@ export async function generateMetadata({
   return {
     ...canonical,
     title,
-    openGraph: { title, images: [{ url: og, width: 1200, height: 630 }] },
+    // Remix links shouldn't be indexed as near-duplicate homepages.
+    robots: { index: false, follow: true },
+    openGraph: { title, url: SITE_URL, images: [{ url: og, width: 1200, height: 630 }] },
     twitter: { card: "summary_large_image", title, images: [og] },
   };
 }

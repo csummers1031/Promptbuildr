@@ -30,10 +30,17 @@ describe("slug round-trips", () => {
 });
 
 describe("taxonomy copy", () => {
-  it("produces unique intro per kind", () => {
-    expect(taxonomyIntro("for", "Marketer").h1).toBe("AI prompts for Marketer");
+  it("produces unique, grammatical intro per kind", () => {
+    expect(taxonomyIntro("for", "Marketer").h1).toBe("AI prompts for marketers");
     expect(taxonomyIntro("tool", "Claude").h1).toBe("Claude prompts");
-    expect(taxonomyIntro("type", "Email/Outreach").h1).toBe("Email/Outreach prompts");
+    expect(taxonomyIntro("type", "Email/Outreach").h1).toBe("Prompts for outreach emails");
+  });
+  it("handles Other / slash labels without broken copy", () => {
+    // No raw "Other", no "produce other", no bare slash label in the sentence.
+    expect(taxonomyIntro("type", "Other").h1).toBe("Prompts for all kinds of tasks");
+    expect(taxonomyIntro("for", "Founder/CEO").intro).toContain("founders and CEOs");
+    expect(taxonomyIntro("tool", "Other/Any").h1).toBe("Prompts for any AI assistant");
+    expect(taxonomyIntro("type", "Email/Outreach").intro).not.toContain("email/outreach");
   });
   it("produces 3 FAQs", () => {
     expect(taxonomyFaqs("for", "Marketer")).toHaveLength(3);

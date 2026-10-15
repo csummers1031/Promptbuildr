@@ -20,11 +20,13 @@ export async function generateMetadata({ params }: { params: Promise<{ "ai-tool"
   const { h1, intro } = taxonomyIntro("tool", label);
   // Don't index a near-empty category page; flips to indexable at ≥2 prompts.
   const sample = await getFeed({ sort: "all", aiTool: label, limit: 2, offset: 0 }, new Date());
+  const url = `${SITE_URL}/prompts/tool/${tool}`;
   return {
     title: `${h1} | Promptbuildr`,
     description: clampForMeta(intro),
-    alternates: { canonical: `${SITE_URL}/prompts/tool/${tool}` },
-    robots: { index: sample.length >= 2, follow: true },
+    alternates: { canonical: url },
+    robots: { index: label !== "Other/Any" && sample.length >= 2, follow: true },
+    openGraph: { url, title: h1, description: clampForMeta(intro) },
   };
 }
 

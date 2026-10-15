@@ -20,7 +20,9 @@ export default function robots(): MetadataRoute.Robots {
   ];
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: ["/api/"] },
+      // Allow /api/og explicitly (more specific than the /api/ disallow) so
+      // Googlebot/Bingbot/Twitterbot can fetch the social card + index images.
+      { userAgent: "*", allow: ["/", "/api/og"], disallow: ["/api/"] },
       ...aiCrawlers.map((ua) => ({ userAgent: ua, allow: "/" })),
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

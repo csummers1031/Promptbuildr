@@ -22,11 +22,13 @@ export async function generateMetadata({ params }: { params: Promise<{ role: str
   // Don't index a near-empty category page (Google's thin/scaled-content risk);
   // it flips to indexable automatically once it holds ≥2 prompts.
   const sample = await getFeed({ sort: "all", role: label, limit: 2, offset: 0 }, new Date());
+  const url = `${SITE_URL}/prompts/for/${role}`;
   return {
     title: `${h1} | Promptbuildr`,
     description: clampForMeta(intro),
-    alternates: { canonical: `${SITE_URL}/prompts/for/${role}` },
-    robots: { index: sample.length >= 2, follow: true },
+    alternates: { canonical: url },
+    robots: { index: label !== "Other" && sample.length >= 2, follow: true },
+    openGraph: { url, title: h1, description: clampForMeta(intro) },
   };
 }
 

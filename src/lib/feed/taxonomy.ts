@@ -26,24 +26,67 @@ export const typeSlugs = () => [...TYPE_MAP.keys()];
 
 export type TaxonomyKind = "for" | "tool" | "type";
 
+/** Natural audience nouns per role, so copy reads as English (never "for Marketer"). */
+const ROLE_NOUN: Record<string, string> = {
+  Marketer: "marketers",
+  "Founder/CEO": "founders and CEOs",
+  "Sales/SDR": "sales and SDR teams",
+  RevOps: "RevOps teams",
+  "Content/SEO": "content and SEO teams",
+  "Customer Success": "customer success teams",
+  "Recruiter/HR": "recruiters and HR teams",
+  "Product Manager": "product managers",
+  "Agency Owner": "agency owners",
+  Student: "students",
+  "Creator/Influencer": "creators and influencers",
+  "Personal Use": "personal projects",
+  Other: "any role",
+};
+
+/** Natural output-type nouns, so copy never reads "produce email/outreach". */
+const TYPE_NOUN: Record<string, string> = {
+  "Email/Outreach": "outreach emails",
+  "Content/Copy": "content and copy",
+  "Strategy/Plan": "strategies and plans",
+  "Analysis/Research": "analysis and research",
+  "Code/Automation": "code and automations",
+  "Agent/Workflow": "agents and workflows",
+  "Data/Spreadsheet": "spreadsheets and data",
+  "Image/Creative": "images and creative work",
+  "Writing/Personal": "personal writing",
+  "Learning/How-To": "step-by-step guides",
+  Other: "all kinds of tasks",
+};
+
+/** Display phrase for an AI tool ("Other/Any" -> "any AI assistant"). */
+function toolPhrase(label: string): string {
+  return label === "Other/Any" ? "any AI assistant" : label;
+}
+
 /** Unique intro copy per taxonomy page (SEO — not scaled boilerplate). */
 export function taxonomyIntro(kind: TaxonomyKind, label: string): { h1: string; intro: string } {
   switch (kind) {
-    case "for":
+    case "for": {
+      const who = ROLE_NOUN[label] ?? label.toLowerCase();
       return {
-        h1: `AI prompts for ${label}`,
-        intro: `Ready-to-use AI prompts built for ${label}. Each one is copy-paste ready, tuned for your AI tool, and comes with setup steps, so you spend minutes, not hours, getting a strong first draft.`,
+        h1: `AI prompts for ${who}`,
+        intro: `Ready-to-use AI prompts for ${who}. Each one is copy-paste ready, tuned for your AI tool, and comes with setup steps, so you spend minutes, not hours, getting a strong first draft.`,
       };
-    case "tool":
+    }
+    case "tool": {
+      const tool = toolPhrase(label);
       return {
-        h1: `${label} prompts`,
-        intro: `A curated feed of prompts written specifically for ${label}. Syntax and structure are tailored to how ${label} works best, so you get sharper output on the first try.`,
+        h1: label === "Other/Any" ? "Prompts for any AI assistant" : `${label} prompts`,
+        intro: `A curated feed of prompts written for ${tool}. The syntax and structure are tailored to ${tool}, so you get sharper output on the first try.`,
       };
-    case "type":
+    }
+    case "type": {
+      const noun = TYPE_NOUN[label] ?? label.toLowerCase();
       return {
-        h1: `${label} prompts`,
-        intro: `Prompts that produce ${label.toLowerCase()} for work and life. Browse the best community-upvoted examples, copy the one that fits, and remix it for your situation.`,
+        h1: `Prompts for ${noun}`,
+        intro: `Ready-to-use prompts for ${noun}. Browse the best community-upvoted examples, copy the one that fits, and remix it for your situation.`,
       };
+    }
   }
 }
 
@@ -51,18 +94,18 @@ export function taxonomyIntro(kind: TaxonomyKind, label: string): { h1: string; 
 export function taxonomyFaqs(kind: TaxonomyKind, label: string): { q: string; a: string }[] {
   const base = [
     {
-      q: `Are these ${label} prompts free to use?`,
+      q: `Are these prompts free to use?`,
       a: `Yes. Every prompt on Promptbuildr is free to copy and use. You can also generate your own custom prompt from the builder in seconds.`,
     },
     {
       q: `Which AI tools do these prompts work with?`,
-      a: `They work with Claude, ChatGPT, Gemini, Grok, GitHub Copilot, Cursor, Perplexity, and image tools. When you generate a prompt you pick your tool, and the prompt's syntax is tailored to it.`,
+      a: `They work with Claude, ChatGPT, Gemini, Grok, DeepSeek, Muse, Microsoft Copilot, GitHub Copilot, Cursor, Perplexity, and image tools. When you generate a prompt you pick your tool, and the prompt's syntax is tailored to it.`,
     },
   ];
   const specific =
     kind === "for"
       ? {
-          q: `How do I customize a prompt for my own ${label} work?`,
+          q: `How do I customize one of these prompts for my own work?`,
           a: `Open any prompt, copy it, and fill in the [BRACKETED] placeholders with your specifics. Or click "Remix" to load it into the builder and regenerate it around your exact task.`,
         }
       : {

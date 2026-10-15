@@ -20,7 +20,9 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "Promptbuildr",
     type: "website",
-    url: SITE_URL,
+    // No `url` here: it would be inherited as the homepage URL by every page
+    // that doesn't override openGraph, making taxonomy/legal shares unfurl and
+    // canonicalize to the homepage. Each page sets its own og:url.
     images: [{ url: DEFAULT_OG, width: 1200, height: 630 }],
   },
   twitter: {
