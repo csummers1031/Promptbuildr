@@ -4,7 +4,7 @@ import TaxonomyView from "@/components/feed/TaxonomyView";
 import { getFeed } from "@/db/feed";
 import { typeFromSlug, typeSlugs, taxonomyIntro } from "@/lib/feed/taxonomy";
 import { OUTPUT_TYPES } from "@/config/constants";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, clampForMeta } from "@/lib/seo";
 
 // ISR: regenerate hourly so newly promoted prompts surface here without a redeploy.
 export const revalidate = 3600;
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ "output-t
   const sample = await getFeed({ sort: "all", outputType: label, limit: 2, offset: 0 }, new Date());
   return {
     title: `${h1} | Promptbuildr`,
-    description: intro.slice(0, 155),
+    description: clampForMeta(intro),
     alternates: { canonical: `${SITE_URL}/prompts/type/${type}` },
     robots: { index: sample.length >= 2, follow: true },
   };

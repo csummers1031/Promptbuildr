@@ -7,6 +7,7 @@ import ShareBar from "@/components/ShareBar";
 import InstructionText from "@/components/InstructionText";
 import { renderTools, linkifyInstructions, plainInstructions } from "@/lib/tools/render";
 import { recordView } from "@/lib/clientView";
+import { shareTitle } from "@/lib/seo";
 
 function truncate(s: string, n: number) {
   return s.length > n ? s.slice(0, n).trimEnd() + "…" : s;
@@ -160,7 +161,7 @@ export default function FeedCard({ prompt }: { prompt: FeedPrompt }) {
         </Link>
         <ShareBar
           url={shareHref}
-          title={`${prompt.title}: a ready-to-use ${prompt.aiTool} prompt`}
+          title={shareTitle(prompt.title, prompt.aiTool)}
           text="Found this AI prompt on Promptbuildr:"
           variant="compact"
         />

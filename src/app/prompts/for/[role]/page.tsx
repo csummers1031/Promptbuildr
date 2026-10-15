@@ -5,7 +5,7 @@ import { getFeed } from "@/db/feed";
 import { roleFromSlug, roleSlugs } from "@/lib/feed/taxonomy";
 import { taxonomyIntro } from "@/lib/feed/taxonomy";
 import { ROLES } from "@/config/constants";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, clampForMeta } from "@/lib/seo";
 
 // ISR: regenerate hourly so newly promoted prompts surface here without a redeploy.
 export const revalidate = 3600;
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ role: str
   const sample = await getFeed({ sort: "all", role: label, limit: 2, offset: 0 }, new Date());
   return {
     title: `${h1} | Promptbuildr`,
-    description: intro.slice(0, 155),
+    description: clampForMeta(intro),
     alternates: { canonical: `${SITE_URL}/prompts/for/${role}` },
     robots: { index: sample.length >= 2, follow: true },
   };

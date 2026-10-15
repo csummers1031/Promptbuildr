@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ROLES, AI_TOOLS, OUTPUT_TYPES } from "@/config/constants";
+import { shareTitle } from "@/lib/seo";
 import type { GenerateResponse, PresentedGeneration } from "@/lib/clientTypes";
 import PromptResult from "./PromptResult";
 import EmailGate from "./EmailGate";
@@ -107,7 +108,7 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
   // didn't qualify for promotion) do we fall back to a remix link that carries
   // the inputs so the recipient can regenerate. Both unfurl with an OG card.
   function shareFor(result: PresentedGeneration, slug?: string | null) {
-    const title = `${result.title}: a ready-to-use ${aiTool} prompt`;
+    const title = shareTitle(result.title, aiTool);
     const text = "I built this AI prompt on Promptbuildr:";
     if (slug) {
       return { url: `/prompts/${slug}`, title, text };

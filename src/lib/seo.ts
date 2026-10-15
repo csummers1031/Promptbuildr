@@ -121,18 +121,22 @@ export function promptFaqs(args: {
   role: string;
   outputType: string;
 }): { q: string; a: string }[] {
+  const anyTool = args.aiTool === "Other/Any";
+  const toolPhrase = anyTool ? "your AI assistant" : args.aiTool;
   return [
     {
       q: `What does the "${args.title}" prompt do?`,
-      a: directAnswer(args.role, args.outputType, args.title),
+      a: directAnswer(args.outputType, args.title),
     },
     {
       q: "Which AI tool is this prompt for?",
-      a: `It's tuned for ${args.aiTool}, but it works in other assistants too. Paste it into ChatGPT, Claude, or Gemini and adjust the formatting if needed.`,
+      a: anyTool
+        ? "It works in any AI assistant. Paste it into ChatGPT, Claude, Gemini, or your tool of choice and adjust the formatting if needed."
+        : `It's tuned for ${args.aiTool}, but it works in other assistants too. Paste it into ChatGPT, Claude, or Gemini and adjust the formatting if needed.`,
     },
     {
       q: "How do I use this prompt?",
-      a: `Copy the prompt, replace any bracketed placeholders with your own details, and paste it into ${args.aiTool}. Then follow the setup steps on this page to refine the output.`,
+      a: `Copy the prompt, replace any bracketed placeholders with your own details, and paste it into ${toolPhrase}. Then follow the setup steps on this page to refine the output.`,
     },
   ];
 }
@@ -149,8 +153,44 @@ export function faqJsonLd(qas: { q: string; a: string }[]): JsonLd {
   };
 }
 
+/**
+ * Natural goal phrase per output type, so the direct answer reads as a sentence
+ * (never "produce other faster"). Each phrase slots into "helps you ___ faster".
+ */
+const OUTPUT_GOAL: Record<string, string> = {
+  "Email/Outreach": "write outreach emails",
+  "Content/Copy": "create content and copy",
+  "Strategy/Plan": "build a clear plan",
+  "Analysis/Research": "run the analysis and research",
+  "Code/Automation": "write code and automations",
+  "Agent/Workflow": "design an agent or workflow",
+  "Data/Spreadsheet": "organize data in a spreadsheet",
+  "Image/Creative": "create images and other creative work",
+  "Writing/Personal": "handle the writing",
+  "Learning/How-To": "learn something new",
+  "Other": "get the job done",
+};
+
 /** 40–60 word extractable direct-answer summary for AEO. */
-export function directAnswer(role: string, outputType: string, title: string): string {
-  const who = role === "Personal Use" || role === "Student" || role === "Creator/Influencer" ? "anyone" : `${role} teams`;
-  return `This prompt helps ${who} produce ${outputType.toLowerCase()} faster: "${title}". Copy the ready-to-paste prompt, fill in the bracketed details specific to your situation, and run it in your AI tool for a high-quality first draft you can refine in minutes.`;
+export function directAnswer(outputType: string, title: string): string {
+  const goal = OUTPUT_GOAL[outputType] ?? "get the job done";
+  return `This prompt helps you ${goal} faster: "${title}". Copy the ready-to-paste prompt, fill in the bracketed details for your situation, and run it in your AI tool for a high-quality first draft you can refine in minutes.`;
+}
+
+/**
+ * Clamp text to a meta-description length without cutting mid-word. Trims to the
+ * last whole word under `max` and appends an ellipsis. (slice(0, n) alone left
+ * descriptions ending mid-word, e.g. "...fill in the bracketed d".)
+ */
+export function clampForMeta(text: string, max = 157): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > 60 ? cut.slice(0, lastSpace) : cut).replace(/[\s,.;:—-]+$/, "") + "…";
+}
+
+/** Consistent share-sheet title. Avoids the clumsy "Other/Any prompt". */
+export function shareTitle(title: string, aiTool: string): string {
+  const tool = aiTool === "Other/Any" ? "AI" : aiTool;
+  return `${title}: a ready-to-use ${tool} prompt`;
 }
