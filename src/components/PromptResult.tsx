@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { PresentedGeneration } from "@/lib/clientTypes";
 import ShareBar from "./ShareBar";
 import InstructionText from "./InstructionText";
@@ -39,9 +39,24 @@ export default function PromptResult({
   share?: { url: string; title: string; text?: string };
 }) {
   const linkableTools = data.toolLinks.filter((t) => t.href);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // The result replaces the builder form, which sat lower on the page (the user
+  // just tapped "Generate" near the bottom). Without this the result's heading
+  // is above the current scroll position and the user has to hunt for it. Bring
+  // the heading to the top once, after paint. scroll-mt keeps it clear of the
+  // sticky header.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || typeof window === "undefined") return;
+    const id = window.requestAnimationFrame(() => {
+      el.scrollIntoView({ block: "start", behavior: "auto" });
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, []);
 
   return (
-    <div className="flex flex-col gap-6">
+    <div ref={rootRef} className="flex scroll-mt-24 flex-col gap-6">
       {blockedMessage && (
         <div className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
           {blockedMessage}

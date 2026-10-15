@@ -13,12 +13,14 @@ export default function GeneratingView({
   role,
   aiTool,
   outputType,
+  task = "",
 }: {
   role: string;
   aiTool: string;
   outputType: string;
+  task?: string;
 }) {
-  const offers = pickLoadingOffers(role, outputType);
+  const offers = pickLoadingOffers(role, outputType, task);
 
   const steps = [
     "Analyzing your task",

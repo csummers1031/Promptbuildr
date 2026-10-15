@@ -46,4 +46,48 @@ describe("pickLoadingOffers", () => {
     const code = pickLoadingOffers("Product Manager", "Code/Automation").map((o) => o.name.toLowerCase());
     expect(code.join(" ")).toMatch(/n8n|make|zapier/);
   });
+
+  it("matches offers to task keywords (a website task shows hosting, not CRM)", () => {
+    const offers = pickLoadingOffers(
+      "Founder/CEO",
+      "Other",
+      "One-shot a crowdfunded community-voted company-building website",
+    ).map((o) => o.name);
+    expect(offers.join(" ")).toMatch(/Railway|Netlify|Gamma/);
+    expect(offers).not.toContain("HubSpot");
+    expect(offers.length).toBeGreaterThan(0);
+  });
+
+  it("varies the offers across different tasks (not always the same three)", () => {
+    const a = pickLoadingOffers("Founder/CEO", "Other", "build a landing page website").map((o) => o.name);
+    const b = pickLoadingOffers("Founder/CEO", "Other", "write a cold email outreach sequence").map((o) => o.name);
+    expect(a.join()).not.toBe(b.join());
+  });
+
+  it("is deterministic for the same task", () => {
+    const a = pickLoadingOffers("Marketer", "Other", "cold email outreach for my SaaS").map((o) => o.name);
+    const b = pickLoadingOffers("Marketer", "Other", "cold email outreach for my SaaS").map((o) => o.name);
+    expect(a).toEqual(b);
+  });
+
+  it("keeps personal output types ad-free even with a tool-ish task", () => {
+    expect(pickLoadingOffers("Personal Use", "Writing/Personal", "build a website for my wedding")).toEqual([]);
+  });
+
+  it("never surfaces a non-earning tool from keyword matching", () => {
+    const tasks = [
+      "build a website and deploy it",
+      "automate my workflow with an agent",
+      "cold email outreach and lead gen",
+      "write a blog with seo keywords",
+      "edit a youtube video with voiceover",
+      "design a logo and slide deck",
+      "build an analytics dashboard with kpis",
+    ];
+    for (const task of tasks) {
+      for (const o of pickLoadingOffers("Founder/CEO", "Other", task)) {
+        expect(nonEarningUrls.has(o.href), `${task}: ${o.name}`).toBe(false);
+      }
+    }
+  });
 });
