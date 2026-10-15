@@ -88,9 +88,19 @@ export default function PromptResult({
           {data.prompt}
         </pre>
 
-        {/* Clear next step: copy the prompt and open the chosen AI tool. */}
-        <div className="mt-3">
+        {/* Clear next step: copy the prompt and open the chosen AI tool, or
+            remix the same inputs. */}
+        <div className="mt-3 flex flex-col gap-2.5">
           <OpenInTool aiTool={data.aiTool} promptText={data.prompt} />
+          {onRemix && (
+            <button
+              type="button"
+              onClick={onRemix}
+              className="inline-flex items-center justify-center gap-1.5 self-start rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-indigo-300 hover:text-indigo-700"
+            >
+              <span aria-hidden>↻</span> Remix — edit your inputs
+            </button>
+          )}
         </div>
 
         {share && (
@@ -174,17 +184,6 @@ export default function PromptResult({
         </section>
       )}
 
-      {onRemix && (
-        <div>
-          <button
-            type="button"
-            onClick={onRemix}
-            className="text-sm font-medium text-slate-500 underline underline-offset-2 hover:text-slate-800"
-          >
-            ← Build another prompt
-          </button>
-        </div>
-      )}
     </div>
   );
 }
