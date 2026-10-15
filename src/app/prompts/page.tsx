@@ -83,7 +83,7 @@ export default async function FeedPage({
     <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
 
-      <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/85 backdrop-blur">
+      <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
           <Link href="/" aria-label="Promptbuildr home">
             <Logo />

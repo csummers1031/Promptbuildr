@@ -8,16 +8,3 @@
 html {
   scroll-padding-top: 5rem;
 }
-
-/*
- * Disable scroll anchoring. When content height changes (the builder form is
- * replaced by the loading view then the taller result, or the late HubSpot
- * script injects a node), some mobile browsers re-adjust the scroll position to
- * "keep" an anchor in view. On Chrome mobile that surfaced as the page snapping
- * back down right after the user scrolled up. We position the result ourselves
- * (see PromptResult), so we don't need the browser's anchoring.
- */
-html,
-body {
-  overflow-anchor: none;
-}
