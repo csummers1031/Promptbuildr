@@ -173,9 +173,13 @@ export async function POST(req: NextRequest) {
 
   // --- promote to an indexable page (gated on quality + dedup) ---
   // Best-effort: a promotion failure must never break the user's generation.
+  // Capture the slug so the client can share the prompt's own page (which shows
+  // the full generated prompt) instead of a remix link that only carries inputs.
+  let promotedSlug: string | null = null;
   if (isOk && promptId) {
     try {
       const promo = await promotePromptById(promptId);
+      if (promo.promoted && promo.slug) promotedSlug = promo.slug;
       if (promo.promoted && promo.url && promo.reason !== "already") {
         await pingIndexNow([promo.url]);
       }
@@ -186,7 +190,7 @@ export async function POST(req: NextRequest) {
 
   // --- response + anon cookie ---
   const payload = isOk
-    ? { status: "ok", result: presented }
+    ? { status: "ok", result: presented, slug: promotedSlug }
     : {
         status: "blocked",
         result: presented,

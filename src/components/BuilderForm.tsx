@@ -101,20 +101,23 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
     );
   }
 
-  // A shareable link back to the builder, pre-filled with these inputs. The
-  // recipient lands on the homepage with the task ready to (re)generate, and
-  // the link unfurls with a branded OG card showing the task.
-  function shareFor(result: PresentedGeneration) {
+  // What to share. When the prompt was published to its own page, share THAT
+  // page (the recipient sees the full generated prompt, copy button, tools, and
+  // a "remix in the builder" CTA). Only when there's no page (e.g. a prompt that
+  // didn't qualify for promotion) do we fall back to a remix link that carries
+  // the inputs so the recipient can regenerate. Both unfurl with an OG card.
+  function shareFor(result: PresentedGeneration, slug?: string | null) {
+    const title = `${result.title}: a ready-to-use ${aiTool} prompt`;
+    const text = "I built this AI prompt on Promptbuildr:";
+    if (slug) {
+      return { url: `/prompts/${slug}`, title, text };
+    }
     const remixHref =
       `/?remix=1&task=${encodeURIComponent(task.trim())}` +
       `&role=${encodeURIComponent(role)}` +
       `&aiTool=${encodeURIComponent(aiTool)}` +
       `&outputType=${encodeURIComponent(outputType)}`;
-    return {
-      url: remixHref,
-      title: `${result.title}: a ready-to-use ${aiTool} prompt`,
-      text: "I built this AI prompt on Promptbuildr:",
-    };
+    return { url: remixHref, title, text };
   }
 
   if (state.phase === "result") {
@@ -122,7 +125,7 @@ export default function BuilderForm({ initial }: { initial?: BuilderInitial }) {
     if (d.status === "ok") {
       return (
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-          <PromptResult data={d.result} onRemix={reset} share={shareFor(d.result)} />
+          <PromptResult data={d.result} onRemix={reset} share={shareFor(d.result, d.slug)} />
         </div>
       );
     }

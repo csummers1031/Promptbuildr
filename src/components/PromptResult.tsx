@@ -74,6 +74,19 @@ export default function PromptResult({
         {share && (
           <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3">
             <ShareBar url={share.url} title={share.title} text={share.text} variant="full" />
+            {share.url.startsWith("/prompts/") && (
+              <p className="mt-2 text-xs text-slate-500">
+                Your prompt now has its own page, shared links open{" "}
+                <a
+                  href={share.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-indigo-600 hover:text-indigo-800"
+                >
+                  the full prompt ↗
+                </a>
+              </p>
+            )}
           </div>
         )}
       </section>
