@@ -1323,5 +1323,392 @@
       "verdict": "allow",
       "reason": null
     }
+  },
+  {
+    "slug": "run-a-keyword-gap-analysis-against-your-top-seo-competitors",
+    "title": "Run a keyword gap analysis against your top SEO competitors",
+    "promptText": "Before you begin, ask me for the key specifics you need: (1) my website or brand and the main product or service it should rank for, (2) 3 to 5 competitor websites I want to compare against, and (3) the primary country or language I target. If I do not answer, make reasonable assumptions, state them at the top, and proceed.\n\n<role>\nYou are a senior SEO strategist who specializes in competitive keyword research and content-gap analysis. You are precise, data-driven, and you never invent search volumes or difficulty scores you cannot verify.\n</role>\n\n<task>\nBuild a keyword gap analysis that shows where my competitors rank and I do not, then turn those gaps into a prioritized content plan I can act on this quarter.\n</task>\n\n<context>\n- My site and focus: [SITE_AND_PRIMARY_OFFER]\n- Competitors to compare: [3 TO 5 COMPETITOR SITES]\n- Target market: [COUNTRY_OR_LANGUAGE]\n- Tools I have: an SEO platform such as Ahrefs or Semrush that can export competitor keyword and ranking data.\n</context>\n\n<constraints>\n- Do not fabricate metrics. When you need real search volume, keyword difficulty, or ranking data, tell me to pull it from Ahrefs or Semrush and paste it in, or add a clearly labeled [DATA] placeholder.\n- Group keywords by search intent (informational, commercial, transactional) and by topic cluster.\n- Prioritize with a simple, transparent scoring method you explain, not a black box.\n</constraints>\n\n<output_format>\nReturn: (1) a short method summary, (2) a table of keyword gaps with columns for keyword, intent, owning competitor, and an opportunity score, (3) 3 to 5 topic clusters ranked by priority, and (4) the first 5 pages or posts I should create, each with a one-line angle. End with the exact data you still need from me.\n</output_format>",
+    "instructions": [
+      "Open Claude and paste the full prompt. Answer the three questions it asks at the top (your site, your competitors, your target market) so it tailors the analysis instead of guessing.",
+      "In Ahrefs or Semrush, run a Competitive or Keyword Gap report for your domain against the competitors you listed, then export the keyword list (keyword, volume, difficulty, and which competitor ranks).",
+      "Paste that exported data back into the chat where the prompt asks for [DATA]. Claude will score and cluster the real keywords instead of inventing numbers.",
+      "Review the prioritized clusters and the first 5 page ideas. Ask Claude to expand any cluster into a full content brief, or to re-rank using a metric you care about (for example traffic potential over difficulty).",
+      "Add the top opportunities to your content calendar and track ranking movement in Ahrefs or Semrush every few weeks."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Ahrefs",
+        "normalized": "ahrefs",
+        "registrySlug": "ahrefs",
+        "homepageUrl": null
+      },
+      {
+        "name": "Semrush",
+        "normalized": "semrush",
+        "registrySlug": "semrush",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "seo",
+      "keyword-research",
+      "competitive-analysis"
+    ],
+    "role": "Content/SEO",
+    "aiTool": "Claude",
+    "outputType": "Analysis/Research",
+    "taskInput": "Run a keyword gap analysis against my top SEO competitors",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "build-a-no-code-ai-support-chatbot-trained-on-your-help-docs",
+    "title": "Build a no-code AI support chatbot trained on your help docs",
+    "promptText": "Before you begin, ask me for the key specifics you need: (1) what my product does and who uses it, (2) where my support content lives today (help center, PDFs, a website, a knowledge base), and (3) the top 5 questions customers ask most. If I do not answer, make reasonable assumptions, state them at the top, and proceed.\n\n<role>\nYou are an AI automation architect who designs no-code customer-support chatbots grounded in a company's own content.\n</role>\n\n<task>\nDesign a plan to build and launch a no-code AI support chatbot that answers customer questions using only my help documentation, hands off to a human when it is unsure, and gets better over time.\n</task>\n\n<context>\n- Product and audience: [PRODUCT_AND_USERS]\n- Where support content lives: [SOURCES_TO_TRAIN_ON]\n- Top customer questions: [5 COMMON QUESTIONS]\n- Handoff target: [WHERE_UNRESOLVED_CHATS_GO, for example a shared inbox or a support queue]\n</context>\n\n<constraints>\n- No code. Assume I will use a no-code builder such as CustomGPT or MindStudio that trains an agent on my uploaded content.\n- The bot must answer only from my content and say it does not know rather than guess, so it never gives confidently wrong answers.\n- Include guardrails: a clear fallback, a human-handoff trigger, and a rule that it must never request passwords or payment details.\n</constraints>\n\n<output_format>\nReturn: (1) a content checklist of what to upload and how to clean it, (2) step-by-step build instructions for a no-code tool, (3) the bot's system instructions and tone, written out ready to paste, (4) 5 test questions with the ideal answer, and (5) a simple plan to review missed questions weekly and improve the bot.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and answer its three opening questions so the build plan fits your actual product and support content.",
+      "Gather the content it lists (help center articles, FAQs, PDFs), clean it as instructed, then create an agent in a no-code builder like CustomGPT or MindStudio and upload that content as the knowledge base.",
+      "Copy the system instructions and tone Claude generated into your CustomGPT or MindStudio agent settings, and set the human-handoff fallback it recommends.",
+      "Run the 5 test questions against your bot. Where an answer is wrong or vague, fix or add the underlying doc and retrain, rather than editing the bot's wording.",
+      "Embed the bot on your site or help center, then review missed or escalated questions each week and feed the gaps back into your content."
+    ],
+    "recommendedTools": [
+      {
+        "name": "CustomGPT",
+        "normalized": "customgpt",
+        "registrySlug": "customgpt",
+        "homepageUrl": null
+      },
+      {
+        "name": "MindStudio",
+        "normalized": "mindstudio",
+        "registrySlug": "mindstudio",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "customer-support",
+      "ai-agents",
+      "no-code"
+    ],
+    "role": "Founder/CEO",
+    "aiTool": "Claude",
+    "outputType": "Agent/Workflow",
+    "taskInput": "Build a no-code AI customer support chatbot trained on my help docs",
+    "isBusiness": true,
+    "isAgentOrAutomation": true,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "turn-a-blog-post-into-a-linkedin-carousel",
+    "title": "Turn a blog post into a LinkedIn carousel",
+    "promptText": "# Before you begin\nAsk me for these first: (1) the blog post or article I want to repurpose (I will paste the text or a summary), (2) who I am posting as and the audience I want to reach, and (3) the single action I want readers to take at the end. If I do not answer, make reasonable assumptions, state them at the top, and continue.\n\n# Role\nYou are a LinkedIn content strategist and carousel copywriter who turns long articles into scroll-stopping, swipeable slide decks.\n\n# Task\nTurn my blog post into a LinkedIn carousel of 8 to 10 slides that teaches one clear idea, keeps people swiping, and ends with a specific call to action.\n\n# Context\n- Source article: [PASTE_POST_OR_SUMMARY]\n- Posting as and audience: [YOUR_NAME_OR_BRAND_AND_TARGET_AUDIENCE]\n- Desired reader action: [WHAT_THEY_SHOULD_DO_NEXT]\n\n# Constraints\n- One idea per slide, short lines, no dense paragraphs.\n- Slide 1 is a strong hook that promises a payoff. The last slide is the call to action.\n- Plain, confident language. No hashtags inside the slides and no fabricated statistics.\n\n# Output Format\nFor each slide, give: a slide number, the on-slide headline (under 10 words), and a one or two line body. After the slides, write a short LinkedIn caption to accompany the carousel plus a one-line design note for each slide (what visual or layout would suit it).",
+    "instructions": [
+      "Open Gemini, paste the prompt, and give it your blog post text (or a tight summary) plus your audience and the action you want readers to take.",
+      "Review the slide-by-slide output. Ask Gemini to sharpen the slide 1 hook or tighten any slide that runs long, since the first slide decides whether people keep swiping.",
+      "Build the carousel in Canva or Gamma: create one slide per block, paste the headline and body, and reuse one consistent template so the deck looks cohesive.",
+      "Use the per-slide design notes to pick visuals or icons in Canva or Gamma, then export the deck as a PDF (LinkedIn's carousel format).",
+      "Post the PDF with the caption Gemini wrote, and save the template in Canva or Gamma so your next repurpose takes minutes."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Canva",
+        "normalized": "canva",
+        "registrySlug": "canva",
+        "homepageUrl": null
+      },
+      {
+        "name": "Gamma",
+        "normalized": "gamma",
+        "registrySlug": "gamma",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "content-repurposing",
+      "linkedin",
+      "social-media"
+    ],
+    "role": "Marketer",
+    "aiTool": "Gemini",
+    "outputType": "Content/Copy",
+    "taskInput": "Turn a blog post into a LinkedIn carousel",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "write-a-product-launch-announcement-email-to-your-subscriber",
+    "title": "Write a product launch announcement email to your subscriber list",
+    "promptText": "# Before you begin\nAsk me for the key specifics you need: (1) what I am launching and the single biggest benefit it gives customers, (2) who is on my email list and how familiar they already are with my brand, and (3) the launch date and the one action I want readers to take. If I do not answer, make reasonable assumptions, state them at the top, and proceed.\n\n# Task\nWrite a product launch announcement email that excites my existing subscribers about [PRODUCT], makes the value obvious in seconds, and drives one clear action.\n\n# Context\n- What I am launching: [PRODUCT_AND_TOP_BENEFIT]\n- Audience: [WHO_IS_ON_MY_LIST_AND_RELATIONSHIP_TO_BRAND]\n- Launch date and primary CTA: [DATE] and [DESIRED_ACTION, for example buy now, start a trial, book a call]\n- Offer or incentive, if any: [LAUNCH_OFFER_OR_NONE]\n\n# Constraints\n- Keep it skimmable: short paragraphs, one core message, one primary CTA (a secondary link is fine).\n- Benefit-led, not a feature dump. Lead with what changes for the reader.\n- Warm and genuine, no hype words and no false urgency. Do not invent testimonials, numbers, or press quotes.\n\n# Output Format\nProvide: 5 subject line options plus 3 preview-text options, then the full email body with a clear structure (hook, what it is, why it matters, how to get it, CTA button text). End with 2 short follow-up email ideas (a reminder and a last-chance) I can schedule after the announcement.",
+    "instructions": [
+      "Paste the prompt into ChatGPT and answer its opening questions so the email speaks to your actual launch and list.",
+      "Pick the strongest subject line and preview text, then review the body. Ask ChatGPT to adjust tone or trim length until it reads like you.",
+      "Build the email in your sending platform: design it in Beefree or HubSpot's email editor, paste in the copy, and style the CTA button with the button text ChatGPT suggested.",
+      "Send yourself a test, check it on mobile, and confirm every link and the CTA work before scheduling the send in HubSpot (or your email tool) for the launch date.",
+      "Schedule the two follow-up emails ChatGPT drafted (a reminder and a last-chance) and watch open and click rates to see which subject line and CTA performed best."
+    ],
+    "recommendedTools": [
+      {
+        "name": "HubSpot",
+        "normalized": "hubspot",
+        "registrySlug": "hubspot",
+        "homepageUrl": null
+      },
+      {
+        "name": "Beefree",
+        "normalized": "beefree",
+        "registrySlug": "beefree",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "email-marketing",
+      "product-launch",
+      "copywriting"
+    ],
+    "role": "Marketer",
+    "aiTool": "ChatGPT",
+    "outputType": "Email/Outreach",
+    "taskInput": "Write a product launch announcement email to my subscriber list",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "set-up-product-analytics-and-event-tracking-for-a-saas-app",
+    "title": "Set up product analytics and event tracking for a SaaS app",
+    "promptText": "Before you begin, ask me for the key specifics you need: (1) what my product does and the main action that means a user got value (the \"aha\" moment), (2) my tech stack or how the app is built, and (3) the top 2 or 3 business questions I want analytics to answer. If I do not answer, make reasonable assumptions, state them at the top, and proceed.\n\n<role>\nYou are a product analytics lead who sets up clean, privacy-aware event tracking that teams actually use to make decisions.\n</role>\n\n<task>\nDesign a product analytics and event-tracking plan for my SaaS app: the events to capture, how to name them, the funnels and metrics to watch, and how to roll it out without drowning in noise.\n</task>\n\n<context>\n- Product and core value moment: [PRODUCT_AND_AHA_ACTION]\n- Stack and platform: [WEB_MOBILE_OR_FRAMEWORK]\n- Questions analytics must answer: [2 TO 3 KEY QUESTIONS, for example where signups drop off]\n- Tools available: a product analytics platform such as PostHog, plus Google Analytics 4 for traffic.\n</context>\n\n<constraints>\n- Track a focused set of high-signal events, not everything. Favor fewer, well-named events.\n- Use a consistent naming convention and define each event's properties.\n- Respect privacy: no personal data in event names or properties, and note where consent matters.\n</constraints>\n\n<output_format>\nReturn: (1) a naming convention with examples, (2) a tracking plan table (event name, when it fires, key properties, the question it answers), (3) the 2 or 3 core funnels and the north-star metric to watch, (4) a PostHog vs Google Analytics 4 split (which tool owns what), and (5) a phased rollout: what to instrument first and how to sanity-check the data.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and answer the three opening questions so the plan centers on your real value moment and business questions.",
+      "Review the tracking plan table and trim or add events until it matches how your product is actually used. Keep the list tight.",
+      "Implement the first-phase events in PostHog (install the SDK or snippet, then add each event with the names and properties from the plan) and connect Google Analytics 4 for traffic and acquisition.",
+      "Build the core funnels in PostHog and confirm events fire correctly by testing the key flows yourself before trusting the numbers.",
+      "Ask Claude to turn the top funnel into a weekly metrics review checklist, and revisit the plan monthly to retire noisy events and add new ones."
+    ],
+    "recommendedTools": [
+      {
+        "name": "PostHog",
+        "normalized": "posthog",
+        "registrySlug": "posthog",
+        "homepageUrl": null
+      },
+      {
+        "name": "Google Analytics 4",
+        "normalized": "googleanalytics4",
+        "registrySlug": "google-analytics-4",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "product-analytics",
+      "saas",
+      "event-tracking"
+    ],
+    "role": "Product Manager",
+    "aiTool": "Claude",
+    "outputType": "Strategy/Plan",
+    "taskInput": "Set up product analytics and event tracking for my SaaS app",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "improve-cold-email-deliverability-and-warm-up-new-inboxes",
+    "title": "Improve cold email deliverability and warm up new inboxes",
+    "promptText": "# Before you begin\nAsk me for the key specifics you need: (1) what domain setup I have now (a dedicated sending domain or my main domain, and whether SPF, DKIM, and DMARC are configured), (2) how many emails per day I plan to send and from how many inboxes, and (3) which sending tool I use or plan to use. If I do not answer, make reasonable assumptions, state them at the top, and proceed.\n\n# Role\nYou are a cold email deliverability expert who keeps outbound campaigns landing in the primary inbox instead of spam.\n\n# Task\nGive me a practical plan to warm up new sending inboxes and improve deliverability so my cold outreach actually gets seen, including the technical setup, a warmup schedule, and sending habits that protect my domain reputation.\n\n# Context\n- Current domain and auth setup: [DOMAIN_AND_SPF_DKIM_DMARC_STATUS]\n- Volume plan: [EMAILS_PER_DAY_AND_NUMBER_OF_INBOXES]\n- Sending tool: [TOOL_I_USE_OR_PLAN_TO_USE]\n\n# Constraints\n- Nothing spammy or deceptive: no purchased lists, no misleading subject lines, and respect opt-out rules.\n- Favor gradual, safe ramp-ups over aggressive volume.\n- Call out anything that is a domain-reputation risk and how to avoid it.\n\n# Output Format\nProvide: (1) a technical setup checklist (sending domain, SPF, DKIM, DMARC, a custom tracking domain), (2) a week-by-week warmup schedule with volumes, (3) daily sending best practices (caps, personalization, reply handling), (4) red flags that hurt deliverability and their fixes, and (5) a simple way to monitor inbox placement over time.",
+    "instructions": [
+      "Paste the prompt into ChatGPT and answer its opening questions about your domain, volume, and tool so the plan fits your setup.",
+      "Set up a dedicated sending domain and turn on inbox warmup in a tool like Instantly or Smartlead, which automatically warm new inboxes by exchanging and marking emails.",
+      "Before sending, clean and verify your list with Hunter.io so invalid addresses do not bounce and drag down your reputation.",
+      "Follow the week-by-week warmup schedule and daily sending caps from ChatGPT. Resist the urge to blast at full volume early.",
+      "Monitor inbox placement and reply rates in Instantly or Smartlead, and ask ChatGPT to troubleshoot if open or reply rates drop (it can point to likely deliverability causes)."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Instantly",
+        "normalized": "instantly",
+        "registrySlug": "instantly",
+        "homepageUrl": null
+      },
+      {
+        "name": "Smartlead",
+        "normalized": "smartlead",
+        "registrySlug": "smartlead",
+        "homepageUrl": null
+      },
+      {
+        "name": "Hunter.io",
+        "normalized": "hunterio",
+        "registrySlug": "hunter-io",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "cold-email",
+      "deliverability",
+      "email-outreach"
+    ],
+    "role": "Sales/SDR",
+    "aiTool": "ChatGPT",
+    "outputType": "Strategy/Plan",
+    "taskInput": "Improve cold email deliverability and warm up new sending inboxes",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "create-an-investor-pitch-deck-outline-and-slide-copy",
+    "title": "Create an investor pitch deck outline and slide copy",
+    "promptText": "Before you begin, ask me for the key specifics you need: (1) what my company does in one sentence and the problem it solves, (2) my traction so far (users, revenue, growth, or notable milestones), and (3) how much I am raising and what I will use it for. If I do not answer, make reasonable assumptions, label them clearly, and proceed.\n\n<role>\nYou are a startup pitch coach who has helped founders raise pre-seed and seed rounds. You know what investors look for and what makes them lose interest.\n</role>\n\n<task>\nCreate a clear, compelling investor pitch deck: the slide-by-slide outline and the actual copy for each slide, built to tell a tight story in about 10 to 12 slides.\n</task>\n\n<context>\n- Company one-liner and problem: [WHAT_WE_DO_AND_PROBLEM]\n- Solution and why now: [PRODUCT_AND_TIMING]\n- Traction: [USERS_REVENUE_GROWTH_OR_MILESTONES]\n- Market and business model: [TARGET_MARKET_AND_HOW_WE_MAKE_MONEY]\n- The ask: [AMOUNT_RAISING_AND_USE_OF_FUNDS]\n</context>\n\n<constraints>\n- One message per slide. Investors skim, so lead each slide with the point.\n- Never fabricate numbers, traction, or market sizes. Where I have not given data, insert a labeled [PLACEHOLDER] for me to fill.\n- Confident and honest tone. No buzzword soup and no unrealistic hockey-stick claims.\n</constraints>\n\n<output_format>\nReturn the deck as a numbered slide list. For each slide give: the slide title, the one-line key message, and the on-slide copy or bullets. Cover the standard arc (problem, solution, why now, market, product, traction, business model, competition, team, the ask). End with speaker-note tips for the 3 slides investors scrutinize most.\n</output_format>",
+    "instructions": [
+      "Paste the prompt into Claude and answer the three opening questions so the deck is built around your real story, traction, and raise.",
+      "Fill in any [PLACEHOLDER] slides with your real numbers. Ask Claude to tighten the key message on any slide that feels weak, especially problem, traction, and the ask.",
+      "Turn the outline into slides fast with Gamma: paste the per-slide copy and let it generate a designed deck, or build it manually in Canva from a pitch deck template.",
+      "Refine the visuals in Gamma or Canva (one idea per slide, charts for traction, minimal text) so the design supports the story instead of crowding it.",
+      "Use the speaker-note tips to rehearse, then ask Claude to role-play a skeptical investor and pressure-test your answers before the meeting."
+    ],
+    "recommendedTools": [
+      {
+        "name": "Gamma",
+        "normalized": "gamma",
+        "registrySlug": "gamma",
+        "homepageUrl": null
+      },
+      {
+        "name": "Canva",
+        "normalized": "canva",
+        "registrySlug": "canva",
+        "homepageUrl": null
+      }
+    ],
+    "categoryTags": [
+      "fundraising",
+      "pitch-deck",
+      "startup"
+    ],
+    "role": "Founder/CEO",
+    "aiTool": "Claude",
+    "outputType": "Strategy/Plan",
+    "taskInput": "Create an investor pitch deck outline and slide copy",
+    "isBusiness": true,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "write-a-heartfelt-anniversary-toast-for-your-parents",
+    "title": "Write a heartfelt anniversary toast for your parents",
+    "promptText": "Before you begin, ask me for the key specifics you need: (1) whose anniversary this is and which milestone (for example 25th or 40th), (2) 2 or 3 specific memories or qualities that capture my parents and their relationship, and (3) the audience and how long the toast should be. If I do not answer, make reasonable assumptions, state them briefly, and proceed.\n\n<role>\nYou are a warm, funny speechwriter who helps people say what they feel without sounding like a greeting card.\n</role>\n\n<task>\nWrite a heartfelt anniversary toast I can give for my parents that is personal, a little funny, and genuinely moving.\n</task>\n\n<context>\n- Occasion: [WHOSE_ANNIVERSARY_AND_MILESTONE]\n- Specific memories or qualities: [2 TO 3 DETAILS THAT MAKE THEM THEM]\n- Audience and length: [WHO_IS_THERE] and [ABOUT_HOW_LONG, for example 2 minutes]\n- My relationship to them and anything to avoid: [FOR_EXAMPLE_KEEP_IT_FAMILY_FRIENDLY]\n</context>\n\n<constraints>\n- Sound like me, not a template. Specific over generic every time.\n- Balance humor and sincerity, and land on an emotional high note.\n- No cliches like \"when two people love each other\" and no fabricated details. Use only what I give you.\n</constraints>\n\n<output_format>\nGive me the full toast, timed to the length I asked for, with a strong opening line, one light laugh, a heartfelt middle built on the memories I shared, and a closing raise-your-glass line. Then add 3 optional alternate opening lines and a one-line delivery tip.\n</output_format>",
+    "instructions": [
+      "Open Claude and paste the prompt, then answer its opening questions with real, specific details (the more concrete the memories, the better the toast).",
+      "Read the draft out loud and time it. Ask Claude to cut or expand it to fit your actual speaking time.",
+      "Swap in one of the alternate opening lines if it fits better, and ask Claude to turn the humor up or down to match your family.",
+      "Replace anything that does not sound like you with your own words, so it feels authentic when you deliver it.",
+      "Practice once or twice with the delivery tip in mind, and keep a printed copy or a phone note as a backup on the day."
+    ],
+    "recommendedTools": [],
+    "categoryTags": [
+      "personal-writing",
+      "speeches",
+      "family"
+    ],
+    "role": "Personal Use",
+    "aiTool": "Claude",
+    "outputType": "Writing/Personal",
+    "taskInput": "Write a heartfelt anniversary toast for my parents",
+    "isBusiness": false,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "build-a-10-minute-daily-meditation-and-mindfulness-routine",
+    "title": "Build a 10-minute daily meditation and mindfulness routine",
+    "promptText": "# Before you begin\nAsk me for these first: (1) why I want to start meditating (for example stress, focus, sleep), (2) my experience level and how much time I can realistically give it each day, and (3) when in my day I would practice. If I do not answer, assume a complete beginner with 10 minutes in the morning, state that, and continue.\n\n# Role\nYou are a calm, encouraging mindfulness coach who makes meditation simple and sustainable for beginners.\n\n# Task\nBuild me a 10-minute daily meditation and mindfulness routine I can actually stick to, with a gentle 4-week progression so it becomes a habit.\n\n# Context\n- My goal: [WHY_I_WANT_TO_MEDITATE]\n- Experience and time: [LEVEL] and [MINUTES_PER_DAY]\n- When I will practice: [TIME_OF_DAY_AND_PLACE]\n\n# Constraints\n- Keep it beginner-friendly and judgment-free. No jargon and no spiritual or medical claims.\n- Give concrete techniques I can follow without an app or a teacher.\n- Make the habit easy to keep: short, specific, and flexible for busy days.\n\n# Output Format\nProvide: (1) a simple daily 10-minute routine broken into minutes (for example settle, breathe, body scan, close), (2) 3 beginner techniques explained in plain steps, (3) a 4-week progression that gently adds time or new techniques, (4) tips for building the habit and what to do when I miss a day, and (5) a 2-minute \"emergency calm\" version for stressful moments.",
+    "instructions": [
+      "Open Gemini, paste the prompt, and answer the opening questions honestly about your goal and realistic time, so the routine fits your life rather than an ideal day.",
+      "Try the daily 10-minute routine as written for the first week. If a technique does not click, ask Gemini to swap it for another beginner option.",
+      "Follow the 4-week progression. At the end of each week, tell Gemini how it went and ask it to adjust the next week up or down.",
+      "Keep the 2-minute emergency calm version handy for stressful moments, and use the missed-day tips so one skip does not break the habit.",
+      "After a month, ask Gemini to extend the routine or add a new focus (for example sleep or gratitude) to keep it fresh."
+    ],
+    "recommendedTools": [],
+    "categoryTags": [
+      "mindfulness",
+      "meditation",
+      "wellness"
+    ],
+    "role": "Personal Use",
+    "aiTool": "Gemini",
+    "outputType": "Learning/How-To",
+    "taskInput": "Build a 10-minute daily meditation and mindfulness routine for beginners",
+    "isBusiness": false,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
+  },
+  {
+    "slug": "plan-a-kids-birthday-party-on-a-budget",
+    "title": "Plan a kids birthday party on a budget",
+    "promptText": "# Before you begin\nAsk me for the key specifics you need: (1) my child's age and how many kids (and adults) are coming, (2) my total budget and whether it is at home, a park, or a venue, and (3) any theme my child wants plus any allergies or must-avoids. If I do not answer, assume a 7 year old, 10 kids, a modest at-home budget, no theme yet, and proceed.\n\n# Task\nPlan a fun, low-stress kids birthday party that stays within my budget, with a timeline, a shopping list, activities, and food that suit the age group.\n\n# Context\n- Child's age and guest count: [AGE] and [NUMBER_OF_KIDS_AND_ADULTS]\n- Budget and location: [TOTAL_BUDGET] and [HOME_PARK_OR_VENUE]\n- Theme and constraints: [THEME_OR_NONE] and [ALLERGIES_OR_MUST_AVOIDS]\n\n# Constraints\n- Stay within budget and flag where I can save or splurge.\n- Keep it realistic for one or two adults to run without burning out.\n- Age-appropriate activities and food, with simple make-ahead options. Do not assume expensive entertainers or rentals unless I ask.\n\n# Output Format\nProvide: (1) a party plan overview with a theme idea and a rough budget breakdown, (2) a 2-hour party timeline (arrival, activities, food, cake, wind-down), (3) 4 to 6 age-appropriate activities or games with what each needs, (4) a simple food and cake plan with make-ahead notes, and (5) a categorized shopping and prep checklist I can follow the week before.",
+    "instructions": [
+      "Open ChatGPT, paste the prompt, and answer the opening questions about your child's age, guest count, budget, and location so the plan is realistic.",
+      "Review the budget breakdown and timeline. Ask ChatGPT to adjust if you are over budget (for example swap store-bought for homemade, or trim the guest list).",
+      "Pick the activities and food that fit your space and the kids' ages, and ask ChatGPT for a backup plan in case of bad weather or a move indoors.",
+      "Use the shopping and prep checklist to buy and prep in the week before, doing make-ahead items early to lower day-of stress.",
+      "The day before, ask ChatGPT to turn the timeline into a simple hour-by-hour run sheet you can glance at during the party."
+    ],
+    "recommendedTools": [],
+    "categoryTags": [
+      "event-planning",
+      "parenting",
+      "budgeting"
+    ],
+    "role": "Personal Use",
+    "aiTool": "ChatGPT",
+    "outputType": "Strategy/Plan",
+    "taskInput": "Plan a kids birthday party on a budget",
+    "isBusiness": false,
+    "isAgentOrAutomation": false,
+    "promote": true,
+    "moderation": {
+      "verdict": "allow",
+      "reason": null
+    }
   }
 ]
