@@ -74,7 +74,11 @@ jobs:
         # fake sample prompts into the sitemap and prerendered pages.
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: pnpm exec opennextjs-cloudflare build
+        # TEMPORARY: Next 15's 2-year support window lapsed 2026-10-22, so the
+        # OpenNext adapter refuses to build it without this flag. Production
+        # already runs 15.5.20 unchanged; the flag only restores the prior build
+        # behavior. Remove it once Next is upgraded to a supported major.
+        run: pnpm exec opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion
 
       - name: Deploy Worker
         env:
